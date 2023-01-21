@@ -19,9 +19,13 @@
 
     <bottom-bar-mobile-tab
       class="w-100 h-100 text-center"
-      [link]="'/' + globalVars.RouteNames.TRENDS"
+      [link]="
+              AppRoutingModule.profilePath(
+                globalVars.loggedInUser.ProfileEntryResponse.Username
+              )
+            "
     >
-      <i class="icon-up-arrow fs-25px"></i>
+      <i class="fas fa-hashtag fs-35px"></i>
     </bottom-bar-mobile-tab>
 
     <bottom-bar-mobile-tab

@@ -20,10 +20,6 @@ import { environment } from '../environments/environment';
 import { AmplitudeClient } from 'amplitude-js';
 import { IdentityService } from './identity.service';
 import {
-  BithuntService,
-  CommunityProject,
-} from '../lib/services/bithunt/bithunt-service';
-import {
   LeaderboardResponse,
   AltumbaseService,
 } from '../lib/services/altumbase/altumbase-service';
@@ -114,8 +110,6 @@ export class GlobalVarsService {
   topCreatorsAllTimeLeaderboard: LeaderboardResponse[] = [];
   topGainerLeaderboard: LeaderboardResponse[] = [];
   topDiamondedLeaderboard: LeaderboardResponse[] = [];
-  allCommunityProjectsLeaderboard: CommunityProject[] = [];
-  topCommunityProjectsLeaderboard: CommunityProject[] = [];
 
   // We track logged-in state
   loggedInUser: User;
@@ -604,15 +598,14 @@ export class GlobalVarsService {
     let shortValue;
     const suffixes = ['', 'K', 'M', 'B', 't', 'q', 'Q'];
     const suffixNum = Math.floor((('' + value.toFixed(0)).length - 1) / 3);
-    if (suffixNum === 0) {
-      // if the number is less than 1000, we should only show at most 2 decimals places
-      decimals = Math.min(2, decimals);
-    }
-    shortValue = (value / Math.pow(1000, suffixNum)).toFixed(decimals);
-    if (formatUSD) {
-      shortValue = this.formatUSD(shortValue, decimals);
-    }
-    return shortValue + suffixes[suffixNum];
+    if (suffixNum > 1) {
+      decimals = Math.min(6, decimals);
+      shortValue = (value / Math.pow(1000, suffixNum)).toFixed(decimals);
+      if (formatUSD) {
+        shortValue = this.formatUSD(shortValue, decimals);
+      }
+      return shortValue + suffixes[suffixNum];
+    } else return value.toFixed(decimals);
   }
 
   nanosToUSDNumber(nanos: number): number {
@@ -633,7 +626,7 @@ export class GlobalVarsService {
   // Used to convert uint256 Hex balances for DAO coins to standard units.
   hexNanosToUnitString(hexNanos: Hex, decimal: number = 4): string {
     const result = fromWei(toBN(hexNanos), 'ether').toString();
-    return this.abbreviateNumber(parseFloat(result), 4, false);
+    return this.abbreviateNumber(parseFloat(result), decimal, false);
   }
 
   // Converts a quantity of DAO coins to a Hex representing the number of nanos
@@ -1026,7 +1019,7 @@ export class GlobalVarsService {
   launchIdentityFlow(event: string): void {
     this.logEvent(`account : ${event} : launch`);
     this.identityService
-      .launch('/log-in', { referralCode: this.referralCode(), hideJumio: true })
+      .launch('/log-in?accessLevelRequest=4', { referralCode: this.referralCode(), hideJumio: true })
       .subscribe((res) => {
         this.logEvent(`account : ${event} : success`);
         this.backendApi.setIdentityServiceUsers(res.users, res.publicKeyAdded);
@@ -1139,19 +1132,6 @@ export class GlobalVarsService {
       altumbaseService
         .getDiamondsReceivedLeaderboard()
         .subscribe((res) => (this.topDiamondedLeaderboard = res));
-    }
-
-    if (this.topCommunityProjectsLeaderboard.length === 0 || forceRefresh) {
-      const bithuntService = new BithuntService(
-        this.httpClient,
-        this.backendApi,
-        this
-      );
-      bithuntService.getCommunityProjectsLeaderboard().subscribe((res) => {
-        this.allCommunityProjectsLeaderboard = res;
-        this.topCommunityProjectsLeaderboard =
-          this.allCommunityProjectsLeaderboard.slice(0, 10);
-      });
     }
 
     if (this.topCreatorsAllTimeLeaderboard.length === 0 || forceRefresh) {

@@ -28,12 +28,7 @@ header @html Cache-Control no-store
 header @html Content-Security-Policy "
   default-src 'self';
   connect-src 'self'
-    node.deso.org
-    amp.deso.org
-    bithunt.deso.org
-    bitclout.com:*
-    api.bitclout.com
-    bithunt.bitclout.com
+    node.desolabs.org
     https://altumbase.com
     localhost:*
     explorer.bitclout.com
@@ -44,9 +39,6 @@ header @html Content-Security-Policy "
     https://ka-f.fontawesome.com/
     bitcoinfees.earn.com
     api.blockcypher.com
-    amp.bitclout.com
-    api.testwyre.com
-    api.sendwyre.com
     https://videodelivery.net
     https://upload.videodelivery.net;
   script-src 'self'
@@ -76,12 +68,7 @@ header @html Content-Security-Policy "
   frame-src 'self'
     localhost:*
     identity.deso.org
-    identity.deso.blue
-    identity.deso.green
-    identity.deso.run
     identity.bitclout.com
-    identity.bitclout.blue
-    identity.bitclout.green
     megaswap.dev
     megaswap.xyz
     https://geo.captcha-delivery.com

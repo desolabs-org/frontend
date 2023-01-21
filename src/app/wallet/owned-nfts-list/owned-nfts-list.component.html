@@ -1,0 +1,34 @@
+<!-- Posts -->
+<simple-center-loader
+  [height]="200"
+  *ngIf="isLoading && datasource.adapter.isLoading"
+></simple-center-loader>
+
+<div *ngIf="!isLoading && !nftResponse?.length" class="p-15px">
+  <div
+    class="background-color-grey p-35px br-12px d-flex flex-row align-items-center"
+    style="text-align: center">
+    <span>No NFTs in wallet.</span>
+  </div>
+</div>
+
+<div *ngIf="!isLoading">
+    <div #uiScroll *uiScroll="let nftEntry of datasource; let index = index">
+      <feed-post
+        *ngIf="nftEntry.PostEntryResponse.ProfileEntryResponse"
+        [contentShouldLinkToThread]="true"
+        [includePaddingOnPost]="true"
+        [post]="nftEntry.PostEntryResponse"
+        [blocked]="false"
+        [showNFTDetails]="true"
+        [showExpandedNFTDetails]="false"
+        [setBorder]="true"
+        [showAvailableSerialNumbers]="true"
+        [cardStyle]="true"
+        [profilePublicKeyBase58Check]="nftEntry.PostEntryResponse.ProfileEntryResponse.PublicKeyBase58Check"
+        [isForSaleOnly]="false"
+        [acceptNFT]="false"
+        (userBlocked)="userBlocked()"
+      ></feed-post>
+    </div>
+</div>

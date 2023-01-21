@@ -57,8 +57,8 @@ export class BurnDaoCoinModalComponent {
 
   updateValidationErrors(): void {
     let err: string[] = [];
-    if (this.amountToBurn <= 0) {
-      err.push('Must transfer a non-zero amount\n');
+    if (this.amountToBurn <= 0.00000000000000000001) {
+      err.push('Must burn a non-zero amount\n');
     }
     if (
       this.globalVars

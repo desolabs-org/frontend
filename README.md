@@ -24,7 +24,35 @@ This frontend works best with Node v14.15.5 and Npm v7. If you can't use these v
 
 # Start Coding
 
-The quickest way to contribute changes to the DeSo Frontend is the following these steps:
+1. Clone the repo and run:
+`npm install`
+`npm start -- --disable-host-check`
+
+2. Get a local proxy providing ssl and routing your dev domain to `localhost:4200`
+* Nginx example
+```upstream l4s_frontend {
+        server localhost:4200;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    ssl_certificate dev-love4src.crt;
+    ssl_certificate_key dev-love4src.key;
+
+    server_name dev.love4src.com;
+
+    try_files $uri /index.html =404;
+
+    location / {
+        proxy_pass http://l4s_frontend;
+    }
+}```
+
+3. Set the correct `lastLocalNodeV2` to `https://api.love4src.com` in your browser's Local Storage
+
+Or... another (easier?) way to contribute changes to the DeSo Frontend is the following these steps:
 
 1. Open frontend repo in Gitpod
 
@@ -34,7 +62,7 @@ You can use any repo / branch URL and just prepend `https://gitpod.io/#` to it.
 
 2. If needed, login to your github account
 
-3. Set the correct `lastLocalNodeV2` to `"https://api.tijn.club"` in your browser Local Storage for the gitpod preview URL
+3. Set the correct `lastLocalNodeV2` to `"https://api.love4src.com"` in your browser Local Storage for the gitpod preview URL
 
 4. Create a new branch to start working
 

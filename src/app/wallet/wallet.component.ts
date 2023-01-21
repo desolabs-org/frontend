@@ -29,19 +29,18 @@ export class WalletComponent implements OnInit, OnDestroy {
   globalVars: GlobalVarsService;
   AppRoutingModule = AppRoutingModule;
   hasUnminedCreatorCoins: boolean;
-  showTransferredCoins: boolean = false;
 
   sortedUSDValueFromHighToLow: number = 0;
   sortedPriceFromHighToLow: number = 0;
   sortedUsernameFromHighToLow: number = 0;
 
-  usersYouReceived: BalanceEntryResponse[] = [];
-  usersYouPurchased: BalanceEntryResponse[] = [];
+  creatorCoins: BalanceEntryResponse[] = [];
 
-  static coinsPurchasedTab: string = 'Coins Purchased';
-  static coinsReceivedTab: string = 'Coins Received';
-  tabs = [WalletComponent.coinsPurchasedTab, WalletComponent.coinsReceivedTab];
-  activeTab: string = WalletComponent.coinsPurchasedTab;
+  static creatorCoinsTab: string = 'Coins';
+  static daoCoinsTab: string = 'Tokens';
+  static NftsTab: string = 'NFTs';
+  tabs = [WalletComponent.creatorCoinsTab, WalletComponent.daoCoinsTab, WalletComponent.NftsTab];
+  activeTab: string = WalletComponent.creatorCoinsTab;
   tutorialUsername: string;
   tutorialStatus: TutorialStatus;
   TutorialStatus = TutorialStatus;
@@ -70,7 +69,7 @@ export class WalletComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (this.inTutorial) {
-      this.tabs = [WalletComponent.coinsPurchasedTab];
+      this.tabs = [WalletComponent.creatorCoinsTab];
       this.tutorialStatus = this.globalVars.loggedInUser?.TutorialStatus;
       this.balanceEntryToHighlight = this.globalVars.loggedInUser?.UsersYouHODL.find(
         (balanceEntry) => {
@@ -106,20 +105,12 @@ export class WalletComponent implements OnInit, OnDestroy {
         if (balanceEntryResponse.NetBalanceInMempool != 0) {
           this.hasUnminedCreatorCoins = true;
         }
-        // If you purchased the coin or the balance entry response if for your creator coin, show it in the purchased tab.
-        if (
-          balanceEntryResponse.HasPurchased ||
-          balanceEntryResponse.HODLerPublicKeyBase58Check ===
-            balanceEntryResponse.CreatorPublicKeyBase58Check
-        ) {
-          this.usersYouPurchased.push(balanceEntryResponse);
-        } else {
-          this.usersYouReceived.push(balanceEntryResponse);
-        }
+        
+        this.creatorCoins.push(balanceEntryResponse);
       }
     );
     this.sortWallet('value');
-    this._handleTabClick(WalletComponent.coinsPurchasedTab);
+    this._handleTabClick(WalletComponent.creatorCoinsTab);
     if (this.inTutorial) {
       this.subscriptions.add(
         this.datasource.adapter.lastVisible$.subscribe((lastVisible) => {
@@ -214,18 +205,15 @@ export class WalletComponent implements OnInit, OnDestroy {
       case 'username':
         // code block
         descending = this.sortedUsernameFromHighToLow !== -1;
-        this.sortHodlingsUsername(this.usersYouPurchased, descending);
-        this.sortHodlingsUsername(this.usersYouReceived, descending);
+        this.sortHodlingsUsername(this.creatorCoins, descending);
         break;
       case 'price':
         descending = this.sortedPriceFromHighToLow !== -1;
-        this.sortHodlingsPrice(this.usersYouPurchased, descending);
-        this.sortHodlingsPrice(this.usersYouReceived, descending);
+        this.sortHodlingsPrice(this.creatorCoins, descending);
         break;
       case 'value':
         descending = this.sortedUSDValueFromHighToLow !== -1;
-        this.sortHodlingsCoins(this.usersYouPurchased, descending);
-        this.sortHodlingsCoins(this.usersYouReceived, descending);
+        this.sortHodlingsCoins(this.creatorCoins, descending);
         break;
       default:
       // do nothing
@@ -281,20 +269,17 @@ export class WalletComponent implements OnInit, OnDestroy {
     return this.globalVars.isMobile() ? 14 : 20;
   }
 
+  usernameStyle() {
+    return {
+      'max-width': this.globalVars.isMobile() ? '100px' : '200px',
+    };
+  }
+
   emptyHodlerListMessage(): string {
-    return this.showTransferredCoins
-      ? "You haven't received coins from any creators you don't already hold."
-      : "You haven't purchased any creator coins yet.";
+    return "You don't hodl any creator coins... yet";
   }
 
   _handleTabClick(tab: string) {
-    this.showTransferredCoins = tab === WalletComponent.coinsReceivedTab;
-    this.lastPage = Math.floor(
-      (this.showTransferredCoins
-        ? this.usersYouReceived
-        : this.usersYouPurchased
-      ).length / WalletComponent.PAGE_SIZE
-    );
     this.activeTab = tab;
     this.scrollerReset();
   }
@@ -410,15 +395,10 @@ export class WalletComponent implements OnInit, OnDestroy {
 
     return new Promise((resolve, reject) => {
       resolve(
-        this.showTransferredCoins
-          ? this.usersYouReceived.slice(
-              startIdx,
-              Math.min(endIdx, this.usersYouReceived.length)
-            )
-          : this.usersYouPurchased.slice(
-              startIdx,
-              Math.min(endIdx, this.usersYouPurchased.length)
-            )
+        this.creatorCoins.slice(
+          startIdx,
+          Math.min(endIdx, this.creatorCoins.length)
+        )
       );
     });
   }

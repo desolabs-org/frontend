@@ -175,11 +175,8 @@
             queryParamsHandling="merge"
           >
             <span class="text-grey5">
-              ~{{
-                globalVars.nanosToUSD(
-                  postContent.ProfileEntryResponse.CoinPriceDeSoNanos,
-                  2
-                )
+              Ð {{
+                (postContent.ProfileEntryResponse.CoinPriceDeSoNanos / 1E9).toFixed(2)
               }}
             </span>
 
@@ -680,19 +677,19 @@
         <div *ngIf="nftLastAcceptedBidAmountNanos">
           <b
             >Last price:
-            {{ globalVars.nanosToDeSo(nftLastAcceptedBidAmountNanos) }} $DESO</b
+            {{ globalVars.nanosToDeSo(nftLastAcceptedBidAmountNanos) }} ÐESO</b
           >
         </div>
         <div *ngIf="nftMinBidAmountNanos">
           <b
             >Min bid:
-            {{ globalVars.nanosToDeSo(nftMinBidAmountNanos) }} $DESO</b
+            {{ globalVars.nanosToDeSo(nftMinBidAmountNanos) }} ÐESO</b
           >
         </div>
         <div *ngIf="nftBuyNowPriceNanos">
           <b
             >Buy Now Price:
-            {{ globalVars.nanosToDeSo(nftBuyNowPriceNanos) }} $DESO</b
+            {{ globalVars.nanosToDeSo(nftBuyNowPriceNanos) }} ÐESO</b
           >
         </div>
       </div>

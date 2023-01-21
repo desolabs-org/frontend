@@ -134,21 +134,9 @@ export class CreatorProfileTopCardComponent implements OnInit, OnDestroy {
     return this.profile.CoinEntry.CoinsInCirculationNanos / 1e9;
   }
 
-  usdMarketCap() {
-    return this.globalVars.abbreviateNumber(
-      this.globalVars.nanosToUSDNumber(
-        this.coinsInCirculation() * this.profile.CoinPriceDeSoNanos
-      ),
-      3,
-      true
-    );
-  }
-
-  totalUSDLocked() {
-    return this.globalVars.abbreviateNumber(
-      this.globalVars.nanosToUSDNumber(this.profile.CoinEntry.DeSoLockedNanos),
-      3,
-      true
+  totalUtilityCoins() {
+    return this.globalVars.hexNanosToUnitString(
+      this.profile.DAOCoinEntry.CoinsInCirculationNanos, 2
     );
   }
 
@@ -243,4 +231,6 @@ export class CreatorProfileTopCardComponent implements OnInit, OnDestroy {
   getFoundersRewardPercent() {
     return this.profile.CoinEntry.CreatorBasisPoints / 100;
   }
+
+
 }

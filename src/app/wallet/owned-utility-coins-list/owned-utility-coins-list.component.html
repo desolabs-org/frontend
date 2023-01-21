@@ -1,0 +1,176 @@
+<ng-container *ngIf="globalVars.loggedInUser">
+  <div
+    class="row no-gutters fs-15px d-flex align-items-center border-bottom border-color-grey pl-15px py-15px"
+  >
+    <div
+      class="col-6 mb-0 cursor-pointer fc-muted text-link_hover"
+      (click)="sortWallet('username')"
+    >
+      <i
+        class="fas fs-15px"
+        [ngClass]="{
+          'fa-arrows-alt-v': sortedUsernameFromHighToLow === 0,
+          'fa-sort-alpha-up-alt': sortedUsernameFromHighToLow === 1,
+          'fa-sort-alpha-down': sortedUsernameFromHighToLow === -1
+        }"
+      ></i>
+      Name
+    </div>
+    <div
+      class="col-5 mb-0 cursor-pointer fc-muted text-link_hover text-right"
+      style="text-align: end"
+      (click)="sortWallet('coins')"
+    >
+      <i
+        class="fas fs-15px"
+        [ngClass]="{
+          'fa-arrows-alt-v': sortedCoinsFromHighToLow === 0,
+          'fa-sort-amount-down': sortedCoinsFromHighToLow === -1,
+          'fa-sort-amount-up-alt': sortedCoinsFromHighToLow === 1
+        }"
+      ></i>
+      Coins
+    </div>
+    <div class="col-1 d-block mb-0"></div>
+  </div>
+  <div
+    *ngIf="!loadingMyDAOCoinHoldings && daoCoinHoldings.length == 0"
+    class="d-flex justify-content-center fs-15px fc-muted w-100 mt-30px px-15px"
+    style="text-align: center"
+  >
+    You don't hold any Tokens
+  </div>
+
+  <div #uiScroll *uiScroll="let creator of datasource">
+    <!-- Screen out zero balances and only show highlighted creator in tutorial-->
+    <div
+      *ngIf="
+        creator &&
+        (creator.BalanceNanos ||
+          (creator.NetBalanceInMempool != 0 &&
+            globalVars.showProcessingSpinners))
+      "
+      class="row no-gutters fs-15px fc-default mt-5px mb-5px ml-10px mr-10px p-5px"
+    >
+      <!-- Name-->
+      <a
+        class="col-6 d-flex align-items-center link--unstyled holdings__creator-coin-name p-0 m-0 cursor-pointer"
+        [routerLink]="
+          creator.ProfileEntryResponse?.Username
+            ? [
+                '/' + globalVars.RouteNames.USER_PREFIX,
+                creator.ProfileEntryResponse.Username
+              ]
+            : []
+        "
+        queryParamsHandling="merge"
+      >
+        <div
+          class="holdings__avatar"
+          [avatar]="creator.ProfileEntryResponse?.PublicKeyBase58Check"
+        ></div>
+        <div class="text-truncate holdings__name">
+          <span>
+            {{
+              creator.ProfileEntryResponse?.Username ||
+                (showDAOCoinHoldings
+                  ? creator.CreatorPublicKeyBase58Check
+                  : creator.HODLerPublicKeyBase58Check)
+            }}
+          </span>
+
+          <span
+            *ngIf="
+              creator.ProfileEntryResponse?.IsReserved &&
+              !creator.ProfileEntryResponse?.IsVerified
+            "
+            class="d-inline-block ml-1 cursor-pointer lh-12px fc-muted"
+            matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
+            [matTooltip]="
+              'This profile is reserved. The owner has not yet claimed it.'
+            "
+          >
+            <i class="far fa-clock fa-md align-middle"></i>
+          </span>
+          <span
+            *ngIf="creator.ProfileEntryResponse?.IsVerified"
+            (click)="tooltip.toggle()"
+            class="ml-1 cursor-pointer text-primary"
+            matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
+            [matTooltip]="'This account is verified'"
+            #tooltip="matTooltip"
+          >
+            <i class="fas fa-check-circle fa-md align-middle"></i>
+          </span>
+
+          <div
+            class="text-grey9 fs-12px d-lg-none"
+            *ngIf="creator.ProfileEntryResponse"
+          >
+            {{
+              globalVars.nanosToUSD(
+                creator.ProfileEntryResponse?.CoinPriceDeSoNanos,
+                2
+              )
+            }}
+          </div>
+        </div>
+      </a>
+
+      <!-- Balance -->
+      <div
+        class="col-5 mb-0 pt-0px d-flex align-items-center justify-content-end text-right"
+      >
+        <div>
+          <div>
+            <i
+              *ngIf="
+                creator.NetBalanceInMempool != 0 &&
+                globalVars.showProcessingSpinners
+              "
+              class="fa fa-spinner fc-muted"
+              matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
+              [matTooltip]="unminedCreatorCoinToolTip(creator)"
+              #tooltip="matTooltip"
+              (click)="tooltip.toggle()"
+            ></i> 
+            {{ globalVars.hexNanosToUnitString(creator.BalanceNanosUint256, 18) }}
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="col-1 mb-0 pt-0px d-flex align-items-center justify-content-around text-right"
+      >
+        <ng-container
+          *ngIf="
+            showDAOCoinHoldings ||
+            creator.HODLerPublicKeyBase58Check ===
+              globalVars.loggedInUser?.PublicKeyBase58Check
+          "
+        >
+          <i
+            class="fas fa-exchange-alt"
+            (click)="openTransferDAOCoinModal(creator)"
+          ></i>
+          <i
+            class="fa fa-fire fc-red"
+            (click)="openBurnDAOCoinModal(creator)"
+          ></i>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
+<div *ngIf="!globalVars.loggedInUser">
+  <simple-center-loader></simple-center-loader>
+</div>
+<!-- SPACER FOR BOTTOM BAR ON MOBILE -->
+<div class="global__bottom-bar-mobile-height"></div>
+<div class="global__bottom-bar-mobile-height"></div>
+
+<!--Spacer (for mobile)-->
+<!--Need this so the blue circle doesn't cover the content-->
+<div style="padding-bottom: 65px"></div>

@@ -12,6 +12,7 @@
     class="creator-profile__avatar"
     [avatar]="profile.PublicKeyBase58Check"
   ></div>
+  
   <div
     class="d-flex align-items-center justify-content-end pt-15px mr-15px js-creator-profile-top-card-container"
   >
@@ -149,8 +150,10 @@
     </a>
   </div>
 
+
   <div class="d-flex flex-column pl-15px pr-15px">
     <div class="fs-24px font-weight-bold d-flex align-items-center">
+
       @{{ profile.Username }}
 
       <div
@@ -174,11 +177,30 @@
       >
         <i class="fas fa-check-circle fa-md align-middle"></i>
       </div>
+
+      <span
+        (click)="_copyPublicKey()"
+        class="fs-15px cursor-pointer creator-profile__ellipsis-restriction"
+      >&nbsp;
+        <i *ngIf="!publicKeyIsCopied" class="fas fa-key"></i>
+        <i
+          *ngIf="publicKeyIsCopied"
+          class="far fa-check-circle fc-blue"
+        ></i>
+        &nbsp;
+      </span>
     </div>
     <div style="whitespace: nowrap" class="d-flex">
-      <div class="font-weight-bold" style="display: inline">
-        ~{{ globalVars.nanosToUSD(profile.CoinPriceDeSoNanos, 2) }}
-        <span class="fc-muted font-weight-normal">Coin Price</span>
+      <div class="font-weight-normal" style="display: inline">
+        Ð {{ (profile.CoinPriceDeSoNanos / 1E9).toFixed(2) }}
+        <span class="fc-muted font-weight-normal">Coin</span>&nbsp;at
+        <span class="font-weight-bold">{{ getFoundersRewardPercent() | number: '0.0-9' }}%</span> FR
+      </div>
+    </div>
+    <div style="whitespace: nowrap" class="d-flex">
+      <div class="font-weight-normal" style="display: inline">
+        Ð {{ profile.BestExchangeRateDESOPerDAOCoin.toFixed(2) }}
+        <span class="fc-muted font-weight-normal">Token</span>
       </div>
     </div>
 
@@ -207,41 +229,15 @@
           <span class="font-weight-bold">{{ followingCount }}&nbsp;</span>
           <span class="fc-muted">Following&nbsp;&nbsp;</span>
         </a>
-        <div class="d-lg-flex d-none">
-          <span
-            (click)="_copyPublicKey()"
-            class="fs-15px cursor-pointer creator-profile__ellipsis-restriction"
-          >
-            <i *ngIf="!publicKeyIsCopied" class="fas fa-key"></i>
-            <i
-              *ngIf="publicKeyIsCopied"
-              class="far fa-check-circle fc-blue"
-            ></i>
-            {{ profile.PublicKeyBase58Check }}
-          </span>
-          <div class="px-5px">
-            <span class="font-weight-bold"
-              >&nbsp;{{ getFoundersRewardPercent() | number: '0.0-9' }}%</span
-            >
-            FR
-          </div>
-        </div>
-      </div>
 
-      <div class="d-lg-none d-flex pt-5px">
-        <span
-          (click)="_copyPublicKey()"
-          class="fs-15px cursor-pointer creator-profile__ellipsis-restriction"
-        >
-          <i *ngIf="!publicKeyIsCopied" class="fas fa-key"></i>
-          <i *ngIf="publicKeyIsCopied" class="far fa-check-circle fc-blue"></i>
-          {{ profile.PublicKeyBase58Check }}
-        </span>
-        <div class="px-5px">
-          <span class="font-weight-bold"
-            >&nbsp;{{ getFoundersRewardPercent() | number: '0.0-9' }}%</span
-          >
-          FR
+        <div>
+          <span class="font-weight-bold">{{ profile.CoinEntry.NumberOfHolders }}&nbsp;</span>
+          <span class="fc-muted">Supporters&nbsp;&nbsp;</span>
+        </div>
+
+        <div>
+          <span class="font-weight-bold">{{ profile.DAOCoinEntry.NumberOfHolders }}&nbsp;</span>
+          <span class="fc-muted">Hodlers&nbsp;&nbsp;</span>
         </div>
       </div>
     </div>
@@ -251,25 +247,25 @@
     class="fs-12px mt-10px pt-15px pb-15px flex-wrap border-top border-bottom border-color-grey light-grey-divider"
   >
     <div class="fs-12x d-inline-block col-4 mb-0" style="text-align: center">
-      <span class="font-weight-bold d-block"
-        >≈
-        {{ (profile.CoinEntry.CoinsInCirculationNanos / 1e9).toFixed(4) }}</span
+      <span class="font-weight-bold d-block">
+        {{ (profile.CoinEntry.CoinsInCirculationNanos / 1e9).toFixed(2) }}</span
       >
-      <span class="fc-muted d-block">Coins In Circulation</span>
+      <span class="fc-muted d-block">Coins Minted</span>
     </div>
     <div
       class="fs-12px d-inline-block col-4 align-items-center mb-0"
       style="text-align: center"
     >
-      <span class="font-weight-bold d-block">≈ {{ totalUSDLocked() }}</span>
-      <span class="fc-muted d-block">Total USD Locked</span>
+      <span class="font-weight-bold d-block">{{ totalUtilityCoins() }}</span>
+      <span class="fc-muted d-block">Tokens Minted</span>
     </div>
     <div
       class="fs-12px d-inline-block col-4 align-items-center mb-0"
-      style="text-align: center"
-    >
-      <span class="font-weight-bold d-block">≈ {{ usdMarketCap() }}</span>
-      <span class="fc-muted d-block">USD Market Cap</span>
+      style="text-align: center">
+      <span class="font-weight-bold d-block">{{ (profile.CoinEntry.DeSoLockedNanos / 1E9).toFixed(2) }}</span>
+      <span class="fc-muted d-block">ÐESO Locked</span>
     </div>
+
+    
   </div>
 </div>

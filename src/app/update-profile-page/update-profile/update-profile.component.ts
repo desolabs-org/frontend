@@ -149,7 +149,7 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
       this.profileUpdateErrors.usernameError = false;
     }
 
-    if (this.descriptionInput.length > 180) {
+    if (this.descriptionInput.length > 1024) {
       this.profileUpdateErrors.descriptionError = true;
       hasErrors = true;
     } else {
@@ -250,7 +250,7 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
             confirmButton: 'btn btn-light',
             cancelButton: 'btn btn-light no',
           },
-          confirmButtonText: lowBalance ? 'Buy $DESO' : null,
+          confirmButtonText: lowBalance ? 'Buy ÐESO' : null,
           cancelButtonText: lowBalance ? 'Later' : null,
           showCancelButton: !!lowBalance,
         }).then((res) => {

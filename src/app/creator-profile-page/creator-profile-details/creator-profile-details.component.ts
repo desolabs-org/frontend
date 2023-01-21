@@ -32,7 +32,7 @@ export class CreatorProfileDetailsComponent implements OnInit {
     // Leaving this one in so old links will direct to the Coin Purchasers tab.
     'creator-coin': 'Creator Coin',
     'coin-purchasers': 'Creator Coin',
-    dao: 'DAO Coin',
+    dao: 'Utility Coin',
     diamonds: 'Diamonds',
     nfts: 'NFTs',
   };
@@ -41,7 +41,7 @@ export class CreatorProfileDetailsComponent implements OnInit {
     'Creator Coin': 'creator-coin',
     Diamonds: 'diamonds',
     NFTs: 'nfts',
-    'DAO Coin': 'dao',
+    'Utility Coin': 'dao',
   };
   appData: GlobalVarsService;
   userName: string;

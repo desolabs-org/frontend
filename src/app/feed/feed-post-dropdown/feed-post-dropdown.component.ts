@@ -15,6 +15,8 @@ import { NftBurnModalComponent } from '../../nft-burn-modal/nft-burn-modal.compo
 import { TransferNftModalComponent } from '../../transfer-nft-modal/transfer-nft-modal.component';
 import { PostMultiplierComponent } from './post-multiplier/post-multiplier.component';
 
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'feed-post-dropdown',
   templateUrl: './feed-post-dropdown.component.html',
@@ -32,7 +34,7 @@ export class FeedPostDropdownComponent {
   @Output() refreshNFTEntries = new EventEmitter();
 
   showSharePost: boolean = false;
-  showEmbedPost: boolean = true;
+  showEmbedPost: boolean = (environment.embedServiceUrl !== "");
 
   constructor(
     public globalVars: GlobalVarsService,
@@ -267,15 +269,15 @@ export class FeedPostDropdownComponent {
   } 
   
   embedPostUrl(event): void {
-    this.globalVars.logEvent('post : withdesoembed');
+    if (this.showEmbedPost) {
+      this.globalVars.logEvent('post : embedpost');
+      event.stopPropagation();
 
-    // Prevent the post from navigating.
-    event.stopPropagation();
-
-    try {
-      window.open('https://embed.withdeso.com/?url='+this._getPostUrl(), "_blank");
-    } catch (err) {
-      console.error('Embed failed:', err.message);
+      try {
+        window.open(environment.embedServiceUrl + this._getPostUrl(), "_blank");
+      } catch (err) {
+        console.error('Embed failed:', err.message);
+      }
     }
   }
 

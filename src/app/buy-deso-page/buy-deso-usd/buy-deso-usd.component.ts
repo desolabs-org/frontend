@@ -52,8 +52,7 @@ export class BuyDeSoUSDComponent implements OnInit {
       this.globalVars,
       this.backendApi
     );
-    this.supportedFiatCurrencies =
-      this.wyreService.getSupportedFiatCurrencies();
+    this.supportedFiatCurrencies = this.wyreService.getSupportedFiatCurrencies();
     this.wyreService.getSupportedCountries().subscribe((res) => {
       this.supportedCountries = res;
     });
@@ -99,7 +98,6 @@ export class BuyDeSoUSDComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globalVars._updateDeSoExchangeRate();
     this._refreshQuotation();
   }
 
@@ -119,8 +117,8 @@ export class BuyDeSoUSDComponent implements OnInit {
           if (res.url) {
             Swal.fire({
               target: this.globalVars.getTargetComponentSelector(),
-              title: 'Purchase $DESO',
-              html: `You will complete your purchase through Wyre. Your ${this.selectedFiatCurrency} will be converted to <b>Bitcoin</b> and then into <b>$DESO</b> automatically.`,
+              title: 'Purchase ÐESO',
+              html: `You will complete your purchase through Wyre. Your ${this.selectedFiatCurrency} will be converted to <b>Bitcoin</b> and then into <b>ÐESO</b> automatically.`,
               showCancelButton: true,
               showConfirmButton: true,
               confirmButtonText: 'Buy',

@@ -191,7 +191,7 @@ export class NotificationsListComponent {
           `${actorName} sent you ${this.globalVars.nanosToDeSo(
             txnAmountNanos
           )} ` +
-          `$DESO!</b> (~${this.globalVars.nanosToUSD(txnAmountNanos, 2)})`;
+          `ÐESO!</b> (~${this.globalVars.nanosToUSD(txnAmountNanos, 2)})`;
       }
       return result;
     } else if (txnMeta.TxnType === 'CREATOR_COIN') {

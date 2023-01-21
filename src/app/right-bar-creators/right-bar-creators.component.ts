@@ -50,11 +50,6 @@ export class RightBarCreatorsComponent implements OnInit {
       link: `https://altumbase.com/tools?${environment.node.name}`,
     },
   };
-  static COMMUNITY: RightBarTabOption = {
-    name: 'Top Community Projects',
-    width: 225,
-    poweredBy: { name: 'BitHunt', link: 'https://bithunt.com' },
-  };
 
   static ALL_TIME: RightBarTabOption = {
     name: 'Top Creators All Time',
@@ -66,8 +61,6 @@ export class RightBarCreatorsComponent implements OnInit {
     [RightBarCreatorsComponent.GAINERS.name]: RightBarCreatorsComponent.GAINERS,
     [RightBarCreatorsComponent.DIAMONDS.name]:
       RightBarCreatorsComponent.DIAMONDS,
-    [RightBarCreatorsComponent.COMMUNITY.name]:
-      RightBarCreatorsComponent.COMMUNITY,
     [RightBarCreatorsComponent.ALL_TIME.name]:
       RightBarCreatorsComponent.ALL_TIME,
   };

@@ -5,8 +5,6 @@
       ? globalVars.topGainerLeaderboard
       : activeTab === RightBarCreatorsComponent.DIAMONDS.name
       ? globalVars.topDiamondedLeaderboard
-      : activeTab === RightBarCreatorsComponent.COMMUNITY.name
-      ? globalVars.topCommunityProjectsLeaderboard
       : activeTab === RightBarCreatorsComponent.ALL_TIME.name
       ? globalVars.topCreatorsAllTimeLeaderboard
       : []
@@ -19,10 +17,8 @@
   class="link--unstyled d-flex align-items-center text-grey5 fs-15px"
   [ngClass]="{
     'pb-5px':
-      activeTab !== RightBarCreatorsComponent.COMMUNITY.name &&
       activeTab !== RightBarCreatorsComponent.ALL_TIME.name,
     'pb-15px':
-      activeTab === RightBarCreatorsComponent.COMMUNITY.name ||
       activeTab === RightBarCreatorsComponent.ALL_TIME.name
   }"
 >
@@ -80,15 +76,12 @@
     <div
       [ngClass]="{
         'text-grey7':
-          activeTab !== RightBarCreatorsComponent.COMMUNITY.name &&
           activeTab !== RightBarCreatorsComponent.ALL_TIME.name,
         'text-grey5':
-          activeTab === RightBarCreatorsComponent.COMMUNITY.name ||
           activeTab === RightBarCreatorsComponent.ALL_TIME.name
       }"
       [ngStyle]="{
         'font-size':
-          activeTab === RightBarCreatorsComponent.COMMUNITY.name ||
           activeTab === RightBarCreatorsComponent.ALL_TIME.name
             ? '15px'
             : '10px'
@@ -100,11 +93,6 @@
           2
         )
       }}
-      <i
-        class="fas fa-external-link-alt"
-        *ngIf="activeTab === RightBarCreatorsComponent.COMMUNITY.name"
-        [href]="profileEntryResponse.BithuntProject.website_url"
-      ></i>
     </div>
   </div>
 </a>

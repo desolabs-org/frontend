@@ -34,39 +34,10 @@
     *ngIf="isMobile"
     class="d-flex border-bottom border-color-grey background-color-light-grey py-5px px-15px fs-12px"
   >
-    <div>$DESO Price&nbsp;&nbsp;&nbsp;</div>
+    <div>ÐESO Price&nbsp;&nbsp;&nbsp;</div>
     <div>
       <span>~{{ globalVars.desoToUSDExchangeRateToDisplay }}</span>
       <span class="text-muted">&nbsp;USD per coin</span>
-    </div>
-  </div>
-
-  <!-- Mobile email confirmation alert -->
-  <div
-    *ngIf="
-      isMobile &&
-      globalVars.loggedInUser &&
-      !globalVars.loggedInUser.EmailVerified
-    "
-    class="d-flex border-bottom border-color-grey background-color-light-grey py-5px px-15px fs-12px"
-  >
-    <div>Your email is not verified.&nbsp;&nbsp;&nbsp;</div>
-    <div>
-      <div *ngIf="globalVars.loggedInUser.HasEmail">
-        <a
-          class="font-weight-bold"
-          (click)="globalVars.resendVerifyEmail()"
-          *ngIf="!globalVars.resentVerifyEmail"
-          >Resend Verification Email</a
-        >
-        <span *ngIf="globalVars.resentVerifyEmail">Sent!</span>
-      </div>
-      <a
-        *ngIf="!globalVars.loggedInUser.HasEmail"
-        [routerLink]="'/' + globalVars.RouteNames.SETTINGS"
-        class="font-weight-bold"
-        >Update your email</a
-      >
     </div>
   </div>
 
@@ -85,18 +56,6 @@
         )
       }}</b>
       referral link on Diamond...<br /><a
-        href="https://diamondapp.com"
-        class="font-weight-bold"
-        >Check it out!</a
-      >
-    </div>
-  </div>
-  <div
-    *ngIf="!globalVars.loggedInUser?.ReferralInfoResponses?.length"
-    class="d-flex border-bottom justify-content-center border-color-grey background-color-lemon-chiffon py-5px px-15px fs-12px"
-  >
-    <div style="color: #333333; text-align: center">
-      Diamond is a cool new DeSo app...<br /><a
         href="https://diamondapp.com"
         class="font-weight-bold"
         >Check it out!</a

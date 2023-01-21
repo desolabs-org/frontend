@@ -6,7 +6,7 @@ WORKDIR /frontend
 RUN apk add git
 
 # use yarn to upgrade npm
-RUN yarn global add npm@7
+RUN yarn global add npm@8
 
 COPY ./package.json .
 COPY ./package-lock.json .
@@ -43,7 +43,7 @@ COPY ./src/environments/environment.$environment.ts ./src/environments/environme
 RUN npm run build_prod
 
 # build minified version of frontend, served using caddy
-FROM caddy:2.3.0-alpine
+FROM caddy:2-alpine
 
 WORKDIR /frontend
 

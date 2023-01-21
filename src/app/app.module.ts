@@ -1,12 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TextFieldModule } from '@angular/cdk/text-field';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatSelectModule } from "@angular/material/select";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { TextFieldModule } from "@angular/cdk/text-field";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,6 +62,7 @@ import { LeftBarMobileComponent } from './left-bar-mobile/left-bar-mobile.compon
 import { TransferDeSoPageComponent } from './transfer-deso-page/transfer-deso-page.component';
 import { TransferDeSoComponent } from './transfer-deso/transfer-deso.component';
 import { BuyDeSoLoggedOutComponent } from './buy-deso-page/buy-deso-logged-out/buy-deso-logged-out.component';
+import { BuyDeSoCompleteComponent } from './buy-deso-page/buy-deso-complete/buy-deso-complete.component';
 import { MessagesInboxComponent } from './messages-page/messages-inbox/messages-inbox.component';
 import { MessagesThreadComponent } from './messages-page/messages-thread/messages-thread.component';
 import { MessageComponent } from './messages-page/message/message.component';
@@ -144,6 +145,9 @@ import { BuyCreatorCoinsTutorialComponent } from './tutorial/buy-creator-coins-t
 import { BuyCreatorCoinsTutorialPageComponent } from './tutorial/buy-creator-coins-tutorial-page/buy-creator-coins-tutorial-page.component';
 import { BuyCreatorCoinsConfirmTutorialComponent } from './tutorial/buy-creator-coins-tutorial-page/buy-creator-coins-confirm-tutorial/buy-creator-coins-confirm-tutorial.component';
 import { WalletPageComponent } from './wallet/wallet-page/wallet-page.component';
+import { OwnedCreatorCoinsListComponent } from './wallet/owned-creator-coins-list/owned-creator-coins-list.component';
+import { OwnedUtilityCoinsListComponent } from './wallet/owned-utility-coins-list/owned-utility-coins-list.component';
+import { OwnedNftsListComponent } from './wallet/owned-nfts-list/owned-nfts-list.component';
 import { WalletTutorialPageComponent } from './tutorial/wallet-tutorial-page/wallet-tutorial-page.component';
 import { SellCreatorCoinsTutorialComponent } from './tutorial/sell-creator-coins-tutorial-page/sell-creator-coins-tutorial/sell-creator-coins-tutorial.component';
 import { DiamondTutorialPageComponent } from './tutorial/diamond-tutorial-page/diamond-tutorial-page.component';
@@ -152,6 +156,7 @@ import { CreatePostTutorialPageComponent } from './tutorial/create-post-tutorial
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ReferralProgramMgrComponent } from './referral-program-mgr/referral-program-mgr.component';
 import { ReferralsComponent } from './referrals/referrals.component';
+import { BuyDeSoEthComponent } from './buy-deso-page/buy-deso-eth/buy-deso-eth.component';
 import { SanitizeVideoUrlPipe } from '../lib/pipes/sanitize-video-url-pipe';
 import { AdminNodeFeesComponent } from './admin/admin-node-fees/admin-node-fees.component';
 import { AdminNodeAddFeesComponent } from './admin/admin-node-fees/admin-node-add-fee/admin-node-add-fees.component';
@@ -162,21 +167,20 @@ import { TransferNftModalComponent } from './transfer-nft-modal/transfer-nft-mod
 import { TransferNftAcceptModalComponent } from './transfer-nft-accept-modal/transfer-nft-accept-modal.component';
 import { NftBurnModalComponent } from './nft-burn-modal/nft-burn-modal.component';
 import { NftSelectSerialNumberComponent } from './nft-select-serial-number/nft-select-serial-number.component';
+import { UpdateDaoCoinComponent } from './update-profile-page/update-profile/update-dao-coin/update-dao-coin.component';
 import { DaoCoinsComponent } from './dao-coins/dao-coins.component';
 import { DaoCoinsPageComponent } from './dao-coins/dao-coins-page/dao-coins-page.component';
 import { TransferDAOCoinModalComponent } from './dao-coins/transfer-dao-coin-modal/transfer-dao-coin-modal.component';
 import { BurnDaoCoinModalComponent } from './dao-coins/burn-dao-coin-modal/burn-dao-coin-modal.component';
 
 // Modular Themes for DeSo by Carsen Klock @carsenk
-import { ThemeModule } from './theme/theme.module';
-import { Theme } from './theme/symbols';
-import { PostMultiplierComponent } from './feed/feed-post-dropdown/post-multiplier/post-multiplier.component';
-const lightTheme: Theme = { key: 'light', name: 'Light Theme' };
-const darkTheme: Theme = { key: 'dark', name: 'Dark Theme' };
-const icydarkTheme: Theme = { key: 'icydark', name: 'Icy Dark Theme' };
-const legendsTheme: Theme = { key: 'legends', name: 'Legends Theme' };
-const cakeTheme: Theme = { key: 'cake', name: 'Cake Theme' };
-const greenishTheme: Theme = { key: 'greenish', name: 'Green Theme' };
+import { ThemeModule } from "./theme/theme.module";
+import { Theme } from "./theme/symbols";
+import {PostMultiplierComponent} from "./feed/feed-post-dropdown/post-multiplier/post-multiplier.component";
+const lightTheme: Theme = { key: "light", name: "Light Theme" };
+const icydarkTheme: Theme = { key: "icydark", name: "Icy Dark Theme" };
+const cakeTheme: Theme = { key: "cake", name: "Cake Theme" };
+const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
 
 @NgModule({
   declarations: [
@@ -232,6 +236,7 @@ const greenishTheme: Theme = { key: 'greenish', name: 'Green Theme' };
     TransferDeSoPageComponent,
     TransferDeSoComponent,
     BuyDeSoLoggedOutComponent,
+    BuyDeSoCompleteComponent,
     MessagesInboxComponent,
     MessagesThreadComponent,
     MessageComponent,
@@ -303,11 +308,15 @@ const greenishTheme: Theme = { key: 'greenish', name: 'Green Theme' };
     BuyCreatorCoinsConfirmTutorialComponent,
     BuyCreatorCoinsTutorialPageComponent,
     WalletPageComponent,
+    OwnedCreatorCoinsListComponent,
+    OwnedUtilityCoinsListComponent,
+    OwnedNftsListComponent,
     WalletTutorialPageComponent,
     SellCreatorCoinsTutorialComponent,
     DiamondTutorialPageComponent,
     DiamondTutorialComponent,
     CreatePostTutorialPageComponent,
+    BuyDeSoEthComponent,
     SanitizeVideoUrlPipe,
     PostMultiplierComponent,
     AdminNodeFeesComponent,
@@ -320,6 +329,7 @@ const greenishTheme: Theme = { key: 'greenish', name: 'Green Theme' };
     NftBurnModalComponent,
     NftSelectSerialNumberComponent,
     DaoCoinsComponent,
+    UpdateDaoCoinComponent,
     DaoCoinsPageComponent,
     TransferDAOCoinModalComponent,
     BurnDaoCoinModalComponent,
@@ -347,27 +357,13 @@ const greenishTheme: Theme = { key: 'greenish', name: 'Green Theme' };
     TimepickerModule.forRoot(),
     CollapseModule.forRoot(),
     ThemeModule.forRoot({
-      themes: [
-        lightTheme,
-        darkTheme,
-        icydarkTheme,
-        legendsTheme,
-        cakeTheme,
-        greenishTheme,
-      ],
+      themes: [lightTheme, icydarkTheme, cakeTheme, coderTheme],
       active:
-        localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: light)').matches
-          ? 'light'
-          : 'dark'),
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "coder"),
     }),
   ],
-  providers: [
-    BackendApiService,
-    GlobalVarsService,
-    BsModalService,
-    IdentityService,
-  ],
+  providers: [BackendApiService, GlobalVarsService, BsModalService, IdentityService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -125,7 +125,7 @@ export class TransferNftAcceptModalComponent {
 
   bidAmountDeSoFormatted() {
     return isNumber(this.bidAmountDeSo)
-      ? `~${this.bidAmountDeSo.toFixed(2)} $DESO`
+      ? `~${this.bidAmountDeSo.toFixed(2)} ÐESO`
       : '';
   }
 }

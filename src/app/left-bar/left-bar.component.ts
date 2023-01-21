@@ -78,13 +78,13 @@ export class LeftBarComponent {
       SwalHelper.fire({
         target: this.globalVars.getTargetComponentSelector(),
         icon: 'info',
-        title: `You need 0.01 $DESO to complete the tutorial`,
+        title: `You need 0.01 ÐESO to complete the tutorial`,
         showConfirmButton: true,
         focusConfirm: true,
         customClass: {
           confirmButton: 'btn btn-light',
         },
-        confirmButtonText: 'Buy $DESO',
+        confirmButtonText: 'Buy ÐESO',
       }).then((res) => {
         if (res.isConfirmed) {
           this.router.navigate([RouteNames.BUY_DESO], {

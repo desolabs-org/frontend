@@ -3,7 +3,6 @@ import { GlobalVarsService } from '../../global-vars.service';
 import { BackendApiService } from '../../backend-api.service';
 import { HttpClient } from '@angular/common/http';
 import { AltumbaseService } from '../../../lib/services/altumbase/altumbase-service';
-import { BithuntService } from '../../../lib/services/bithunt/bithunt-service';
 import {
   RightBarCreatorsComponent,
   RightBarTabOption,
@@ -37,7 +36,6 @@ export class TrendsComponent implements OnInit {
   loading = true;
   loadingNextPage = false;
 
-  bithuntService: BithuntService;
   altumbaseService: AltumbaseService;
 
   constructor(
@@ -53,11 +51,6 @@ export class TrendsComponent implements OnInit {
       };
       this.lastPageByTab[tab] = null;
     });
-    this.bithuntService = new BithuntService(
-      this.httpClient,
-      this.backendApi,
-      this.globalVars
-    );
     this.altumbaseService = new AltumbaseService(
       this.httpClient,
       this.backendApi,
@@ -117,17 +110,6 @@ export class TrendsComponent implements OnInit {
             console.error(this.backendApi.stringifyError(err));
           }
         );
-    }
-    if (this.activeTab === RightBarCreatorsComponent.COMMUNITY.name) {
-      const start = TrendsComponent.PAGE_SIZE * page;
-      let end = start + TrendsComponent.PAGE_SIZE;
-      if (end > this.globalVars.allCommunityProjectsLeaderboard.length) {
-        end = this.globalVars.allCommunityProjectsLeaderboard.length;
-      }
-      return this.globalVars.allCommunityProjectsLeaderboard.slice(
-        TrendsComponent.PAGE_SIZE * page,
-        end
-      );
     }
   }
 

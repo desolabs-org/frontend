@@ -512,8 +512,9 @@ export class AdminComponent implements OnInit {
   }
 
   addMultiplierToTxnTypeMultiplier() {
-    this.hotFeedTxnTypeMultiplierMap[this.hotFeedTxnTypeMultiplierNewKey] =
-      this.hotFeedTxnTypeMultiplierNewValue;
+    this.hotFeedTxnTypeMultiplierMap[
+      this.hotFeedTxnTypeMultiplierNewKey
+    ] = this.hotFeedTxnTypeMultiplierNewValue;
     this.hotFeedTxnTypeMultiplierNewKey = null;
     this.hotFeedTxnTypeMultiplierNewValue = null;
   }
@@ -1311,7 +1312,7 @@ export class AdminComponent implements OnInit {
         : '';
     const createProfileFeeNanosMessage =
       createProfileFeeNanos >= 0
-        ? `Create Profile Fee (in $DESO): ${createProfileFeeNanos}\n`
+        ? `Create Profile Fee (in ÐESO): ${createProfileFeeNanos}\n`
         : '';
     const minimumNetworkFeeNanosPerKBMessage =
       minimumNetworkFeeNanosPerKB >= 0
@@ -1321,7 +1322,7 @@ export class AdminComponent implements OnInit {
       maxCopiesPerNFT >= 0 ? `Max Copies Per NFT: ${maxCopiesPerNFT}\n` : '';
     const createNFTFeeNanosMessage =
       createNFTFeeNanos >= 0
-        ? `Create NFT Fee (in $DESO): ${createNFTFeeNanos}\n`
+        ? `Create NFT Fee (in ÐESO): ${createNFTFeeNanos}\n`
         : '';
     SwalHelper.fire({
       target: this.globalVars.getTargetComponentSelector(),
@@ -1365,8 +1366,7 @@ export class AdminComponent implements OnInit {
                 // Save the minimum network fee in case we update that value then update a different global param without
                 // updating the minimum network fee.
                 if (minimumNetworkFeeNanosPerKB >= 0) {
-                  this.globalParams.MinimumNetworkFeeNanosPerKB =
-                    minimumNetworkFeeNanosPerKB;
+                  this.globalParams.MinimumNetworkFeeNanosPerKB = minimumNetworkFeeNanosPerKB;
                 }
                 const totalFeeDeSo = res.FeeNanos / 1e9;
 

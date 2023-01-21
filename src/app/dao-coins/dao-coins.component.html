@@ -348,8 +348,8 @@
                 [matTooltip]="unminedCreatorCoinToolTip(creator)"
                 #tooltip="matTooltip"
                 (click)="tooltip.toggle()"
-              ></i>
-              {{ globalVars.hexNanosToUnitString(creator.BalanceNanosUint256) }}
+              ></i> 
+              {{ globalVars.hexNanosToUnitString(creator.BalanceNanosUint256, 18) }}
             </div>
           </div>
         </div>
