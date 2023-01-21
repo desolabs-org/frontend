@@ -34,7 +34,6 @@ export class FeedPostDropdownComponent {
   @Output() refreshNFTEntries = new EventEmitter();
 
   showSharePost: boolean = false;
-  showEmbedPost: boolean = (environment.embedServiceUrl !== "");
 
   constructor(
     public globalVars: GlobalVarsService,
@@ -269,16 +268,7 @@ export class FeedPostDropdownComponent {
   } 
   
   embedPostUrl(event): void {
-    if (this.showEmbedPost) {
-      this.globalVars.logEvent('post : embedpost');
-      event.stopPropagation();
 
-      try {
-        window.open(environment.embedServiceUrl + this._getPostUrl(), "_blank");
-      } catch (err) {
-        console.error('Embed failed:', err.message);
-      }
-    }
   }
 
   _getPostUrl() {

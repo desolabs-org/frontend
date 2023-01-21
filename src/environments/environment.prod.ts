@@ -1,6 +1,5 @@
 export const environment = {
   production: true,
-  embedServiceUrl: "",
   uploadImageHostname: "node.deso.org",
   verificationEndpointHostname: "https://node.desolabs.org",
   uploadVideoHostname: "node.deso.org",

@@ -4,26 +4,15 @@
 
 export const environment = {
   production: true,
-  embedServiceUrl: "",
   uploadImageHostname: "node.deso.org",
-  verificationEndpointHostname: "https://api.love4src.com",
+  verificationEndpointHostname: "https://node.desolabs.org",
   uploadVideoHostname: "node.deso.org",
-  identityURL: "https://identity.love4src.com",
+  identityURL: "https://identity.desolabs.org",
   supportEmail: "",
-  dd: {
-    apiKey: "DCEB26AC8BF47F1D7B4D87440EDCA6",
-    jsPath: "https://bitclout.com/tags.js",
-    ajaxListenerPath: "love4src.com/api",
-    endpoint: "https://love4src.com/js/",
-  },
-  amplitude: {
-    key: '',
-    domain: '',
-  },
   node: {
     id: 8,
-    name: 'Love4src',
-    url: 'https://api.love4src.com',
+    name: 'DeSoLabs',
+    url: 'https://node.desolabs.org',
     logoAssetDir: '/assets/img/'
   },
   megaswapURL: 'https://megaswap.xyz',

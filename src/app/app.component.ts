@@ -386,9 +386,6 @@ export class AppComponent implements OnInit {
         });
       }
     });
-
-    this.installDD();
-    this.installAmplitude();
   }
 
   loadApp() {
@@ -420,39 +417,5 @@ export class AppComponent implements OnInit {
     this.backendApi.DeleteIdentities(this.globalVars.localNode).subscribe();
     this.backendApi.RemoveStorage(this.backendApi.LegacyUserListKey);
     this.backendApi.RemoveStorage(this.backendApi.LegacySeedListKey);
-  }
-
-  installDD() {
-    const { apiKey, jsPath, ajaxListenerPath, endpoint } = environment.dd;
-    if (!apiKey || !jsPath || !ajaxListenerPath || !endpoint) {
-      return;
-    }
-
-    // @ts-ignore
-    window.ddjskey = apiKey;
-    // @ts-ignore
-    window.ddoptions = { ajaxListenerPath, endpoint };
-
-    const datadomeScript = document.createElement('script');
-    const firstScript = document.getElementsByTagName('script')[0];
-    datadomeScript.async = true;
-    datadomeScript.src = jsPath;
-    firstScript.parentNode.insertBefore(datadomeScript, firstScript);
-  }
-
-  installAmplitude() {
-    const { key, domain } = environment.amplitude;
-    if (!key || !domain || this.globalVars.amplitude) {
-      return;
-    }
-
-    this.globalVars.amplitude = require('amplitude-js');
-    this.globalVars.amplitude.init(key, null, {
-      apiEndpoint: domain,
-    });
-
-    // Track initial app load event so we are aware of every user
-    // who visits our site (and not just those who click a button)
-    this.globalVars.logEvent('app : load');
   }
 }
