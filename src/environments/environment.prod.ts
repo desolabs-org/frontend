@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
   uploadImageHostname: "node.deso.org",
-  verificationEndpointHostname: "https://node.desolabs.org",
   uploadVideoHostname: "node.deso.org",
+  verificationEndpointHostname: "https://node.desolabs.org",
   identityURL: "https://identity.desolabs.org",
   supportEmail: "",
   node: {
