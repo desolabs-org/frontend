@@ -17,39 +17,5 @@
     </div>
     <div class="fs-20px">⌛</div>
   </div>
-  <!-- User hasn't tried jumio flow -->
-  <div
-    *ngIf="!globalVars.loggedInUser.JumioFinishedTime"
-    (click)="globalVars.launchGetFreeDESOFlow()"
-    class="d-flex align-items-center font-weight-normal justify-content-between"
-  >
-    <div class="fs-20px">💰</div>
-    <div style="width: calc(100% - 4rem); text-align: center">
-      <span class="cursor-pointer font-weight-bold" style="color: var(--link)"
-        >Click here</span
-      >
-      to get your <b>free <free-deso-message></free-deso-message></b>.
-    </div>
-    <div class="fs-20px">💰</div>
-  </div>
-  <!-- User tried Jumio but verification failed-->
-  <div
-    *ngIf="
-      globalVars.loggedInUser.JumioFinishedTime &&
-      globalVars.loggedInUser.JumioReturned
-    "
-    (click)="globalVars.launchGetFreeDESOFlow()"
-    class="d-flex align-items-center font-weight-normal justify-content-between"
-  >
-    <div class="fs-20px">😢</div>
-    <div style="width: calc(100% - 4rem); text-align: center">
-      Your robot check failed.<br /><span
-        class="cursor-pointer font-weight-bold"
-        style="color: var(--link)"
-        >Click here</span
-      >
-      to try again.
-    </div>
-    <div class="fs-20px">😢</div>
-  </div>
+  
 </div>

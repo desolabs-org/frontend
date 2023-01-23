@@ -1,11 +1,9 @@
-<script src="../../environments/environment.prod.ts"></script>
 <div class="w-100 border-bottom px-10px">
   <div class="container-lg landing__header">
     <div class="row">
-      <div class="col landing__logo clout">love4src, a DeSo node</div>
+      <div class="col landing__logo clout">DeSoLabs Community</div>
       <div class="col d-flex justify-content-end align-items-center">
-        <a class="landing__nav-link" (click)="globalVars.launchSignupFlow()">Sign Up</a>
-        <a class="landing__nav-link" href="https://docs.deso.org/" target="_blank">About DeSo</a>
+        <a class="landing__nav-link" href="https://docs.deso.org/" target="_blank">About</a>
       </div>
     </div>
   </div>
@@ -17,49 +15,27 @@
   <div class="row">
     <div class="col text-center">
       <h1 class="font-weight-bold text-black slide-up-1">
-        The Crypto
+        Decentralized
         <br class="d-sm-none" />
         Social Network
       </h1>
       <div class="slide-up-2">
-        <a class="btn btn-primary landing__sign-up" (click)="globalVars.launchSignupFlow()">Sign Up</a>
-        <a class="landing__log-in d-none d-sm-block" (click)="globalVars.launchLoginFlow()">Log in</a>
-        <a class="landing__log-in d-block d-sm-none mt-3" (click)="globalVars.launchLoginFlow()">Log in</a>
-        
-          <br/><br/>
-        <p>Bitcoin is decentralizing <b>money,</b>
-          <br/><br/>
-          <p>DeSo is decentralizing <b>social media,</b>
-        <br/><br/>
-        <p>Love4src is decentralizing <b>development.</b>
-          <br/>
-        <p><a class="btn btn-sm btn-outline-primary landing__btn-cta" href="https://docs.deso.org/" target="_blank">
-          Learn More
-        </a>
+        <p>
+          <a class="btn btn-primary landing__sign-up" (click)="globalVars.launchAuthFlow()">Sign Up / Log in</a>
+        </p>
       </div>
-    </div>
-  </div>
-
-  <div class="row d-flex justify-content-center invisible" animateOnScroll animationName="slide-up-3">
-    <div class="row d-flex justify-content-center">
-      <a
-        class="btn btn-sm btn-outline-primary landing__btn-cta"
-        [routerLink]="'/' + globalVars.RouteNames.CREATORS"
-        queryParamsHandling="merge"
-      >
-        Find creators to follow
-      </a>
     </div>
   </div>
 
   <div class="row d-flex justify-content-center invisible" animateOnScroll animationName="slide-up">
     <div class="col-lg-8 col-md-9 col-sm-12 text-center landing__prop">
-      <h3 class="landing__prop-header">Decentralized social network</h3>
+      <h3 class="landing__prop-header">DeSo Labs Community</h3>
       <p class="landing__prop-desc">
-        <b>DeSo is not a company.</b>
-        It's an open-source blockchain like Bitcoin.
+        <b>DeSo is an open-source L1 blockchain.</b>
         <br class="d-none d-md-block" />
-        You can own a piece by buying the DeSo coin ÐESO.
+        You can access the social network's data from any node.
+        <br/>
+        <b>DeSo Labs is a community of builders aiming to grow decentralized social networks.</b>
         <br />
         <br />
         <a href="https://docs.deso.org/#the-ultimate-vision" target="_blank">Learn More</a>
@@ -105,8 +81,6 @@
     <div class="row d-flex justify-content-center">
       <div class="col mb-0 text-center">
         <p class="text-grey9 fs-20px">Welcome to the future 🚀</p>
-        <br>
-        <a href="mailto:info+l4s@yexperiment.com" class="fs-12px">Contact</a>
       </div>
     </div>
   </div>

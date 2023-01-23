@@ -23,7 +23,7 @@ export class SharedDialogs {
       reverseButtons: true,
     }).then((res: any) => {
       if (res.isConfirmed) {
-        globalVars.launchSignupFlow();
+        globalVars.launchAuthFlow();
       }
     });
   }

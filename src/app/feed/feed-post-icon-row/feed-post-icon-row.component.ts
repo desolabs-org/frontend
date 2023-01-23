@@ -201,7 +201,7 @@ export class FeedPostIconRowComponent {
       reverseButtons: true,
     }).then((res: any) => {
       if (res.isConfirmed) {
-        this.globalVars.launchSignupFlow();
+        this.globalVars.launchAuthFlow();
       }
     });
   }

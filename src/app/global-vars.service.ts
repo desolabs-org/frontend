@@ -993,33 +993,13 @@ export class GlobalVarsService {
     // Attach node name
     data.node = environment.node.name;
 
-    // Attach referralCode
-    const referralCode = this.referralCode();
-    if (referralCode) {
-      data.referralCode = referralCode;
-    }
-
     this.amplitude.logEvent(event, data);
-  }
-
-  // Helper to launch the get free deso flow in identity.
-  launchGetFreeDESOFlow() {
-    this.logEvent('identity : jumio : launch');
-    this.identityService
-      .launch('/get-free-deso', {
-        public_key: this.loggedInUser?.PublicKeyBase58Check,
-        referralCode: this.referralCode(),
-      })
-      .subscribe(() => {
-        this.logEvent('identity : jumio : success');
-        this.updateEverything();
-      });
   }
 
   launchIdentityFlow(event: string): void {
     this.logEvent(`account : ${event} : launch`);
     this.identityService
-      .launch('/log-in?accessLevelRequest=4', { referralCode: this.referralCode(), hideJumio: true })
+      .launch('/log-in?accessLevelRequest=4')
       .subscribe((res) => {
         this.logEvent(`account : ${event} : success`);
         this.backendApi.setIdentityServiceUsers(res.users, res.publicKeyAdded);
@@ -1029,16 +1009,8 @@ export class GlobalVarsService {
       });
   }
 
-  launchLoginFlow() {
+  launchAuthFlow() {
     this.launchIdentityFlow('login');
-  }
-
-  launchSignupFlow() {
-    this.launchIdentityFlow('create');
-  }
-
-  referralCode(): string {
-    return localStorage.getItem('referralCode');
   }
 
   flowRedirect(signedUp: boolean): void {
@@ -1057,18 +1029,6 @@ export class GlobalVarsService {
     this._setUpLoggedInUserObservable();
     this._setUpFollowChangeObservable();
 
-    route.queryParams.subscribe((queryParams) => {
-      if (queryParams.r) {
-        localStorage.setItem('referralCode', queryParams.r);
-        this.router.navigate([], {
-          queryParams: { r: undefined },
-          queryParamsHandling: 'merge',
-        });
-        this.getReferralUSDCents();
-      }
-    });
-
-    this.getReferralUSDCents();
     this.userList = userList;
     this.satoshisPerDeSoExchangeRate = 0;
     this.nanosPerUSDExchangeRate =
@@ -1379,33 +1339,5 @@ export class GlobalVarsService {
     return this.referralUSDCents
       ? this.formatUSD(this.referralUSDCents / 100, 0)
       : this.formatUSD(this.jumioUSDCents / 100, 0);
-  }
-
-  getReferralUSDCents(): void {
-    const referralHash = localStorage.getItem('referralCode');
-    if (referralHash) {
-      this.backendApi
-        .GetReferralInfoForReferralHash(
-          environment.verificationEndpointHostname,
-          referralHash
-        )
-        .subscribe((res) => {
-          const referralInfo = res.ReferralInfoResponse.Info;
-          const countrySignUpBonus = res.CountrySignUpBonus;
-          if (!countrySignUpBonus.AllowCustomReferralAmount) {
-            this.referralUSDCents =
-              countrySignUpBonus.ReferralAmountOverrideUSDCents;
-          } else if (
-            res.ReferralInfoResponse.IsActive &&
-            (referralInfo.TotalReferrals < referralInfo.MaxReferrals ||
-              referralInfo.MaxReferrals == 0)
-          ) {
-            this.referralUSDCents = referralInfo.RefereeAmountUSDCents;
-          } else {
-            this.referralUSDCents =
-              countrySignUpBonus.ReferralAmountOverrideUSDCents;
-          }
-        });
-    }
   }
 }
