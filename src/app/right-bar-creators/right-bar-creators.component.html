@@ -8,22 +8,15 @@
   <div
     class="right-bar-creators__balance-box br-12px p-15px mb-30px fs-13px text-grey5 font-weight-bold"
   >
-    <div class="d-flex justify-content-between">
-      <div>ÐESO Price</div>
-      <div>
-        <span>~{{ globalVars.desoToUSDExchangeRateToDisplay }}</span>
-        <span class="text-grey5">&nbsp;USD per coin</span>
-      </div>
-    </div>
+    
     <div
       *ngIf="globalVars.loggedInUser"
-      class="d-flex justify-content-between pt-10px"
+      class="d-flex justify-content-between"
     >
-      <div class="d-flex" style="min-width: 150px">Your ÐESO</div>
+      <div class="d-flex">Your ÐESO</div>
       <div
         class="d-flex flex-column justify-content-end flex-wrap"
-        style="align-items: flex-end"
-      >
+        style="align-items: flex-end">
         <div>
           <!-- Amount in DeSo-->
           {{ globalVars.nanosToDeSo(globalVars.loggedInUser.BalanceNanos) }}
@@ -34,7 +27,6 @@
             {{
               globalVars.nanosToUSD(globalVars.loggedInUser.BalanceNanos, 2)
             }}
-            USD
           </span>
           <div *ngIf="!globalVars.satoshisPerDeSoExchangeRate">
             Fetching... USD
@@ -42,24 +34,30 @@
         </div>
       </div>
     </div>
+
     <div
-      class="d-flex justify-content-between pt-10px"
-      *ngIf="globalVars.transactionFeeMax > 0"
-    >
-      <div>Node fee per tx:</div>
+      class="d-flex justify-content-between pt-10px text-muted"
+      *ngIf="globalVars.transactionFeeMax > 0">
+      <span
+        (click)="tooltip.toggle()"
+        class="cursor-pointer"
+        matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
+        [matTooltip]="globalVars.transactionFeeInfo"
+        #tooltip="matTooltip">
+        Max transaction fee
+        <i class="fas fa-info-circle"></i>
+      </span>
+
       <div>
-        {{ globalVars.nanosToUSD(globalVars.transactionFeeMax, 4) }} Max
-        <span
-          (click)="tooltip.toggle()"
-          class="ml-1 mb-1 cursor-pointer text-primary"
-          matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-          [matTooltip]="globalVars.transactionFeeInfo"
-          #tooltip="matTooltip"
-        >
-          <i class="fas fa-info-circle fa-md align-middle"></i>
-        </span>
+        {{ globalVars.nanosToUSD(globalVars.transactionFeeMax, 5) }}
       </div>
     </div>
+
+    <div class="d-flex justify-content-between pt-10px text-muted">
+      <span>ÐESO Price</span>
+      <span>{{ globalVars.desoToUSDExchangeRateToDisplay }}</span>
+    </div>
+
   </div>
 
   <!-- Sign Up Flow -->

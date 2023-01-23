@@ -11,21 +11,21 @@
         <div class="row pl-15px">
           DESO Wallet 
           <span class="px-5px">·</span>
-          <a
-            *ngIf="globalVars.loggedInUser"
-            target="_blank"
-            href="{{
-              'https://explorer.deso.org/?public-key=' +
-                globalVars.loggedInUser.PublicKeyBase58Check
-            }}"
-            class="fc-blue"
-          >
-            Transactions
-          </a>
-
+          <small>
+            <a
+              *ngIf="globalVars.loggedInUser"
+              target="_blank"
+              href="{{
+                'https://explorer.deso.org/?public-key=' +
+                  globalVars.loggedInUser.PublicKeyBase58Check
+              }}"
+              class="fc-blue">
+              Transactions
+            </a>
+          </small>
         </div>
-        <div class="row pl-15px fs-10px">
-          {{ globalVars.loggedInUser.PublicKeyBase58Check }}
+        <div class="row pl-15px">
+            {{ globalVars.loggedInUser.PublicKeyBase58Check }}
         </div>
       </div>
       <div>
