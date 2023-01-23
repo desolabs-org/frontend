@@ -42,7 +42,6 @@ import { TradeCreatorPageComponent } from './trade-creator-page/trade-creator-pa
 import { TradeCreatorComponent } from './trade-creator-page/trade-creator/trade-creator.component';
 import { BuyDeSoComponent } from './buy-deso-page/buy-deso/buy-deso.component';
 import { BuyDeSoMegaSwapComponent } from './buy-deso-page/buy-deso-megaswap/buy-deso-megaswap.component';
-import { BuyDeSoUSDComponent } from './buy-deso-page/buy-deso-usd/buy-deso-usd.component';
 import { TradeCreatorFormComponent } from './trade-creator-page/trade-creator-form/trade-creator-form.component';
 import { TradeCreatorPreviewComponent } from './trade-creator-page/trade-creator-preview/trade-creator-preview.component';
 import { TradeCreatorCompleteComponent } from './trade-creator-page/trade-creator-complete/trade-creator-complete.component';
@@ -79,7 +78,6 @@ import { TosPageComponent } from './tos-page/tos-page.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminComponent } from './admin/admin.component';
-import { AdminWyreComponent } from './admin/admin-wyre/admin-wyre.component';
 import { NetworkInfoComponent } from './network-info/network-info.component';
 import { SanitizeAndAutoLinkPipe } from '../lib/pipes/sanitize-and-auto-link-pipe';
 import { SanitizeEmbedPipe } from '../lib/pipes/sanitize-embed-pipe';
@@ -96,14 +94,10 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
-import { SignUpGetStarterDeSoComponent } from './sign-up/sign-up-get-starter-deso/sign-up-get-starter-deso.component';
 import { UpdateProfileGetStarterDeSoComponent } from './update-profile-page/update-profile-get-starter-deso/update-profile-get-starter-deso.component';
-import { GetStarterDeSoPageComponent } from './get-starter-deso-page/get-starter-deso-page.component';
-import { GetStarterDeSoComponent } from './get-starter-deso-page/get-starter-deso/get-starter-deso.component';
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { Toast, ToastrModule } from 'ngx-toastr';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { WalletActionsDropdownComponent } from './wallet/wallet-actions-dropdown/wallet-actions-dropdown.component';
 import { PickACoinPageComponent } from './pick-a-coin-page/pick-a-coin-page.component';
 import { DiamondsModalComponent } from './diamonds-modal/diamonds-modal.component';
@@ -135,32 +129,15 @@ import { NftPostComponent } from './nft-post-page/nft-post/nft-post.component';
 import { CreatorProfileNftsComponent } from './creator-profile-page/creator-profile-nfts/creator-profile-nfts.component';
 import { NftDropMgrComponent } from './nft-drop-mgr/nft-drop-mgr.component';
 import { NftShowcaseComponent } from './nft-showcase/nft-showcase.component';
-import { VerifyEmailComponent } from './verify-email/verify-email.component';
-import { AdminJumioComponent } from './admin/admin-jumio/admin-jumio.component';
-import { AdminJumioEditCountrySignUpBonusComponent } from './admin/admin-jumio/admin-jumio-edit-country-sign-up-bonus/admin-jumio-edit-country-sign-up-bonus.component';
-import { JumioStatusComponent } from './jumio-status/jumio-status.component';
-import { AdminTutorialComponent } from './admin/admin-tutorial/admin-tutorial.component';
-import { CreateProfileTutorialPageComponent } from './tutorial/create-profile-tutorial-page/create-profile-tutorial-page.component';
-import { BuyCreatorCoinsTutorialComponent } from './tutorial/buy-creator-coins-tutorial-page/buy-creator-coins-tutorial/buy-creator-coins-tutorial.component';
-import { BuyCreatorCoinsTutorialPageComponent } from './tutorial/buy-creator-coins-tutorial-page/buy-creator-coins-tutorial-page.component';
-import { BuyCreatorCoinsConfirmTutorialComponent } from './tutorial/buy-creator-coins-tutorial-page/buy-creator-coins-confirm-tutorial/buy-creator-coins-confirm-tutorial.component';
 import { WalletPageComponent } from './wallet/wallet-page/wallet-page.component';
 import { OwnedCreatorCoinsListComponent } from './wallet/owned-creator-coins-list/owned-creator-coins-list.component';
 import { OwnedUtilityCoinsListComponent } from './wallet/owned-utility-coins-list/owned-utility-coins-list.component';
 import { OwnedNftsListComponent } from './wallet/owned-nfts-list/owned-nfts-list.component';
-import { WalletTutorialPageComponent } from './tutorial/wallet-tutorial-page/wallet-tutorial-page.component';
-import { SellCreatorCoinsTutorialComponent } from './tutorial/sell-creator-coins-tutorial-page/sell-creator-coins-tutorial/sell-creator-coins-tutorial.component';
-import { DiamondTutorialPageComponent } from './tutorial/diamond-tutorial-page/diamond-tutorial-page.component';
-import { DiamondTutorialComponent } from './tutorial/diamond-tutorial-page/diamond-tutorial/diamond-tutorial.component';
-import { CreatePostTutorialPageComponent } from './tutorial/create-post-tutorial-page/create-post-tutorial-page.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { ReferralProgramMgrComponent } from './referral-program-mgr/referral-program-mgr.component';
-import { ReferralsComponent } from './referrals/referrals.component';
 import { BuyDeSoEthComponent } from './buy-deso-page/buy-deso-eth/buy-deso-eth.component';
 import { SanitizeVideoUrlPipe } from '../lib/pipes/sanitize-video-url-pipe';
 import { AdminNodeFeesComponent } from './admin/admin-node-fees/admin-node-fees.component';
 import { AdminNodeAddFeesComponent } from './admin/admin-node-fees/admin-node-add-fee/admin-node-add-fees.component';
-import { FreeDesoMessageComponent } from './free-deso-message/free-deso-message.component';
 import { SupplyMonitoringStatsPageComponent } from './supply-monitoring-stats-page/supply-monitoring-stats-page.component';
 import { SupplyMonitoringStatsComponent } from './supply-monitoring-stats-page/supply-monitoring-stats/supply-monitoring-stats.component';
 import { TransferNftModalComponent } from './transfer-nft-modal/transfer-nft-modal.component';
@@ -216,7 +193,6 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     TradeCreatorComponent,
     BuyDeSoComponent,
     BuyDeSoMegaSwapComponent,
-    BuyDeSoUSDComponent,
     TradeCreatorFormComponent,
     TradeCreatorPreviewComponent,
     TradeCreatorCompleteComponent,
@@ -252,7 +228,6 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     TosPageComponent,
     AdminPageComponent,
     AdminComponent,
-    AdminWyreComponent,
     NetworkInfoComponent,
     SanitizeAndAutoLinkPipe,
     SanitizeEmbedPipe,
@@ -260,11 +235,7 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     NotificationsListComponent,
     PageComponent,
     LandingPageComponent,
-    SignUpComponent,
-    SignUpGetStarterDeSoComponent,
     UpdateProfileGetStarterDeSoComponent,
-    GetStarterDeSoPageComponent,
-    GetStarterDeSoComponent,
     CommentModalComponent,
     WalletActionsDropdownComponent,
     PickACoinPageComponent,
@@ -296,26 +267,10 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     NftDropMgrComponent,
     CreatorProfileNftsComponent,
     NftShowcaseComponent,
-    VerifyEmailComponent,
-    AdminJumioComponent,
-    AdminJumioEditCountrySignUpBonusComponent,
-    JumioStatusComponent,
-    ReferralProgramMgrComponent,
-    ReferralsComponent,
-    AdminTutorialComponent,
-    CreateProfileTutorialPageComponent,
-    BuyCreatorCoinsTutorialComponent,
-    BuyCreatorCoinsConfirmTutorialComponent,
-    BuyCreatorCoinsTutorialPageComponent,
     WalletPageComponent,
     OwnedCreatorCoinsListComponent,
     OwnedUtilityCoinsListComponent,
     OwnedNftsListComponent,
-    WalletTutorialPageComponent,
-    SellCreatorCoinsTutorialComponent,
-    DiamondTutorialPageComponent,
-    DiamondTutorialComponent,
-    CreatePostTutorialPageComponent,
     BuyDeSoEthComponent,
     SanitizeVideoUrlPipe,
     PostMultiplierComponent,
@@ -323,7 +278,6 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     AdminNodeAddFeesComponent,
     SupplyMonitoringStatsPageComponent,
     SupplyMonitoringStatsComponent,
-    FreeDesoMessageComponent,
     TransferNftAcceptModalComponent,
     TransferNftModalComponent,
     NftBurnModalComponent,

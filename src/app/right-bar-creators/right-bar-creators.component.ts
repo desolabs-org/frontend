@@ -19,7 +19,6 @@ export class RightBarTabOption {
   styleUrls: ['./right-bar-creators.component.sass'],
 })
 export class RightBarCreatorsComponent implements OnInit {
-  @Input() inTutorial: boolean = false;
 
   constructor(
     public globalVars: GlobalVarsService,

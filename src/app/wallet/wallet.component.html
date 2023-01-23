@@ -2,7 +2,6 @@
 <div
   class="global__top-bar global__top-bar__height d-flex align-items-center fs-18px font-weight-bold p-15px border-bottom border-color-grey
   justify-content-between"
-  *ngIf="!inTutorial"
 >
   <top-bar-mobile-navigation-control
     class="mr-15px d-lg-none d-inline-block"
@@ -36,66 +35,7 @@
       </div>
 </div>
 
-<div class="global__top-bar__height" *ngIf="!inTutorial"></div>
-<div class="" *ngIf="inTutorial">
-  <div
-    class="d-flex align-items-center justify-content-start w-100 p-3 fs-18px font-weight-bold border-bottom border-color-grey secalt-bg"
-  >
-    <top-bar-mobile-hamburger-menu
-      class="mr-15px d-lg-none d-inline-block"
-    ></top-bar-mobile-hamburger-menu>
-    <div *ngIf="inTutorial">
-      <h3 class="mb-1 fs-24px font-weight-semibold">
-        {{ tutorialHeaderText }}
-      </h3>
-      <h5 class="fs-15px fc-muted">Step {{ tutorialStepNumber }} of 6</h5>
-    </div>
-  </div>
-
-  <div class="pl-3 pr-3 pt-3 d-flex flex-column justify-flex-start">
-    <div class="d-flex align-items-center font-weight-bold fs-18px">Wallet</div>
-    <div
-      class="fs-15px py-15px pr-15px"
-      *ngIf="tutorialStatus === TutorialStatus.INVEST_OTHERS_BUY"
-    >
-      <div>
-        <p>
-          You now have
-          {{
-            globalVars.nanosToDeSo(balanceEntryToHighlight.BalanceNanos, 4)
-          }}
-          ${{ balanceEntryToHighlight.ProfileEntryResponse.Username }} coins!
-        </p>
-        <p class="mt-3">
-          <b
-            >Click the arrows in the highlighted row and select "Sell" to sell
-            some ${{
-              balanceEntryToHighlight.ProfileEntryResponse.Username
-            }}
-            coins.</b
-          >
-        </p>
-      </div>
-      <p *ngIf="tutorialStatus === TutorialStatus.INVEST_OTHERS_SELL">
-        You just sold
-        {{ balanceEntryToHighlight.ProfileEntryResponse.Username }} coins. Click
-        "Next: Setup Your Profile" to set up your own coin!
-      </p>
-      <p *ngIf="tutorialStatus === TutorialStatus.INVEST_SELF">
-        You now have
-        {{ globalVars.nanosToDeSo(balanceEntryToHighlight.BalanceNanos, 4) }}
-        {{ balanceEntryToHighlight.ProfileEntryResponse.Username }} coins! Each
-        of your coins is currently worth
-        {{
-          globalVars.nanosToUSD(
-            balanceEntryToHighlight.ProfileEntryResponse.CoinPriceDeSoNanos,
-            2
-          )
-        }}! Click "Next: Give a Diamond" to learn about Diamonds.
-      </p>
-    </div>
-  </div>
-</div>
+<div class="global__top-bar__height"></div>
 
 <div class="d-flex flex-column flex-grow-1" *ngIf="globalVars.loggedInUser">
   <!-- ÐESO Divider Bar -->
@@ -103,7 +43,6 @@
 <div
     class="fs-16px p-15px border-bottom d-flex border-color-grey justify-content-between"
     style="max-width: inherit"
-    *ngIf="!inTutorial"
   >
     <div class="font-weight-bold py-20px">
       <a
@@ -156,30 +95,6 @@
   <owned-creator-coins-list *ngIf="activeTab == 'Coins'"></owned-creator-coins-list>
   <owned-utility-coins-list *ngIf="activeTab == 'Tokens'"></owned-utility-coins-list>
   <owned-nfts-list *ngIf="activeTab == 'NFTs'"></owned-nfts-list>
-
-  <div *ngIf="inTutorial" class="d-flex">
-    <div
-      *ngIf="inTutorial && tutorialStatus !== TutorialStatus.INVEST_OTHERS_BUY"
-      (click)="tutorialNext()"
-      class="p-15px"
-    >
-      <a class="btn btn-primary btn-lg fs-18px text-left">
-        Next: {{ nextButtonText }}
-      </a>
-    </div>
-
-    <div
-      *ngIf="
-        inTutorial &&
-        (!globalVars.loggedInUser?.MustCompleteTutorial ||
-          globalVars.loggedInUser?.IsAdmin)
-      "
-      (click)="globalVars.skipTutorial()"
-      class="p-15px"
-    >
-      <a class="btn btn-outline-primary btn-lg fs-18px text-left"> Exit </a>
-    </div>
-  </div>
 </div>
 <div *ngIf="!globalVars.loggedInUser">
   <simple-center-loader></simple-center-loader>

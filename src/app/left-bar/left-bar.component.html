@@ -37,7 +37,7 @@
 
       <div class="pt-15px"></div>
 
-      <div *ngIf="!inTutorial">
+      <div>
         <left-bar-button
           [link]="homeLink()"
           [buttonLabel]="'Feeds'"
@@ -122,7 +122,7 @@
 
     <!-- Logged-out Left Bar -->
     <div
-      *ngIf="globalVars.loggedInUser == null && !inTutorial"
+      *ngIf="globalVars.loggedInUser == null"
       class="global__nav__inner"
     >
       <div

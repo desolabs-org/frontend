@@ -4,7 +4,7 @@ import {
   HostListener,
   OnInit,
 } from '@angular/core';
-import { BackendApiService, TutorialStatus, User } from './backend-api.service';
+import { BackendApiService, User } from './backend-api.service';
 import { GlobalVarsService } from './global-vars.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IdentityService } from './identity.service';
@@ -162,9 +162,6 @@ export class AppComponent implements OnInit {
         if (userMetadata) {
           loggedInUser.HasPhoneNumber = userMetadata.HasPhoneNumber;
           loggedInUser.CanCreateProfile = userMetadata.CanCreateProfile;
-          loggedInUser.JumioVerified = userMetadata.JumioVerified;
-          loggedInUser.JumioFinishedTime = userMetadata.JumioFinishedTime;
-          loggedInUser.JumioReturned = userMetadata.JumioReturned;
           // We can merge the blocked public key maps, which means we effectively block the union of public keys from both endpoints.
           loggedInUser.BlockedPubKeys = {
             ...loggedInUser.BlockedPubKeys,
@@ -228,12 +225,7 @@ export class AppComponent implements OnInit {
         this.globalVars.minSatoshisBurnedForProfileCreation =
           res.MinSatoshisBurnedForProfileCreation;
         this.globalVars.diamondLevelMap = res.DiamondLevelMap;
-        this.globalVars.showBuyWithUSD = res.HasWyreIntegration;
         this.globalVars.showBuyWithETH = res.BuyWithETH;
-        this.globalVars.showJumio = res.HasJumioIntegration;
-        this.globalVars.jumioDeSoNanos = res.JumioDeSoNanos;
-        this.globalVars.jumioUSDCents = res.JumioUSDCents;
-        this.globalVars.jumioKickbackUSDCents = res.JumioKickbackUSDCents;
         this.globalVars.isTestnet = res.IsTestnet;
         this.identityService.isTestnet = res.IsTestnet;
         this.identityService.setSanitizedIdentityServiceURL();

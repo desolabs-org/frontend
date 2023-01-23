@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { GlobalVarsService } from '../../global-vars.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BackendApiService, TutorialStatus } from '../../backend-api.service';
+import { BackendApiService } from '../../backend-api.service';
 import { SwalHelper } from '../../../lib/helpers/swal-helper';
 import { AppRoutingModule, RouteNames } from '../../app-routing.module';
 import { Title } from '@angular/platform-browser';
@@ -27,7 +27,6 @@ export type ProfileUpdateErrors = {
 })
 export class UpdateProfileComponent implements OnInit, OnChanges {
   @Input() loggedInUser: any;
-  @Input() inTutorial: boolean = false;
 
   updateProfileBeingCalled: boolean = false;
   usernameInput: string;
@@ -268,15 +267,6 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
     comp.globalVars.celebrate();
     comp.updateProfileBeingCalled = false;
     comp.profileUpdated = true;
-    if (comp.inTutorial) {
-      comp.router.navigate(
-        [RouteNames.TUTORIAL, RouteNames.INVEST, RouteNames.BUY_CREATOR],
-        {
-          queryParamsHandling: 'merge',
-        }
-      );
-      return;
-    }
     if (comp.globalVars.loggedInUser.UsersWhoHODLYouCount === 0) {
       SwalHelper.fire({
         target: comp.globalVars.getTargetComponentSelector(),

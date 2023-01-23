@@ -115,11 +115,8 @@ export class AdminComponent implements OnInit {
     'Hot Feed',
     'Profiles',
     'NFTs',
-    'Tutorial',
     'Network',
     'Mempool',
-    'Wyre',
-    'Jumio',
     'Referral Program',
   ];
 

@@ -42,7 +42,6 @@ import { GlobalVarsService } from '../global-vars.service';
   ],
 })
 export class LeftBarMobileComponent {
-  @Input() inTutorial: boolean = false;
 
   constructor(public globalVars: GlobalVarsService) {}
 

@@ -77,8 +77,6 @@ export class BackendRoutes {
   static RoutePathGetDiamondsForPost = '/api/v0/get-diamonds-for-post';
   static RoutePathGetRepostsForPost = '/api/v0/get-reposts-for-post';
   static RoutePathGetQuoteRepostsForPost = '/api/v0/get-quote-reposts-for-post';
-  static RoutePathGetJumioStatusForPublicKey =
-    '/api/v0/get-jumio-status-for-public-key';
   static RoutePathGetUserMetadata = '/api/v0/get-user-metadata';
   static RoutePathGetUsernameForPublicKey =
     '/api/v0/get-user-name-for-public-key';
@@ -91,11 +89,6 @@ export class BackendRoutes {
 
   // Delete PII
   static RoutePathDeletePII = '/api/v0/delete-pii';
-
-  // Tutorial
-  static RoutePathStartOrSkipTutorial = '/api/v0/start-or-skip-tutorial';
-  static RoutePathCompleteTutorial = '/api/v0/complete-tutorial';
-  static RoutePathGetTutorialCreators = '/api/v0/get-tutorial-creators';
 
   // Media
   static RoutePathUploadVideo = '/api/v0/upload-video';
@@ -163,28 +156,10 @@ export class BackendRoutes {
   static RoutePathGetGlobalParams = '/api/v0/get-global-params';
   static RoutePathEvictUnminedBitcoinTxns =
     '/api/v0/admin/evict-unmined-bitcoin-txns';
-  static RoutePathGetWyreWalletOrdersForPublicKey =
-    '/api/v0/admin/get-wyre-wallet-orders-for-public-key';
   static RoutePathAdminGetNFTDrop = '/api/v0/admin/get-nft-drop';
   static RoutePathAdminUpdateNFTDrop = '/api/v0/admin/update-nft-drop';
-  static RoutePathAdminResetJumioForPublicKey =
-    '/api/v0/admin/reset-jumio-for-public-key';
-  static RoutePathAdminUpdateJumioDeSo = '/api/v0/admin/update-jumio-deso';
-  static RoutePathAdminUpdateTutorialCreators =
-    '/api/v0/admin/update-tutorial-creators';
-  static RoutePathAdminResetTutorialStatus =
-    '/api/v0/admin/reset-tutorial-status';
-  static RoutePathAdminGetTutorialCreators =
-    '/api/v0/admin/get-tutorial-creators';
-  static RoutePathAdminJumioCallback = '/api/v0/admin/jumio-callback';
   static RoutePathAdminGetAllCountryLevelSignUpBonuses =
     '/api/v0/admin/get-all-country-level-sign-up-bonuses';
-  static RoutePathAdminUpdateJumioCountrySignUpBonus =
-    '/api/v0/admin/update-jumio-country-sign-up-bonus';
-  static RoutePathAdminUpdateJumioUSDCents =
-    '/api/v0/admin/update-jumio-usd-cents';
-  static RoutePathAdminUpdateJumioKickbackUSDCents =
-    '/api/v0/admin/update-jumio-kickback-usd-cents';
   static RoutePathAdminGetUnfilteredHotFeed =
     '/api/v0/admin/get-unfiltered-hot-feed';
   static RoutePathAdminGetHotFeedAlgorithm =
@@ -215,12 +190,6 @@ export class BackendRoutes {
     '/api/v0/get-referral-info-for-referral-hash';
 
   static RoutePathGetFullTikTokURL = '/api/v0/get-full-tiktok-url';
-
-  // Wyre routes.
-  static RoutePathGetWyreWalletOrderQuotation =
-    '/api/v0/get-wyre-wallet-order-quotation';
-  static RoutePathGetWyreWalletOrderReservation =
-    '/api/v0/get-wyre-wallet-order-reservation';
 
   // Admin Node Fee routes
   static RoutePathAdminSetTransactionFeeForTransactionType =
@@ -281,18 +250,6 @@ export class ProfileEntryResponse {
   IsVerified?: boolean;
 }
 
-export enum TutorialStatus {
-  EMPTY = '',
-  STARTED = 'TutorialStarted',
-  SKIPPED = 'TutorialSkipped',
-  CREATE_PROFILE = 'TutorialCreateProfileComplete',
-  INVEST_OTHERS_BUY = 'InvestInOthersBuyComplete',
-  INVEST_OTHERS_SELL = 'InvestInOthersSellComplete',
-  INVEST_SELF = 'InvestInYourselfComplete',
-  DIAMOND = 'GiveADiamondComplete',
-  COMPLETE = 'TutorialComplete',
-}
-
 export class User {
   ProfileEntryResponse: ProfileEntryResponse;
 
@@ -313,24 +270,13 @@ export class User {
   CanCreateProfile: boolean;
   HasEmail: boolean;
   EmailVerified: boolean;
-  JumioVerified: boolean;
-  JumioReturned: boolean;
-  JumioFinishedTime: number;
 
   ReferralInfoResponses: any;
-
-  IsFeaturedTutorialWellKnownCreator: boolean;
-  IsFeaturedTutorialUpAndComingCreator: boolean;
 
   BlockedPubKeys: { [key: string]: object };
 
   IsAdmin?: boolean;
   IsSuperAdmin?: boolean;
-
-  TutorialStatus: TutorialStatus;
-  CreatorPurchasedInTutorialUsername?: string;
-  CreatorCoinsPurchasedInTutorial: number;
-  MustCompleteTutorial: boolean;
 }
 
 export class PostEntryResponse {
@@ -492,9 +438,6 @@ type GetUserMetadataResponse = {
   BlockedPubKeys: { [k: string]: any };
   HasEmail: boolean;
   EmailVerified: boolean;
-  JumioFinishedTime: number;
-  JumioVerified: boolean;
-  JumioReturned: boolean;
 };
 
 type GetUsersStatelessResponse = {
@@ -1637,7 +1580,6 @@ export class BackendApiService {
     Sub: string,
     IsHidden: boolean,
     MinFeeRateNanosPerKB: number,
-    InTutorial: boolean = false
   ): Observable<any> {
     const request = this.post(endpoint, BackendRoutes.RoutePathSubmitPost, {
       UpdaterPublicKeyBase58Check,
@@ -1650,7 +1592,6 @@ export class BackendApiService {
       Sub,
       IsHidden,
       MinFeeRateNanosPerKB,
-      InTutorial,
     });
 
     return this.signAndSubmitTransaction(
@@ -2244,7 +2185,6 @@ export class BackendApiService {
     DiamondPostHashHex: string,
     DiamondLevel: number,
     MinFeeRateNanosPerKB: number,
-    InTutorial: boolean = false
   ): Observable<any> {
     const request = this.post(endpoint, BackendRoutes.RoutePathSendDiamonds, {
       SenderPublicKeyBase58Check,
@@ -2252,7 +2192,6 @@ export class BackendApiService {
       DiamondPostHashHex,
       DiamondLevel,
       MinFeeRateNanosPerKB,
-      InTutorial,
     });
 
     return this.signAndSubmitTransaction(
@@ -2362,7 +2301,6 @@ export class BackendApiService {
 
     MinFeeRateNanosPerKB: number,
     Broadcast: boolean,
-    InTutorial: boolean = false
   ): Observable<any> {
     DeSoToSellNanos = Math.floor(DeSoToSellNanos);
     CreatorCoinToSellNanos = Math.floor(CreatorCoinToSellNanos);
@@ -2383,8 +2321,6 @@ export class BackendApiService {
         MinDeSoExpectedNanos,
         MinCreatorCoinExpectedNanos,
         MinFeeRateNanosPerKB,
-        // If we are not broadcasting the transaction, InTutorial should always be false so we don't update the TutorialStatus of the user.
-        InTutorial: Broadcast ? InTutorial : false,
       }
     );
 
@@ -2650,20 +2586,6 @@ export class BackendApiService {
     return this.get(
       endpoint,
       BackendRoutes.RoutePathGetPublicKeyForUsername + '/' + Username
-    );
-  }
-
-  GetJumioStatusForPublicKey(
-    endpoint: string,
-    PublicKeyBase58Check: string
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathGetJumioStatusForPublicKey,
-      PublicKeyBase58Check,
-      {
-        PublicKeyBase58Check,
-      }
     );
   }
 
@@ -3261,92 +3183,6 @@ export class BackendApiService {
     );
   }
 
-  AdminResetJumioAttemptsForPublicKey(
-    endpoint: string,
-    AdminPublicKey: string,
-    PublicKeyBase58Check: string,
-    Username: string
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathAdminResetJumioForPublicKey,
-      AdminPublicKey,
-      {
-        AdminPublicKey,
-        PublicKeyBase58Check,
-        Username,
-      }
-    );
-  }
-
-  AdminUpdateJumioDeSo(
-    endpoint: string,
-    AdminPublicKey: string,
-    DeSoNanos: number
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathAdminUpdateJumioDeSo,
-      AdminPublicKey,
-      {
-        DeSoNanos,
-        AdminPublicKey,
-      }
-    );
-  }
-
-  AdminUpdateJumioUSDCents(
-    endpoint: string,
-    AdminPublicKey: string,
-    USDCents: number
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathAdminUpdateJumioUSDCents,
-      AdminPublicKey,
-      {
-        AdminPublicKey,
-        USDCents,
-      }
-    );
-  }
-
-  AdminUpdateJumioKickbackUSDCents(
-    endpoint: string,
-    AdminPublicKey: string,
-    USDCents: number
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathAdminUpdateJumioKickbackUSDCents,
-      AdminPublicKey,
-      {
-        AdminPublicKey,
-        USDCents,
-      }
-    );
-  }
-
-  AdminJumioCallback(
-    endpoint: string,
-    AdminPublicKey: string,
-    PublicKeyBase58Check: string,
-    Username: string,
-    CountryAlpha3: string = ''
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathAdminJumioCallback,
-      AdminPublicKey,
-      {
-        PublicKeyBase58Check,
-        Username,
-        AdminPublicKey,
-        CountryAlpha3,
-      }
-    );
-  }
-
   AdminGetAllCountryLevelSignUpBonuses(
     endpoint: string,
     AdminPublicKey: string
@@ -3364,24 +3200,6 @@ export class BackendApiService {
     );
   }
 
-  AdminUpdateJumioCountrySignUpBonus(
-    endpoint: string,
-    AdminPublicKey: string,
-    CountryCode: string,
-    CountryLevelSignUpBonus: CountryLevelSignUpBonus
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathAdminUpdateJumioCountrySignUpBonus,
-      AdminPublicKey,
-      {
-        AdminPublicKey,
-        CountryCode,
-        CountryLevelSignUpBonus,
-      }
-    );
-  }
-
   AdminCreateReferralHash(
     endpoint: string,
     AdminPublicKey: string,
@@ -3390,7 +3208,6 @@ export class BackendApiService {
     ReferrerAmountUSDCents: number,
     RefereeAmountUSDCents: number,
     MaxReferrals: number,
-    RequiresJumio: boolean
   ): Observable<any> {
     return this.jwtPost(
       endpoint,
@@ -3402,7 +3219,6 @@ export class BackendApiService {
         ReferrerAmountUSDCents,
         RefereeAmountUSDCents,
         MaxReferrals,
-        RequiresJumio,
         AdminPublicKey,
       }
     );
@@ -3415,7 +3231,6 @@ export class BackendApiService {
     ReferrerAmountUSDCents: number,
     RefereeAmountUSDCents: number,
     MaxReferrals: number,
-    RequiresJumio: boolean,
     IsActive: boolean
   ): Observable<any> {
     return this.jwtPost(
@@ -3427,7 +3242,6 @@ export class BackendApiService {
         ReferrerAmountUSDCents,
         RefereeAmountUSDCents,
         MaxReferrals,
-        RequiresJumio,
         IsActive,
         AdminPublicKey,
       }
@@ -3520,125 +3334,6 @@ export class BackendApiService {
     );
   }
 
-  AdminResetTutorialStatus(
-    endpoint: string,
-    AdminPublicKey: string,
-    PublicKeyBase58Check: string
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathAdminResetTutorialStatus,
-      AdminPublicKey,
-      {
-        PublicKeyBase58Check,
-        AdminPublicKey,
-      }
-    );
-  }
-
-  AdminUpdateTutorialCreators(
-    endpoint: string,
-    AdminPublicKey: string,
-    PublicKeyBase58Check: string,
-    IsRemoval: boolean,
-    IsWellKnown: boolean
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathAdminUpdateTutorialCreators,
-      AdminPublicKey,
-      {
-        PublicKeyBase58Check,
-        IsRemoval,
-        IsWellKnown,
-        AdminPublicKey,
-      }
-    );
-  }
-
-  GetTutorialCreators(
-    endpoint: string,
-    PublicKeyBase58Check: string,
-    ResponseLimit: number
-  ): Observable<any> {
-    return this.post(endpoint, BackendRoutes.RoutePathGetTutorialCreators, {
-      ResponseLimit,
-      PublicKeyBase58Check,
-    });
-  }
-
-  AdminGetTutorialCreators(
-    endpoint: string,
-    PublicKeyBase58Check: string,
-    ResponseLimit: number
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathAdminGetTutorialCreators,
-      PublicKeyBase58Check,
-      {
-        ResponseLimit,
-        PublicKeyBase58Check,
-        AdminPublicKey: PublicKeyBase58Check,
-      }
-    );
-  }
-
-  GetWyreWalletOrderForPublicKey(
-    endpoint: string,
-    AdminPublicKeyBase58Check: string,
-    PublicKeyBase58Check: string,
-    Username: string
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathGetWyreWalletOrdersForPublicKey,
-      AdminPublicKeyBase58Check,
-      {
-        AdminPublicKey: AdminPublicKeyBase58Check,
-        PublicKeyBase58Check,
-        Username,
-      }
-    );
-  }
-
-  // Wyre
-  GetWyreWalletOrderQuotation(
-    endpoint: string,
-    SourceAmount: number,
-    Country: string,
-    SourceCurrency: string
-  ): Observable<any> {
-    return this.post(
-      endpoint,
-      BackendRoutes.RoutePathGetWyreWalletOrderQuotation,
-      {
-        SourceAmount,
-        Country,
-        SourceCurrency,
-      }
-    );
-  }
-
-  GetWyreWalletOrderReservation(
-    endpoint: string,
-    ReferenceId: string,
-    SourceAmount: number,
-    Country: string,
-    SourceCurrency: string
-  ): Observable<any> {
-    return this.post(
-      endpoint,
-      BackendRoutes.RoutePathGetWyreWalletOrderReservation,
-      {
-        ReferenceId,
-        SourceAmount,
-        Country,
-        SourceCurrency,
-      }
-    );
-  }
-
   // Admin Node Fee Endpoints
   AdminSetTxnFeeForTxnType(
     endpoint: string,
@@ -3720,37 +3415,7 @@ export class BackendApiService {
     );
   }
 
-  // Tutorial Endpoints
-  StartOrSkipTutorial(
-    endpoint: string,
-    PublicKeyBase58Check: string,
-    IsSkip: boolean
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathStartOrSkipTutorial,
-      PublicKeyBase58Check,
-      {
-        PublicKeyBase58Check,
-        IsSkip,
-      }
-    );
-  }
-
-  CompleteTutorial(
-    endpoint: string,
-    PublicKeyBase58Check: string
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathCompleteTutorial,
-      PublicKeyBase58Check,
-      {
-        PublicKeyBase58Check,
-      }
-    );
-  }
-
+  
   GetVideoStatus(endpoint: string, videoId: string): Observable<any> {
     return this.get(
       endpoint,

@@ -6,7 +6,6 @@ import {
   MessagingGroupEntryResponse,
   PostEntryResponse,
   TransactionFee,
-  TutorialStatus,
   User,
 } from './backend-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -116,9 +115,6 @@ export class GlobalVarsService {
   loggedInUserDefaultKey: MessagingGroupEntryResponse;
   userList: User[] = [];
 
-  // Temporarily track tutorial status here until backend it flowing
-  TutorialStatus: TutorialStatus;
-
   // map[pubkey]->bool of globomods
   paramUpdaters: { [k: string]: boolean };
   feeRateDeSoPerKB = 1000 / 1e9;
@@ -169,14 +165,8 @@ export class GlobalVarsService {
   // Whether or not to show the Verify phone number flow.
   showPhoneNumberVerification = false;
 
-  // Whether or not to show the Buy DeSo with USD flow.
-  showBuyWithUSD = false;
-
   // Buy DESO with ETH
   showBuyWithETH = false;
-
-  // Whether or not to show the Jumio verification flow.
-  showJumio = false;
 
   // Whether or not this node comps profile creation.
   isCompProfileCreation = false;
@@ -216,10 +206,6 @@ export class GlobalVarsService {
 
   // Timestamp of last profile update
   profileUpdateTimestamp: number;
-
-  jumioDeSoNanos = 0;
-  jumioUSDCents = 0;
-  jumioKickbackUSDCents = 0;
 
   referralUSDCents: number = 0;
 
@@ -331,17 +317,6 @@ export class GlobalVarsService {
     });
   }
 
-  userInTutorial(user: User): boolean {
-    return (
-      user &&
-      [
-        TutorialStatus.COMPLETE,
-        TutorialStatus.EMPTY,
-        TutorialStatus.SKIPPED,
-      ].indexOf(user?.TutorialStatus) < 0
-    );
-  }
-
   // NEVER change loggedInUser property directly. Use this method instead.
   setLoggedInUser(user: User) {
     const isSameUserAsBefore =
@@ -372,19 +347,11 @@ export class GlobalVarsService {
       this.followFeedPosts = [];
     }
 
-    if (
-      this.loggedInUser?.MustCompleteTutorial &&
-      this.loggedInUser?.TutorialStatus === TutorialStatus.EMPTY
-    ) {
-      this.startTutorialAlert();
-    }
-
     if (user.BalanceNanos) {
       this.getLoggedInUserDefaultKey();
     }
 
     this._notifyLoggedInUserObservers(user, isSameUserAsBefore);
-    this.navigateToCurrentStepInTutorial(user);
   }
 
   getLoggedInUserDefaultKey() {
@@ -440,60 +407,6 @@ export class GlobalVarsService {
           this.loggedInUserDefaultKey = res;
         }
       });
-  }
-
-  navigateToCurrentStepInTutorial(user: User): Promise<boolean> {
-    if (this.userInTutorial(user)) {
-      // drop user at correct point in tutorial.
-      let route = [];
-      switch (user.TutorialStatus) {
-        case TutorialStatus.STARTED: {
-          route = [
-            RouteNames.TUTORIAL,
-            RouteNames.INVEST,
-            RouteNames.BUY_CREATOR,
-          ];
-          break;
-        }
-        case TutorialStatus.INVEST_OTHERS_BUY: {
-          route = [
-            RouteNames.TUTORIAL,
-            RouteNames.WALLET,
-            user.CreatorPurchasedInTutorialUsername,
-          ];
-          break;
-        }
-        case TutorialStatus.INVEST_OTHERS_SELL: {
-          route = [
-            RouteNames.TUTORIAL,
-            RouteNames.WALLET,
-            user.CreatorPurchasedInTutorialUsername,
-          ];
-          break;
-        }
-        case TutorialStatus.CREATE_PROFILE: {
-          route = [
-            RouteNames.TUTORIAL,
-            RouteNames.INVEST,
-            RouteNames.BUY_CREATOR,
-          ];
-          break;
-        }
-        case TutorialStatus.INVEST_SELF: {
-          route = [
-            RouteNames.TUTORIAL,
-            RouteNames.WALLET,
-            user.ProfileEntryResponse?.Username,
-          ];
-          break;
-        }
-        case TutorialStatus.DIAMOND: {
-          route = [RouteNames.TUTORIAL + '/' + RouteNames.CREATE_POST];
-          break;
-        }
-      }
-      return this.router.navigate(route);
-    }
   }
 
   getLinkForReferralHash(referralHash: string) {
@@ -985,10 +898,6 @@ export class GlobalVarsService {
     if (!this.amplitude) {
       return;
     }
-    // If the user is in the tutorial, add the "tutorial : " prefix.
-    if (this.userInTutorial(this.loggedInUser)) {
-      event = 'tutorial : ' + event;
-    }
 
     // Attach node name
     data.node = environment.node.name;
@@ -1014,15 +923,7 @@ export class GlobalVarsService {
   }
 
   flowRedirect(signedUp: boolean): void {
-    if (signedUp) {
-      // If this node supports phone number verification, go to step 3, else proceed to step 4.
-      const stepNum = this.showPhoneNumberVerification ? 3 : 4;
-      this.router.navigate(['/' + this.RouteNames.SIGN_UP], {
-        queryParams: { stepNum },
-      });
-    } else {
-      this.router.navigate(['/' + this.RouteNames.BROWSE]);
-    }
+    this.router.navigate(['/' + this.RouteNames.BROWSE]);
   }
 
   Init(loggedInUser: User, userList: User[], route: ActivatedRoute) {
@@ -1187,152 +1088,5 @@ export class GlobalVarsService {
     this.router.navigate(['/' + this.RouteNames.BROWSE], {
       queryParams: { feedTab: FeedComponent.SHOWCASE_TAB },
     });
-  }
-
-  resentVerifyEmail = false;
-  resendVerifyEmail() {
-    this.backendApi
-      .ResendVerifyEmail(this.localNode, this.loggedInUser.PublicKeyBase58Check)
-      .subscribe();
-    this.resentVerifyEmail = true;
-  }
-
-  startTutorialAlert(): void {
-    Swal.fire({
-      target: this.getTargetComponentSelector(),
-      title: 'Congrats!',
-      html: "You just got some free money!<br><br><b>Now it's time to learn how to earn even more!</b>",
-      showConfirmButton: true,
-      // Only show skip option to admins
-      showCancelButton: !!this.loggedInUser?.IsAdmin,
-      customClass: {
-        confirmButton: 'btn btn-light',
-        cancelButton: 'btn btn-light no',
-      },
-      reverseButtons: true,
-      confirmButtonText: 'Start Tutorial',
-      cancelButtonText: 'Skip',
-      // User must skip or start tutorial
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-    }).then((res) => {
-      this.backendApi
-        .StartOrSkipTutorial(
-          this.localNode,
-          this.loggedInUser?.PublicKeyBase58Check,
-          !res.isConfirmed /* if it's not confirmed, skip tutorial*/
-        )
-        .subscribe((response) => {
-          this.logEvent(`tutorial : ${res.isConfirmed ? 'start' : 'skip'}`);
-          // Auto update logged in user's tutorial status - we don't need to fetch it via get users stateless right now.
-          this.loggedInUser.TutorialStatus = res.isConfirmed
-            ? TutorialStatus.STARTED
-            : TutorialStatus.SKIPPED;
-          if (res.isConfirmed) {
-            this.router.navigate([
-              RouteNames.TUTORIAL,
-              RouteNames.INVEST,
-              RouteNames.BUY_CREATOR,
-            ]);
-          }
-        });
-    });
-  }
-
-  skipTutorial(): void {
-    Swal.fire({
-      target: this.getTargetComponentSelector(),
-      icon: 'warning',
-      title: 'Exit Tutorial?',
-      html: 'Are you sure?',
-      showConfirmButton: true,
-      customClass: {
-        confirmButton: 'btn btn-light',
-      },
-      reverseButtons: true,
-      confirmButtonText: 'Yes',
-    }).then((res) => {
-      if (res.isConfirmed) {
-        this.backendApi
-          .StartOrSkipTutorial(
-            this.localNode,
-            this.loggedInUser?.PublicKeyBase58Check,
-            true
-          )
-          .subscribe(
-            (response) => {
-              this.logEvent(`tutorial : skip`);
-              // Auto update logged in user's tutorial status - we don't need to fetch it via get users stateless right now.
-              this.loggedInUser.TutorialStatus = TutorialStatus.SKIPPED;
-              this.router.navigate([RouteNames.BROWSE]);
-            },
-            (err) => {
-              this._alertError(err.error.error);
-            }
-          );
-      }
-    });
-  }
-
-  jumioInterval: Timer = null;
-  // If we return from the Jumio flow, poll for up to 10 minutes to see if we need to update the user's balance.
-  pollLoggedInUserForJumio(publicKey: string): void {
-    if (this.jumioInterval) {
-      clearInterval(this.jumioInterval);
-    }
-    let attempts = 0;
-    let numTries = 120;
-    let timeoutMillis = 5000;
-    this.jumioInterval = setInterval(() => {
-      if (attempts >= numTries) {
-        clearInterval(this.jumioInterval);
-        return;
-      }
-      this.backendApi
-        .GetJumioStatusForPublicKey(
-          environment.verificationEndpointHostname,
-          publicKey
-        )
-        .subscribe(
-          (res: any) => {
-            if (res.JumioVerified) {
-              let user: User;
-              this.userList.forEach((userInList, idx) => {
-                if (userInList.PublicKeyBase58Check === publicKey) {
-                  this.userList[idx].JumioVerified = res.JumioVerified;
-                  this.userList[idx].JumioReturned = res.JumioReturned;
-                  this.userList[idx].JumioFinishedTime = res.JumioFinishedTime;
-                  this.userList[idx].BalanceNanos = res.BalanceNanos;
-                  this.userList[idx].MustCompleteTutorial = true;
-                  user = this.userList[idx];
-                }
-              });
-              if (user) {
-                this.setLoggedInUser(user);
-              }
-              this.celebrate();
-              if (user.TutorialStatus === TutorialStatus.EMPTY) {
-                this.startTutorialAlert();
-              }
-              clearInterval(this.jumioInterval);
-              return;
-            }
-            // If the user wasn't verified by jumio, but Jumio did return a callback, stop polling.
-            if (res.JumioReturned) {
-              clearInterval(this.jumioInterval);
-            }
-          },
-          (error) => {
-            clearInterval(this.jumioInterval);
-          }
-        )
-        .add(() => attempts++);
-    }, timeoutMillis);
-  }
-
-  getFreeDESOMessage(): string {
-    return this.referralUSDCents
-      ? this.formatUSD(this.referralUSDCents / 100, 0)
-      : this.formatUSD(this.jumioUSDCents / 100, 0);
   }
 }

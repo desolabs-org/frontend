@@ -15,7 +15,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { SwalHelper } from '../../../lib/helpers/swal-helper';
 import Swal from 'sweetalert2';
 import { IdentityService } from '../../identity.service';
-import { WyreService } from '../../../lib/services/wyre/wyre';
 
 class Messages {
   static INCORRECT_PASSWORD = `The password you entered was incorrect.`;
@@ -38,13 +37,11 @@ export class BuyDeSoComponent implements OnInit {
 
   waitingOnTxnConfirmation = false;
   queryingBitcoinAPI = false;
-  wyreService: WyreService;
   showBuyComplete: boolean = false;
 
   BuyDeSoComponent = BuyDeSoComponent;
 
   static BUY_WITH_MEGASWAP = 'Buy with Crypto';
-  static BUY_WITH_USD = 'Buy with USD';
   static BUY_WITH_BTC = 'Buy with BTC';
   static BUY_WITH_ETH = 'Buy with ETH';
 
@@ -527,8 +524,6 @@ export class BuyDeSoComponent implements OnInit {
       } else if (ticker === 'ETH' && this.globalVars.showBuyWithETH) {
         this.buyTabs = [BuyDeSoComponent.BUY_WITH_ETH];
         this.activeTab = BuyDeSoComponent.BUY_WITH_ETH;
-      } else if (this.globalVars.showBuyWithUSD) {
-        this.buyTabs.push(BuyDeSoComponent.BUY_WITH_USD);
       }
     });
 

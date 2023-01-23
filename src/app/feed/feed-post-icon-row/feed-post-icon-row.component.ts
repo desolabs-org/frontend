@@ -36,8 +36,6 @@ export class FeedPostIconRowComponent {
   @Input() afterCommentCreatedCallback: any = null;
   @Input() afterRepostCreatedCallback: any = null;
   @Input() hideNumbers: boolean = false;
-  // Will need additional inputs if we walk through actions other than diamonds.
-  @Input() inTutorial: boolean = false;
 
   @Output() diamondSent = new EventEmitter();
 
@@ -214,9 +212,6 @@ export class FeedPostIconRowComponent {
   }
 
   _repost(event: any) {
-    if (this.inTutorial) {
-      return;
-    }
     // Prevent the post from navigating.
     event.stopPropagation();
 
@@ -278,9 +273,6 @@ export class FeedPostIconRowComponent {
   }
 
   _undoRepost(event: any) {
-    if (this.inTutorial) {
-      return;
-    }
     // Prevent the post from navigating.
     event.stopPropagation();
 
@@ -327,9 +319,6 @@ export class FeedPostIconRowComponent {
   }
 
   toggleLike(event: any) {
-    if (this.inTutorial) {
-      return;
-    }
     // Prevent the post from navigating.
     event.stopPropagation();
 
@@ -378,9 +367,6 @@ export class FeedPostIconRowComponent {
   }
 
   openModal(event, isQuote: boolean = false) {
-    if (this.inTutorial) {
-      return;
-    }
     // Prevent the post navigation click from occurring.
     event.stopPropagation();
 
@@ -420,9 +406,6 @@ export class FeedPostIconRowComponent {
   }
 
   onTimestampClickHandler(event) {
-    if (this.inTutorial) {
-      return;
-    }
     this.globalVars.logEvent('post : share');
 
     // Prevent the post from navigating.
@@ -475,7 +458,6 @@ export class FeedPostIconRowComponent {
         this.postContent.PostHashHex,
         diamonds,
         this.globalVars.feeRateDeSoPerKB * 1e9,
-        this.inTutorial
       )
       .toPromise()
       .then(

@@ -117,8 +117,4 @@ export class LandingPageComponent implements OnInit {
       });
     }
   }
-
-  getLogoBackground() {
-    return `url("${environment.node.logoAssetDir}camelcase_logo.svg")`;
-  }
 }

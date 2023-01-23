@@ -30,9 +30,7 @@
       <a
         (click)="onPostClicked($event)"
         class="link--unstyled"
-        [routerLink]="
-          getRouterLink(['/' + globalVars.RouteNames.POSTS, post.PostHashHex])
-        "
+        [routerLink]="['/' + globalVars.RouteNames.POSTS, post.PostHashHex]"
         queryParamsHandling="merge"
       >
         This post was removed by the author.
@@ -46,12 +44,7 @@
       <a
         class="link--unstyled"
         style="text-align: center"
-        [routerLink]="
-          getRouterLink([
-            '/' + globalVars.RouteNames.USER_PREFIX,
-            post.ProfileEntryResponse.Username
-          ])
-        "
+        [routerLink]="['/' + globalVars.RouteNames.USER_PREFIX, post.ProfileEntryResponse.Username]"
         queryParamsHandling="merge"
       >
         This is a post from {{ post.ProfileEntryResponse.Username }} who you
@@ -85,12 +78,7 @@
           <a
             class="fc-muted font-weight-semibold fs-15px"
             queryParamsHandling="merge"
-            [routerLink]="
-              getRouterLink([
-                '/' + globalVars.RouteNames.USER_PREFIX,
-                post.ParentPosts[0].ProfileEntryResponse.Username
-              ])
-            "
+            [routerLink]="['/' + globalVars.RouteNames.USER_PREFIX, post.ParentPosts[0].ProfileEntryResponse.Username ]"
           >
             replying to {{ post.ParentPosts[0].ProfileEntryResponse.Username }}
           </a>
@@ -108,12 +96,7 @@
           <a
             class="fc-muted font-weight-semibold align-items-center"
             queryParamsHandling="merge"
-            [routerLink]="
-              getRouterLink([
-                '/' + globalVars.RouteNames.USER_PREFIX,
-                reposterProfile.Username
-              ])
-            "
+            [routerLink]="[ '/' + globalVars.RouteNames.USER_PREFIX, reposterProfile.Username ]"
           >
             <i class="icon-repost fs-20px" style="vertical-align: middle"></i>
             <span style="vertical-align: middle" class="fs-15px"
@@ -148,12 +131,7 @@
           <a
             (click)="onPostClicked($event)"
             class="link--unstyled"
-            [routerLink]="
-              getRouterLink([
-                '/' + globalVars.RouteNames.POSTS,
-                postContent.PostHashHex
-              ])
-            "
+            [routerLink]="[ '/' + globalVars.RouteNames.POSTS, postContent.PostHashHex ]"
             queryParamsHandling="merge"
           >
             The original post was removed by its author.
@@ -165,13 +143,7 @@
           <a
             style="padding: 3px"
             class="creator-coin-info fs-12px font-weight-bold feed-post__coin-price-holder br-12px"
-            [routerLink]="
-              getRouterLink(
-                AppRoutingModule.buyCreatorPath(
-                  postContent.ProfileEntryResponse.Username
-                )
-              )
-            "
+            [routerLink]="AppRoutingModule.buyCreatorPath(postContent.ProfileEntryResponse.Username)"
             queryParamsHandling="merge"
           >
             <span class="text-grey5">
@@ -209,12 +181,7 @@
             <a
               class="feed-post__avatar br-12px"
               [avatar]="postContent.ProfileEntryResponse.PublicKeyBase58Check"
-              [routerLink]="
-                getRouterLink([
-                  '/' + globalVars.RouteNames.USER_PREFIX,
-                  postContent.ProfileEntryResponse.Username
-                ])
-              "
+              [routerLink]="[ '/' + globalVars.RouteNames.USER_PREFIX, postContent.ProfileEntryResponse.Username ]"
               queryParamsHandling="merge"
             ></a>
             <div
@@ -229,12 +196,7 @@
               <!-- Username-->
               <a
                 class="fc-default font-weight-bold"
-                [routerLink]="
-                  getRouterLink([
-                    '/' + globalVars.RouteNames.USER_PREFIX,
-                    postContent.ProfileEntryResponse.Username
-                  ])
-                "
+                [routerLink]="[ '/' + globalVars.RouteNames.USER_PREFIX, postContent.ProfileEntryResponse.Username ]"
                 queryParamsHandling="merge"
               >
                 {{ postContent.ProfileEntryResponse.Username }}
@@ -321,12 +283,7 @@
             >
               replying to
               <a
-                [routerLink]="
-                  getRouterLink([
-                    '/' + this.globalVars.RouteNames.USER_PREFIX,
-                    parentPost.ProfileEntryResponse.Username
-                  ])
-                "
+                [routerLink]="[ '/' + this.globalVars.RouteNames.USER_PREFIX, parentPost.ProfileEntryResponse.Username ]"
                 queryParamsHandling="merge"
               >
                 @{{ parentPost.ProfileEntryResponse.Username }}
@@ -434,7 +391,6 @@
                 [parentPost]="parentPost"
                 [afterCommentCreatedCallback]="afterCommentCreatedCallback"
                 [afterRepostCreatedCallback]="afterRepostCreatedCallback"
-                [inTutorial]="inTutorial"
                 (diamondSent)="diamondSent.emit()"
               ></feed-post-icon-row>
 
@@ -477,12 +433,7 @@
                 <div>
                   &nbsp;&middot;
                   <a
-                    [routerLink]="
-                      getRouterLink([
-                        '/' + globalVars.RouteNames.POSTS,
-                        postContent.PostHashHex
-                      ])
-                    "
+                    [routerLink]="[ '/' + globalVars.RouteNames.POSTS, postContent.PostHashHex ]"
                     queryParamsHandling="merge"
                   >
                     View

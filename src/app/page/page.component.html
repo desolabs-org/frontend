@@ -2,8 +2,8 @@
   Almost all pages should use this component to support both mobile and desktop views
   -->
 <div [class]="mobile ? 'global__mobile' : 'global__desktop'">
-  <left-bar *ngIf="!mobile" [inTutorial]="inTutorial"></left-bar>
-  <left-bar-mobile *ngIf="mobile" [inTutorial]="inTutorial"></left-bar-mobile>
+  <left-bar *ngIf="!mobile"></left-bar>
+  <left-bar-mobile *ngIf="mobile"></left-bar-mobile>
 
   <div class="global__content__flex">
     <div
@@ -25,13 +25,12 @@
     </div>
     <div class="global__sidebar__width" *ngIf="!mobile && !hideSidebar">
       <right-bar-creators
-        [inTutorial]="inTutorial"
         class="global__sidebar__fixed"
       ></right-bar-creators>
     </div>
 
     <bottom-bar-mobile
-      *ngIf="mobile && !inTutorial"
+      *ngIf="mobile"
       class="global__bottom-bar-mobile"
       [showPostButton]="showPostButton"
     ></bottom-bar-mobile>

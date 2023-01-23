@@ -8,8 +8,7 @@ export const environment = {
   node: {
     id: 8,
     name: 'DeSoLabs',
-    url: 'https://node.desolabs.org',
-    logoAssetDir: '/assets/img/'
+    url: 'https://node.desolabs.org'
   },
   megaswapURL: 'https://megaswap.xyz',
 };

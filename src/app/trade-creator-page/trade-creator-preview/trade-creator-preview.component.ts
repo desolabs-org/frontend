@@ -21,7 +21,6 @@ export class TradeCreatorPreviewComponent implements OnInit {
     'RuleErrorCreatorCoinLessThanMinimumSetByUser';
 
   @Input() creatorCoinTrade: CreatorCoinTrade;
-  @Input() inTutorial: boolean = false;
 
   @Output() slippageError = new EventEmitter();
   @Output() tradeExecuted = new EventEmitter();
@@ -108,7 +107,6 @@ export class TradeCreatorPreviewComponent implements OnInit {
 
         this.appData.feeRateDeSoPerKB * 1e9 /*feeRateNanosPerKB*/,
         true,
-        this.inTutorial
       )
       .subscribe(
         (response) => {

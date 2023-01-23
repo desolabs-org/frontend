@@ -31,8 +31,6 @@ export class DaoCoinsComponent implements OnInit, OnDestroy {
   static WINDOW_VIEWPORT = true;
   static PADDING = 0.5;
 
-  @Input() inTutorial: boolean;
-
   globalVars: GlobalVarsService;
   AppRoutingModule = AppRoutingModule;
   hasUnminedCreatorCoins: boolean;

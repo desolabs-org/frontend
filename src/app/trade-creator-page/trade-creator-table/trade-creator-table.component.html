@@ -68,16 +68,16 @@
     >
 
     <div class="d-inline-block">
-      <span *ngIf="!inTutorial || !creatorCoinTrade.isBuyingCreatorCoin">
+      <span>
         {{ creatorCoinTrade.assetToSellAmount() | number: '0.0-9' }}
         {{ creatorCoinTrade.assetToSellString() }}
       </span>
 
       <span
         *ngIf="creatorCoinTrade.isBuyingCreatorCoin"
-        [ngClass]="{ 'text-muted': !inTutorial }"
+        [ngClass]="{ 'text-muted': true }"
       >
-        {{ !inTutorial ? '≈' : '' }}
+        ≈
         {{ creatorCoinTrade.assetToSellAmountInUsd() | currency }}
         USD
       </span>
@@ -91,16 +91,16 @@
     >
 
     <div class="d-inline-block">
-      <span *ngIf="!inTutorial || creatorCoinTrade.isBuyingCreatorCoin">
+      <span>
         {{ creatorCoinTrade.assetReturnedAmount() | number: '0.0-9' }}
         {{ creatorCoinTrade.assetReturnedString() }}
       </span>
 
       <span
         *ngIf="!creatorCoinTrade.isBuyingCreatorCoin"
-        [ngClass]="{ 'text-muted': !inTutorial }"
+        [ngClass]="{ 'text-muted': true }"
       >
-        {{ !inTutorial ? '≈' : '' }}
+        ≈
         {{ creatorCoinTrade.assetReturnedAmountInUsd() | currency }}
         USD
       </span>
@@ -117,13 +117,13 @@
     >
 
     <div class="d-inline-block">
-      <span *ngIf="!inTutorial">
+      <span>
         ~{{ creatorCoinTrade.desoPriceOfCreatorCoin().toFixed(4) }}
         DeSo
       </span>
 
-      <span [ngClass]="{ 'text-muted': !inTutorial }">
-        {{ !inTutorial ? '≈' : '' }}
+      <span [ngClass]="{ 'text-muted': true }">
+        ≈
         {{ creatorCoinTrade.usdPriceOfCreatorCoin() | currency }}
         USD
       </span>
@@ -166,7 +166,6 @@
   </div>
   <div
     *ngIf="
-      !inTutorial &&
       !(
         followService._isLoggedInUserFollowing(
           creatorCoinTrade.creatorProfile.PublicKeyBase58Check

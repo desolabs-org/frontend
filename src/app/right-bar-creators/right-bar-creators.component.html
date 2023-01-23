@@ -1,6 +1,6 @@
 <div class="global__sidebar__inner">
   <!-- Search Bar -->
-  <search-bar *ngIf="!inTutorial"></search-bar>
+  <search-bar></search-bar>
 
   <div class="pt-10px"></div>
 
@@ -69,7 +69,6 @@
   <div
     class="fs-15px text-grey5 font-weight-bold mb-10px d-flex flex-column"
     [ngClass]="{ 'pb-10px': !activeRightTabOption.poweredBy }"
-    *ngIf="!inTutorial"
   >
     <div>
       <select
@@ -104,6 +103,5 @@
   <!-- Creators -->
   <right-bar-creators-leaderboard
     [activeTab]="activeTab"
-    *ngIf="!inTutorial"
   ></right-bar-creators-leaderboard>
 </div>

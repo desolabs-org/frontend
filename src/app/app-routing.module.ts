@@ -20,21 +20,11 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { ViewportScroller } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { GetStarterDeSoPageComponent } from './get-starter-deso-page/get-starter-deso-page.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { PickACoinPageComponent } from './pick-a-coin-page/pick-a-coin-page.component';
 import { DiamondPostsPageComponent } from './diamond-posts-page/diamond-posts-page.component';
 import { TrendsPageComponent } from './trends-page/trends-page.component';
 import { NftPostPageComponent } from './nft-post-page/nft-post-page.component';
-import { VerifyEmailComponent } from './verify-email/verify-email.component';
-import { CreateProfileTutorialPageComponent } from './tutorial/create-profile-tutorial-page/create-profile-tutorial-page.component';
-import { BuyCreatorCoinsTutorialPageComponent } from './tutorial/buy-creator-coins-tutorial-page/buy-creator-coins-tutorial-page.component';
-import { BuyCreatorCoinsConfirmTutorialComponent } from './tutorial/buy-creator-coins-tutorial-page/buy-creator-coins-confirm-tutorial/buy-creator-coins-confirm-tutorial.component';
 import { WalletPageComponent } from './wallet/wallet-page/wallet-page.component';
-import { WalletTutorialPageComponent } from './tutorial/wallet-tutorial-page/wallet-tutorial-page.component';
-import { SellCreatorCoinsTutorialComponent } from './tutorial/sell-creator-coins-tutorial-page/sell-creator-coins-tutorial/sell-creator-coins-tutorial.component';
-import { DiamondTutorialPageComponent } from './tutorial/diamond-tutorial-page/diamond-tutorial-page.component';
-import { CreatePostTutorialPageComponent } from './tutorial/create-post-tutorial-page/create-post-tutorial-page.component';
 import { SupplyMonitoringStatsPageComponent } from './supply-monitoring-stats-page/supply-monitoring-stats-page.component';
 import { DaoCoinsPageComponent } from './dao-coins/dao-coins-page/dao-coins-page.component';
 
@@ -63,7 +53,6 @@ class RouteNames {
   public static SELL_CREATOR = 'sell';
   public static UPDATE_PROFILE = 'update-profile';
   public static NOTIFICATIONS = 'notifications';
-  public static SIGN_UP = 'sign-up';
   public static NOT_FOUND = '404';
   public static POSTS = 'posts';
   public static SEND_DESO = 'send-deso';
@@ -71,14 +60,11 @@ class RouteNames {
   public static CREATE_POST = 'posts/new';
   public static TOS = 'terms-of-service';
   public static ADMIN = 'admin';
-  public static GET_STARTER_DESO = 'get-starter-deso';
   public static LANDING = '/';
   public static DIAMONDS = 'diamonds';
   public static TRENDS = 'trends';
   public static NFT = 'nft';
-  public static VERIFY_EMAIL = 'verify-email';
 
-  public static TUTORIAL = 'tutorial';
   public static CREATE_PROFILE = 'create-profile';
   public static INVEST = 'invest';
   public static SUPPLY_STATS = 'supply-stats';
@@ -127,7 +113,6 @@ const routes: Routes = [
     component: MessagesPageComponent,
     pathMatch: 'full',
   },
-  { path: RouteNames.SIGN_UP, component: SignUpComponent, pathMatch: 'full' },
   {
     path: RouteNames.WALLET,
     component: WalletPageComponent,
@@ -196,71 +181,8 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: RouteNames.GET_STARTER_DESO,
-    component: GetStarterDeSoPageComponent,
-    pathMatch: 'full',
-  },
-  {
     path: RouteNames.TRENDS,
     component: TrendsPageComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: RouteNames.VERIFY_EMAIL + '/:publicKey/:emailHash',
-    component: VerifyEmailComponent,
-    pathMatch: 'full',
-  },
-  // TUTORIAL ROUTES
-  {
-    path: RouteNames.TUTORIAL + '/' + RouteNames.CREATE_PROFILE,
-    component: CreateProfileTutorialPageComponent,
-    pathMatch: 'full',
-  },
-  {
-    path:
-      RouteNames.TUTORIAL +
-      '/' +
-      RouteNames.INVEST +
-      '/' +
-      RouteNames.BUY_CREATOR,
-    component: BuyCreatorCoinsTutorialPageComponent,
-    pathMatch: 'full',
-  },
-  {
-    path:
-      RouteNames.TUTORIAL +
-      '/' +
-      RouteNames.INVEST +
-      '/' +
-      RouteNames.SELL_CREATOR +
-      '/:username',
-    component: SellCreatorCoinsTutorialComponent,
-    pathMatch: 'full',
-  },
-  {
-    path:
-      RouteNames.TUTORIAL +
-      '/' +
-      RouteNames.INVEST +
-      '/' +
-      RouteNames.BUY_CREATOR +
-      '/:username',
-    component: BuyCreatorCoinsConfirmTutorialComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: RouteNames.TUTORIAL + '/' + RouteNames.WALLET + '/:username',
-    component: WalletTutorialPageComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: RouteNames.TUTORIAL + '/' + RouteNames.DIAMONDS,
-    component: DiamondTutorialPageComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: RouteNames.TUTORIAL + '/' + RouteNames.CREATE_POST,
-    component: CreatePostTutorialPageComponent,
     pathMatch: 'full',
   },
   {
@@ -298,24 +220,15 @@ class AppRoutingModule {
   }
 
   static transferCreatorPath(username: string): string {
-    return [
-      '',
-      RouteNames.USER_PREFIX,
-      username,
-      RouteNames.TRANSFER_CREATOR,
-    ].join('/');
+    return ['', RouteNames.USER_PREFIX, username, RouteNames.TRANSFER_CREATOR,].join('/');
   }
 
   static buyCreatorPath(username: string): string {
-    return ['', RouteNames.USER_PREFIX, username, RouteNames.BUY_CREATOR].join(
-      '/'
-    );
+    return ['', RouteNames.USER_PREFIX, username, RouteNames.BUY_CREATOR].join('/');
   }
 
   static sellCreatorPath(username: string): string {
-    return ['', RouteNames.USER_PREFIX, username, RouteNames.SELL_CREATOR].join(
-      '/'
-    );
+    return ['', RouteNames.USER_PREFIX, username, RouteNames.SELL_CREATOR].join('/');
   }
 
   static profilePath(username: string): string {
@@ -323,15 +236,11 @@ class AppRoutingModule {
   }
 
   static userFollowingPath(username: string): string {
-    return ['', RouteNames.USER_PREFIX, username, RouteNames.FOLLOWING].join(
-      '/'
-    );
+    return ['', RouteNames.USER_PREFIX, username, RouteNames.FOLLOWING].join('/');
   }
 
   static userFollowersPath(username: string): string {
-    return ['', RouteNames.USER_PREFIX, username, RouteNames.FOLLOWERS].join(
-      '/'
-    );
+    return ['', RouteNames.USER_PREFIX, username, RouteNames.FOLLOWERS].join('/');
   }
 
   static postPath(postHashHex: string): string {
