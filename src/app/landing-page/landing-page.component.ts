@@ -115,22 +115,13 @@ export class LandingPageComponent implements OnInit {
   ngOnInit() {
 
     this.backendApi
-      .GetHodlersForPublicKey(
-        this.globalVars.localNode,
-        '',
-        'DeSoLabs',
-        '',
-        0,
-        false,
-        true,
-        false
-      )
+      .GetHodlersForPublicKey(this.globalVars.localNode, '', 'DeSoLabs', '', 0, false, true, false)
       .toPromise()
       .then((res) => {
         this.featuredSupporters = res.Hodlers.filter(i => i.BalanceNanos > 1_000_000 && i.ProfileEntryResponse !== undefined);
       });
 
-    if (false && !this.globalVars.showLandingPage()) {
+    if (!this.globalVars.showLandingPage()) {
       this.router.navigate(['/' + this.globalVars.RouteNames.BROWSE], {
         queryParamsHandling: 'merge',
       });
