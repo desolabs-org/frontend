@@ -87,13 +87,22 @@
     </div>
   </div>
 
-  <div class="w-100 landing__echo">
-    <div class="container">
-      <div class="row d-flex justify-content-center">
-        <div class="col mb-0 text-center">
-          <p class="text-grey9 fs-20px">Welcome to the future 🚀</p>
+  
+  <div class="container">
+    <div class="col mt-30px text-center">
+      <p class="text-grey9 fs-20px">Big thank you to community supporters!</p>
+      <div class="d-flex mt-20px justify-content-center flex-wrap">
+        <div *ngFor="let supporter of featuredSupporters" class="mt-10px mr-10px">
+        
+          <div 
+            class="feed-post__avatar br-12px"
+            title="{{supporter.ProfileEntryResponse.Username}}" 
+            [avatar]="supporter.ProfileEntryResponse.PublicKeyBase58Check">
+              
+          </div>
         </div>
       </div>
     </div>
   </div>
+  
 </div>

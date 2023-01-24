@@ -724,44 +724,6 @@ export class BackendApiService {
       .pipe(catchError(this._handleError));
   }
 
-  SendPhoneNumberVerificationText(
-    endpoint: string,
-    PublicKeyBase58Check: string,
-    PhoneNumber: string,
-    PhoneNumberCountryCode: string
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathSendPhoneNumberVerificationText,
-      PublicKeyBase58Check,
-      {
-        PublicKeyBase58Check,
-        PhoneNumber,
-        PhoneNumberCountryCode,
-      }
-    );
-  }
-
-  SubmitPhoneNumberVerificationCode(
-    endpoint: string,
-    PublicKeyBase58Check: string,
-    PhoneNumber: string,
-    PhoneNumberCountryCode: string,
-    VerificationCode: string
-  ): Observable<any> {
-    return this.jwtPost(
-      endpoint,
-      BackendRoutes.RoutePathSubmitPhoneNumberVerificationCode,
-      PublicKeyBase58Check,
-      {
-        PublicKeyBase58Check,
-        PhoneNumber,
-        PhoneNumberCountryCode,
-        VerificationCode,
-      }
-    );
-  }
-
   GetBlockTemplate(
     endpoint: string,
     PublicKeyBase58Check: string

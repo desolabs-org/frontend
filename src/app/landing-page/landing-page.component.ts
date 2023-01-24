@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AppRoutingModule } from '../app-routing.module';
 import { GlobalVarsService } from '../global-vars.service';
+import { BackendApiService } from '../backend-api.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.scss'],
 })
 export class LandingPageComponent implements OnInit {
   AppRoutingModule = AppRoutingModule;
@@ -108,10 +108,29 @@ export class LandingPageComponent implements OnInit {
     },
   ];
 
-  constructor(public globalVars: GlobalVarsService, private router: Router) {}
+  featuredSupporters = [];
+
+  constructor(public globalVars: GlobalVarsService, private router: Router, private backendApi: BackendApiService) {}
 
   ngOnInit() {
-    if (!this.globalVars.showLandingPage()) {
+
+    this.backendApi
+      .GetHodlersForPublicKey(
+        this.globalVars.localNode,
+        '',
+        'DeSoLabs',
+        '',
+        0,
+        false,
+        true,
+        false
+      )
+      .toPromise()
+      .then((res) => {
+        this.featuredSupporters = res.Hodlers.filter(i => i.BalanceNanos > 1_000_000 && i.ProfileEntryResponse !== undefined);
+      });
+
+    if (false && !this.globalVars.showLandingPage()) {
       this.router.navigate(['/' + this.globalVars.RouteNames.BROWSE], {
         queryParamsHandling: 'merge',
       });
