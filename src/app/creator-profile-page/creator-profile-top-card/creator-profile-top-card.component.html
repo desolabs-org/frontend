@@ -1,7 +1,11 @@
 <div class="position-relative">
   <div
-    class="creator-profile__top-bar d-flex align-items-top w-100 px-15px py-15px"
+    class="creator-profile__top-bar d-flex align-items-top w-100"
   >
+  <div class="w-100" 
+    *ngIf="profile.ExtraData && profile.ExtraData.FeaturedImageURL"
+    style="background-image: url('{{ profile.ExtraData.FeaturedImageURL }}'); background-size: cover; background-position: top;"
+  ></div>
     <top-bar-mobile-navigation-control
       [isLightColor]="true"
       class="mr-15px d-lg-none d-inline-block"
