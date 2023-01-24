@@ -30,7 +30,7 @@ import { CreatorsLeaderboardPageComponent } from './creators-leaderboard/creator
 import { CreatorsLeaderboardComponent } from './creators-leaderboard/creators-leaderboard/creators-leaderboard.component';
 import { BuyDeSoPageComponent } from './buy-deso-page/buy-deso-page.component';
 import { MessagesPageComponent } from './messages-page/messages-page.component';
-import { SettingsPageComponent } from './settings-page/settings-page.component';
+import { SettingsPageComponent } from './settings/page/settings-page.component';
 import { CreatorProfilePageComponent } from './creator-profile-page/creator-profile-page.component';
 import { CreatorProfileDetailsComponent } from './creator-profile-page/creator-profile-details/creator-profile-details.component';
 import { CreatorProfileHodlersComponent } from './creator-profile-page/creator-profile-hodlers/creator-profile-hodlers.component';
@@ -92,7 +92,8 @@ import { RatingModule } from 'ngx-bootstrap/rating';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingPageComponent } from './landing/page/landing-page.component';
+import { LandingIndexComponent } from './landing/index/landing-index.component';
 import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 import { UpdateProfileGetStarterDeSoComponent } from './update-profile-page/update-profile-get-starter-deso/update-profile-get-starter-deso.component';
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
@@ -149,6 +150,8 @@ import { DaoCoinsComponent } from './dao-coins/dao-coins.component';
 import { DaoCoinsPageComponent } from './dao-coins/dao-coins-page/dao-coins-page.component';
 import { TransferDAOCoinModalComponent } from './dao-coins/transfer-dao-coin-modal/transfer-dao-coin-modal.component';
 import { BurnDaoCoinModalComponent } from './dao-coins/burn-dao-coin-modal/burn-dao-coin-modal.component';
+
+import { LandingComponent } from './landing/landing.component';
 
 // Modular Themes for DeSo by Carsen Klock @carsenk
 import { ThemeModule } from "./theme/theme.module";
@@ -235,6 +238,8 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     NotificationsListComponent,
     PageComponent,
     LandingPageComponent,
+    LandingIndexComponent,
+    LandingComponent,
     UpdateProfileGetStarterDeSoComponent,
     CommentModalComponent,
     WalletActionsDropdownComponent,
