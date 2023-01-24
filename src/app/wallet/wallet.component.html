@@ -1,38 +1,34 @@
 <!-- Top Bar -->
 <div
-  class="global__top-bar global__top-bar__height d-flex align-items-center fs-18px font-weight-bold p-15px border-bottom border-color-grey
-  justify-content-between"
->
+  class="global__top-bar global__top-bar__height d-flex align-items-center fs-18px font-weight-bold p-15px border-bottom border-color-grey justify-content-between">
   <top-bar-mobile-navigation-control
-    class="mr-15px d-lg-none d-inline-block"
-  ></top-bar-mobile-navigation-control>
-      <div>
-        <div class="row pl-15px">
-          DESO Wallet 
-          <span class="px-5px">·</span>
-          <small>
-            <a
-              *ngIf="globalVars.loggedInUser"
-              target="_blank"
-              href="{{
-                'https://explorer.deso.org/?public-key=' +
-                  globalVars.loggedInUser.PublicKeyBase58Check
-              }}"
-              class="fc-blue">
-              Transactions
-            </a>
-          </small>
-        </div>
-        <div class="row pl-15px">
-            {{ globalVars.loggedInUser.PublicKeyBase58Check }}
-        </div>
-      </div>
-      <div>
-        <i
-        class="far fa-copy ml-15px holdings__copy holdings__pub-key"
+    class="mr-15px d-lg-none d-inline-block">
+  </top-bar-mobile-navigation-control>
+  <div class="d-flex w-100 align-items-center justify-content-between">
+    <span class="font-primary">DESO Wallet</span>
+    <small>
+      <a
+        *ngIf="globalVars.loggedInUser"
+        target="_blank"
+        href="{{
+          'https://explorer.deso.org/?public-key=' +
+            globalVars.loggedInUser.PublicKeyBase58Check
+        }}"
+        class="fc-blue">
+        Transactions
+      </a>
+      
+      <span class="px-5px">|</span>
+      
+      <a
+        *ngIf="globalVars.loggedInUser"
         (click)="globalVars._copyText(globalVars.loggedInUser.PublicKeyBase58Check)"
-          ></i>
-      </div>
+        class="fc-blue"
+        title="{{ globalVars.loggedInUser.PublicKeyBase58Check }}">
+        Copy key
+      </a>
+    </small>
+  </div>
 </div>
 
 <div class="global__top-bar__height"></div>
@@ -40,50 +36,46 @@
 <div class="d-flex flex-column flex-grow-1" *ngIf="globalVars.loggedInUser">
   <!-- ÐESO Divider Bar -->
 
-<div
-    class="fs-16px p-15px border-bottom d-flex border-color-grey justify-content-between"
-    style="max-width: inherit"
-  >
-    <div class="font-weight-bold py-20px">
-      <a
-        [routerLink]="'/' + globalVars.RouteNames.SEND_DESO"
-        queryParamsHandling="merge"
-        class="fc-blue"
-      >
-        Send
-      </a>
-      <span class="">|</span>
-      <a
-        [routerLink]="'/' + globalVars.RouteNames.BUY_DESO"
-        queryParamsHandling="merge"
-        class="fc-blue"
-      >
-        Buy
-      </a>
-      <span class="px-5px">·</span>
-      ÐESO Balance
-    </div>
-    <div class="font-weight-bold py-20px">
-      <div>
-        {{
-          globalVars.nanosToDeSo(globalVars.loggedInUser.BalanceNanos, 9)
-        }}
-        ÐESO
-        <i
-          *ngIf="
-            globalVars.loggedInUser.UnminedBalanceNanos != 0 &&
-            globalVars.showProcessingSpinners
-          "
-          class="fa fa-spinner fc-muted"
-          matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-          [matTooltip]="unminedDeSoToolTip()"
-          #tooltip="matTooltip"
-          (click)="tooltip.toggle()"
-        ></i>
+  <div
+      class="fs-16px p-15px border-bottom border-color-grey"
+      style="max-width: inherit"
+    >
+      <div class="d-flex justify-content-between py-20px">
+        <div>
+          <span class="font-weight-bold pr-10px">Available ÐESO</span>
+          <a
+            [routerLink]="'/' + globalVars.RouteNames.SEND_DESO"
+            queryParamsHandling="merge"
+            class="fc-blue"
+          >
+            Send
+          </a>
+          <span class="">|</span>
+          <a
+            [routerLink]="'/' + globalVars.RouteNames.BUY_DESO"
+            queryParamsHandling="merge"
+            class="fc-blue"
+          >
+            Buy
+          </a>
+        </div>
+        <div class="font-weight-bold">
+          Ð&nbsp;{{ globalVars.nanosToDeSo(globalVars.loggedInUser.BalanceNanos, 9) }}
+          <i
+            *ngIf="
+              globalVars.loggedInUser.UnminedBalanceNanos != 0 &&
+              globalVars.showProcessingSpinners
+            "
+            class="fa fa-spinner fc-muted"
+            matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
+            [matTooltip]="unminedDeSoToolTip()"
+            #tooltip="matTooltip"
+            (click)="tooltip.toggle()"
+          ></i>
+        </div>
       </div>
-    </div>
 
-</div>
+  </div>
 
   <!-- Tab Selector -->
   <tab-selector

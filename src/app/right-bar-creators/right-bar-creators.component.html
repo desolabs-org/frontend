@@ -13,26 +13,15 @@
       *ngIf="globalVars.loggedInUser"
       class="d-flex justify-content-between"
     >
-      <div class="d-flex">Your ÐESO</div>
-      <div
-        class="d-flex flex-column justify-content-end flex-wrap"
-        style="align-items: flex-end">
-        <div>
-          <!-- Amount in DeSo-->
-          {{ globalVars.nanosToDeSo(globalVars.loggedInUser.BalanceNanos) }}
-
-          <!-- Amount in USD-->
-          <span *ngIf="globalVars.satoshisPerDeSoExchangeRate">
-            ≈
-            {{
-              globalVars.nanosToUSD(globalVars.loggedInUser.BalanceNanos, 2)
-            }}
-          </span>
-          <div *ngIf="!globalVars.satoshisPerDeSoExchangeRate">
-            Fetching... USD
-          </div>
-        </div>
+      <div>Available ÐESO</div>
+      <div>
+        Ð&nbsp;{{ globalVars.nanosToDeSo(globalVars.loggedInUser.BalanceNanos) }}
       </div>
+    </div>
+
+    <div class="d-flex justify-content-between pt-10px text-muted">
+      <span>ÐESO Price</span>
+      <span>{{ globalVars.desoToUSDExchangeRateToDisplay }}</span>
     </div>
 
     <div
@@ -44,18 +33,12 @@
         matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
         [matTooltip]="globalVars.transactionFeeInfo"
         #tooltip="matTooltip">
-        Max transaction fee
+        Transaction fee
         <i class="fas fa-info-circle"></i>
       </span>
-
-      <div>
-        {{ globalVars.nanosToUSD(globalVars.transactionFeeMax, 5) }}
+      <div> 
+        Ð&nbsp;{{ globalVars.nanosToDeSo(globalVars.transactionFeeMax, 7) }}
       </div>
-    </div>
-
-    <div class="d-flex justify-content-between pt-10px text-muted">
-      <span>ÐESO Price</span>
-      <span>{{ globalVars.desoToUSDExchangeRateToDisplay }}</span>
     </div>
 
   </div>

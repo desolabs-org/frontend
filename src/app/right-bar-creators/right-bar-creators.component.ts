@@ -16,7 +16,6 @@ export class RightBarTabOption {
 @Component({
   selector: 'right-bar-creators',
   templateUrl: './right-bar-creators.component.html',
-  styleUrls: ['./right-bar-creators.component.sass'],
 })
 export class RightBarCreatorsComponent implements OnInit {
 
