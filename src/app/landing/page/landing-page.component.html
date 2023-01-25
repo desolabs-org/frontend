@@ -12,7 +12,10 @@
       <h3 class="slide-up-1 mt-20px">hackathons & community</h3>
       <div class="slide-up-2 mt-30px">
         <p>
-          <a class="btn btn-primary landing__sign-up" (click)="globalVars.launchAuthFlow()">Sign Up / Log in</a>
+          <a *ngIf="!globalVars.loggedInUser" 
+             class="btn btn-primary btn-lg pl-30px pr-30px" (click)="globalVars.launchAuthFlow()">Sign Up / Log in</a>
+          <a *ngIf="globalVars.loggedInUser"
+             class="btn btn-primary btn-lg pl-30px pr-30px" [routerLink]="'/' + RouteNames.BROWSE">Browse the network</a>
         </p>
       </div>
     </div>

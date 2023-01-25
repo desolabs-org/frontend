@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppRoutingModule } from '../../app-routing.module';
+import { RouteNames } from '../../app-routing.module';
 import { GlobalVarsService } from '../../global-vars.service';
 import { BackendApiService } from '../../backend-api.service';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './landing-page.component.html',
 })
 export class LandingPageComponent implements OnInit {
-  AppRoutingModule = AppRoutingModule;
+  RouteNames = RouteNames;
   environment = environment;
 
   featuredPosts = [

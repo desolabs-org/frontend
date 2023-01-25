@@ -28,4 +28,52 @@
     </div>
   </div>
 
+  <div class="d-flex justify-content-center slide-up-3">
+    <div class="col-lg-10 d-flex align-items-center justify-content-center flex-wrap">
+      <div class="ml-15px mt-30px">
+        <div class="d-flex justify-content-center">
+          <h3 class="font-weight-bold font-primary">Hackathon sponsors</h3> 
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-center align-items-center mt-20px">
+          <a 
+            *ngFor="let goldSponsor of goldSponsors" 
+            href="/u/{{ goldSponsor.name }}" 
+            class="font-weight-bold fc-blue m-10px" 
+            target="_blank">
+            
+            <img src="{{ goldSponsor.banner }}" style="max-height: 120px;" />
+            <div class="text-center">
+              <p class="fs-20px">{{ goldSponsor.name }}</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-center align-items-center mt-20px">
+          <a 
+            *ngFor="let silverSponsor of silverSponsors" 
+            href="/u/{{ silverSponsor.ProfileEntryResponse.Username }}" 
+            title="{{ silverSponsor.ProfileEntryResponse.Username }}"
+            class="m-10px" 
+            target="_blank">
+            
+            <img class="rounded" src="{{ 'https://node.desolabs.org/api/v0/get-single-profile-picture/' + silverSponsor.OwnerPublicKeyBase58Check }}" style="max-height: 72px;" />
+          </a>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-center align-items-center mt-20px">
+          <a 
+            *ngFor="let communitySponsor of communitySponsors" 
+            href="/u/{{ communitySponsor.ProfileEntryResponse.Username }}" 
+            class="ml-5px mr-5px" 
+            target="_blank">
+
+            {{ communitySponsor.ProfileEntryResponse.Username }}
+          </a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
 </div>

@@ -9,7 +9,7 @@
         <a
           class="ml-25px link--unstyled d-flex align-items-center"
           (click)="globalVars.isLeftBarMobileOpen = false"
-          [routerLink]="homeLink()"
+          [routerLink]="'/' + globalVars.RouteNames.LANDING"
           queryParamsHandling="merge"
         >
           <img
@@ -39,7 +39,7 @@
 
       <div>
         <left-bar-button
-          [link]="homeLink()"
+          [link]="'/' + globalVars.RouteNames.LANDING"
           [buttonLabel]="'Feeds'"
         ></left-bar-button>
 
@@ -132,7 +132,7 @@
         <a
           class="link--unstyled d-flex align-items-center"
           (click)="globalVars.isLeftBarMobileOpen = false"
-          [routerLink]="homeLink()"
+          [routerLink]="'/' + globalVars.RouteNames.LANDING"
           queryParamsHandling="merge"
         >
           <img
@@ -160,7 +160,7 @@
 
       <!-- Left Bar Buttons -->
       <left-bar-button
-        [link]="homeLink()"
+        [link]="'/' + globalVars.RouteNames.LANDING"
         [buttonLabel]="'Home'"
       ></left-bar-button>
     </div>
