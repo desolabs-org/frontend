@@ -21,6 +21,8 @@ import { ViewportScroller } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { LandingPageComponent } from './landing/page/landing-page.component';
 import { LandingIndexComponent } from './landing/index/landing-index.component';
+import { LandingAwardsComponent } from './landing/awards/landing-awards.component';
+import { LandingHackathonsComponent } from './landing/hackathons/landing-hackathons.component';
 import { PickACoinPageComponent } from './pick-a-coin-page/pick-a-coin-page.component';
 import { DiamondPostsPageComponent } from './diamond-posts-page/diamond-posts-page.component';
 import { TrendsPageComponent } from './trends-page/trends-page.component';
@@ -30,6 +32,10 @@ import { SupplyMonitoringStatsPageComponent } from './supply-monitoring-stats-pa
 import { DaoCoinsPageComponent } from './dao-coins/dao-coins-page/dao-coins-page.component';
 
 class RouteNames {
+  public static LANDING = 'landing';
+  public static LANDING_HACKATHONS = 'landing/hackathons';
+  public static LANDING_AWARDS = 'landing/awards';
+
   // Not sure if we should have a smarter schema for this, e.g. what happens if we have
   //   1. /:username/following
   //   2. /some/other/path/following
@@ -61,7 +67,6 @@ class RouteNames {
   public static CREATE_POST = 'posts/new';
   public static TOS = 'terms-of-service';
   public static ADMIN = 'admin';
-  public static LANDING = 'landing';
   public static DIAMONDS = 'diamonds';
   public static TRENDS = 'trends';
   public static NFT = 'nft';
@@ -75,6 +80,9 @@ class RouteNames {
 const routes: Routes = [
   { path: '', component: LandingIndexComponent, pathMatch: 'full' },
   { path: RouteNames.LANDING, component: LandingPageComponent, pathMatch: 'full' },
+  { path: 'hackathon/2022', component: LandingHackathonsComponent, pathMatch: 'full' },
+  { path: RouteNames.LANDING_HACKATHONS, component: LandingHackathonsComponent, pathMatch: 'full' },
+  { path: RouteNames.LANDING_AWARDS, component: LandingAwardsComponent, pathMatch: 'full' },
   {
     path: RouteNames.BROWSE,
     component: BrowsePageComponent,

@@ -92,8 +92,6 @@ import { RatingModule } from 'ngx-bootstrap/rating';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { LandingPageComponent } from './landing/page/landing-page.component';
-import { LandingIndexComponent } from './landing/index/landing-index.component';
 import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 import { UpdateProfileGetStarterDeSoComponent } from './update-profile-page/update-profile-get-starter-deso/update-profile-get-starter-deso.component';
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
@@ -151,7 +149,11 @@ import { DaoCoinsPageComponent } from './dao-coins/dao-coins-page/dao-coins-page
 import { TransferDAOCoinModalComponent } from './dao-coins/transfer-dao-coin-modal/transfer-dao-coin-modal.component';
 import { BurnDaoCoinModalComponent } from './dao-coins/burn-dao-coin-modal/burn-dao-coin-modal.component';
 
-import { LandingComponent } from './landing/landing.component';
+import { LandingPageComponent } from './landing/page/landing-page.component';
+import { LandingIndexComponent } from './landing/index/landing-index.component';
+import { LandingTopBarComponent } from './landing/top-bar/landing-top-bar.component';
+import { LandingAwardsComponent } from './landing/awards/landing-awards.component';
+import { LandingHackathonsComponent } from './landing/hackathons/landing-hackathons.component';
 
 // Modular Themes for DeSo by Carsen Klock @carsenk
 import { ThemeModule } from "./theme/theme.module";
@@ -239,7 +241,9 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     PageComponent,
     LandingPageComponent,
     LandingIndexComponent,
-    LandingComponent,
+    LandingTopBarComponent,
+    LandingAwardsComponent,
+    LandingHackathonsComponent,
     UpdateProfileGetStarterDeSoComponent,
     CommentModalComponent,
     WalletActionsDropdownComponent,

@@ -4,7 +4,7 @@ import { GlobalVarsService } from '../../global-vars.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-landing-index',
+  selector: 'landing-index',
   templateUrl: './landing-index.component.html',
 })
 export class LandingIndexComponent implements OnInit {

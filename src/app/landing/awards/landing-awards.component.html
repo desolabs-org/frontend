@@ -1,0 +1,48 @@
+<landing-top-bar></landing-top-bar>
+
+<div class="container-lg border-top border-left border-right landing__platform">
+
+  <div class="row">
+    <div class="col text-center">
+      <h1 class="font-weight-bold text-black slide-up-1 font-primary">
+        Community Recognition
+        <br class="d-sm-none" />
+         Awards
+      </h1>
+      <div class="mt-30px slide-up-1 d-flex justify-content-center">
+        <div class="col-md-6">
+          <p>
+            Celebrating and recognizing builders for the apps, websites, and tools they have recently built.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-30px slide-up-2 d-flex justify-content-center">
+        <div class="col-md-6 embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-ite" src="https://www.youtube.com/embed/y4851eQMb-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row container-lg mt-30px" animateOnScroll animationName="slide-up-3">
+    <div class="col mt-30px text-center">
+      <p class="text-grey9 fs-20px font-primary">
+        Big thank you to community supporters!
+      </p>
+      <div class="d-flex mt-20px justify-content-center flex-wrap">
+        <div *ngFor="let supporter of featuredSupporters" class="m-5px">
+        
+          <div 
+            class="feed-post__avatar br-12px"
+            title="{{supporter.ProfileEntryResponse.Username}}" 
+            [avatar]="supporter.ProfileEntryResponse.PublicKeyBase58Check">
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

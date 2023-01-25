@@ -1,0 +1,35 @@
+<div class="w-100 border-bottom px-10px">
+  <div class="container-lg landing__header">
+    <div class="d-flex align-items-center justify-content-between">
+      <a 
+        [routerLink]="'/' + RouteNames.LANDING"
+        style="color: inherit;" 
+        class="d-flex align-items-center">
+        <img
+          src="assets/img/logo-192.png"
+          class="deso mr-5px"
+          style="height: 32px"/>
+        <span 
+          class="font-weight-bold fs-24px" 
+          style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">DeSo Labs</span>
+      </a>
+      <div class="col d-flex justify-content-end align-items-center">
+        <a 
+          [routerLink]="'/' + RouteNames.LANDING_AWARDS"
+          class="landing__nav-link">
+          Awards
+        </a>
+        <a 
+          [routerLink]="'/' + RouteNames.LANDING_HACKATHONS"
+          class="landing__nav-link">
+          Hackathon
+        </a>
+        <a 
+          [routerLink]="'/' + RouteNames.BROWSE"
+          class="landing__nav-link">
+          Browse
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
