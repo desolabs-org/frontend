@@ -7,12 +7,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   BackendRoutes,
   PostEntryResponse,
-} from '../../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharedDialogs } from '../../../lib/shared-dialogs';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';

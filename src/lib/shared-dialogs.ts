@@ -1,10 +1,10 @@
-import RouteNamesService from '../app/route-names.service';
+import { RouteNames } from 'src/app/app-routing.module';
 import { SwalHelper } from './helpers/swal-helper';
-import { GlobalVarsService } from '../app/global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { Router } from '@angular/router';
 
-const RouteNames = RouteNamesService;
 export class SharedDialogs {
+
   static showCreateAccountToPostDialog(globalVars: GlobalVarsService) {
     return SwalHelper.fire({
       target: globalVars.getTargetComponentSelector(),

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalVarsService } from '../../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { MessagesInboxComponent } from '../messages-inbox.component';
-import { BackendApiService } from '../../../backend-api.service';
+import { BackendApiService } from 'src/lib/services/backend-api';
 
 @Component({
   selector: 'messages-filter-menu',

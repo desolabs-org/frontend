@@ -6,8 +6,8 @@ import {
   EventEmitter,
   OnChanges,
 } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
-import { BackendApiService, User } from '../../backend-api.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { BackendApiService, User } from 'src/lib/services/backend-api';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 

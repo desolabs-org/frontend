@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
-import { NFTEntryResponse, PostEntryResponse } from '../../backend-api.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { NFTEntryResponse, PostEntryResponse } from 'src/lib/services/backend-api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlatformLocation } from '@angular/common';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BackendApiService } from '../../backend-api.service';
+import { BackendApiService } from 'src/lib/services/backend-api';
 import { SwalHelper } from '../../../lib/helpers/swal-helper';
 import { filter } from 'lodash';
 

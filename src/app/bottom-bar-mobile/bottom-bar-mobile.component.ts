@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppRoutingModule } from '../app-routing.module';
-import { GlobalVarsService } from '../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 
 @Component({
   selector: 'bottom-bar-mobile',

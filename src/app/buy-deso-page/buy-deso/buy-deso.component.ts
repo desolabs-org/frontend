@@ -7,14 +7,14 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
-import { BackendApiService, BackendRoutes } from '../../backend-api.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { BackendApiService, BackendRoutes } from 'src/lib/services/backend-api';
 import { sprintf } from 'sprintf-js';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { SwalHelper } from '../../../lib/helpers/swal-helper';
 import Swal from 'sweetalert2';
-import { IdentityService } from '../../identity.service';
+import { IdentityService } from 'src/lib/services/identity';
 
 class Messages {
   static INCORRECT_PASSWORD = `The password you entered was incorrect.`;

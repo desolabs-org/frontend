@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { GlobalVarsService } from '../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   NFTEntryResponse,
   PostEntryResponse,
   ProfileEntryResponse,
-} from '../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { orderBy } from 'lodash';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';

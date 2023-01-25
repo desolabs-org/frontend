@@ -1,16 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { GlobalVarsService } from '../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { BidPlacedModalComponent } from '../bid-placed-modal/bid-placed-modal.component';
 import {
   BackendApiService,
   NFTEntryResponse,
   PostEntryResponse,
-} from '../backend-api.service';
+} from 'src/lib/services/backend-api';
 import * as _ from 'lodash';
 import { Router } from '@angular/router';
 import { filter, take } from 'rxjs/operators';
-import { InfiniteScroller } from '../infinite-scroller';
+import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 import { IAdapter, IDatasource } from 'ngx-ui-scroll';
 
 @Component({

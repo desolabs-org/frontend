@@ -1,8 +1,8 @@
 import { EmbedUrlParserService } from './embed-url-parser-service';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { BackendApiService } from '../../../app/backend-api.service';
-import { GlobalVarsService } from '../../../app/global-vars.service';
+import { BackendApiService } from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { RouterModule } from '@angular/router';
 
 describe('EmbedUrlParserService', () => {

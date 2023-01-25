@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   NFTEntryResponse,
   PostEntryResponse,
-} from '../../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { Datasource, IAdapter, IDatasource } from 'ngx-ui-scroll';
 import * as _ from 'lodash';
 import { AppRoutingModule } from '../../app-routing.module';
-import { InfiniteScroller } from 'src/app/infinite-scroller';
+import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 
 @Component({
   selector: 'app-notifications-list',

@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { GlobalVarsService } from '../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   NFTBidEntryResponse,
   NFTEntryResponse,
   PostEntryResponse,
-} from '../backend-api.service';
+} from 'src/lib/services/backend-api';
 import * as _ from 'lodash';
 import { of } from 'rxjs';
 import { concatMap, filter, last, map, take } from 'rxjs/operators';

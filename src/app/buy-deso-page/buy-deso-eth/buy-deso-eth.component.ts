@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
-import { BackendApiService } from '../../backend-api.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { BackendApiService } from 'src/lib/services/backend-api';
 import { sprintf } from 'sprintf-js';
 import { SwalHelper } from '../../../lib/helpers/swal-helper';
-import { IdentityService } from '../../identity.service';
+import { IdentityService } from 'src/lib/services/identity';
 import { BuyDeSoComponent } from '../buy-deso/buy-deso.component';
 import { fromWei, hexToNumber, toHex, toBN, toWei } from 'web3-utils';
 import { Hex } from 'web3-utils/types';

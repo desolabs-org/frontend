@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BackendApiService } from '../backend-api.service';
-import { GlobalVarsService } from '../global-vars.service';
+import { BackendApiService } from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { InfiniteScroller } from '../infinite-scroller';
+import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 import { IAdapter, IDatasource } from 'ngx-ui-scroll';
 
 @Component({

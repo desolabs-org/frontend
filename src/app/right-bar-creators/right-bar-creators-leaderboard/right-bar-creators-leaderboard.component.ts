@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RightBarCreatorsComponent } from '../right-bar-creators.component';
 

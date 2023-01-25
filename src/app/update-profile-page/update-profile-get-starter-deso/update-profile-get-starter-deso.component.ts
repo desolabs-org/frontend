@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { RouteNames } from '../../app-routing.module';
-import { IdentityService } from '../../identity.service';
+import { IdentityService } from 'src/lib/services/identity';
 
 @Component({
   selector: 'update-profile-get-starter-deso',

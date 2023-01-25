@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalVarsService } from '../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { AppRoutingModule } from '../app-routing.module';
 import { Datasource, IDatasource } from 'ngx-ui-scroll';
-import { BackendApiService } from '../backend-api.service';
+import { BackendApiService } from 'src/lib/services/backend-api';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
-import { BackendApiService } from '../../backend-api.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { BackendApiService } from 'src/lib/services/backend-api';
 import { AppRoutingModule } from '../../app-routing.module';
 import { CanPublicKeyFollowTargetPublicKeyHelper } from '../../../lib/helpers/follows/can_public_key_follow_target_public_key_helper';
 import { IAdapter, IDatasource } from 'ngx-ui-scroll';
 import { Title } from '@angular/platform-browser';
-import { InfiniteScroller } from 'src/app/infinite-scroller';
+import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 import { environment } from 'src/environments/environment';
 
 @Component({

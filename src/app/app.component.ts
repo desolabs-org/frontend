@@ -4,10 +4,10 @@ import {
   HostListener,
   OnInit,
 } from '@angular/core';
-import { BackendApiService, User } from './backend-api.service';
-import { GlobalVarsService } from './global-vars.service';
+import { BackendApiService, User } from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IdentityService } from './identity.service';
+import { IdentityService } from 'src/lib/services/identity';
 import * as _ from 'lodash';
 import { environment } from '../environments/environment';
 import { ThemeService } from './theme/theme.service';

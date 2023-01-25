@@ -8,11 +8,11 @@ import {
 } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   ProfileEntryResponse,
-} from '../../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { dynamicMaxValidator } from '../../../lib/validators/dynamic-max-validator';

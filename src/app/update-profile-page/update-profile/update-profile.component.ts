@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BackendApiService } from '../../backend-api.service';
+import { BackendApiService } from 'src/lib/services/backend-api';
 import { SwalHelper } from '../../../lib/helpers/swal-helper';
 import { AppRoutingModule, RouteNames } from '../../app-routing.module';
 import { Title } from '@angular/platform-browser';

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ConfettiSvg, GlobalVarsService } from '../global-vars.service';
+import { ConfettiSvg, GlobalVarsService } from 'src/lib/services/global-vars';
 import { Router } from '@angular/router';
 
 @Component({

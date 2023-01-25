@@ -6,8 +6,8 @@ import {
   ChangeDetectorRef,
   AfterViewChecked,
 } from '@angular/core';
-import { GlobalVarsService } from '../global-vars.service';
-import { BackendApiService } from '../backend-api.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { BackendApiService } from 'src/lib/services/backend-api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { tap, finalize, first } from 'rxjs/operators';

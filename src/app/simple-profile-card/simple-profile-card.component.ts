@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GlobalVarsService } from '../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { Router } from '@angular/router';
-import { ProfileEntryResponse } from '../backend-api.service';
+import { ProfileEntryResponse } from 'src/lib/services/backend-api';
 
 @Component({
   selector: 'simple-profile-card',

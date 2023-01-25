@@ -1,13 +1,13 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { GlobalVarsService } from '../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { AppRoutingModule, RouteNames } from '../app-routing.module';
 import {
   BackendApiService,
   BalanceEntryResponse,
-} from '../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InfiniteScroller } from '../infinite-scroller';
+import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 import { IAdapter, IDatasource } from 'ngx-ui-scroll';
 import { Subscription } from 'rxjs';
 import { SwalHelper } from '../../lib/helpers/swal-helper';

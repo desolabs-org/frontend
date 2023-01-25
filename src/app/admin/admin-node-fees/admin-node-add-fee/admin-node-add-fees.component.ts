@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { GlobalVarsService } from '../../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   ProfileEntryResponse,
   TransactionFee,
-} from '../../../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { SwalHelper } from '../../../../lib/helpers/swal-helper';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl, Title } from '@angular/platform-browser';
-import { GlobalVarsService } from 'src/app/global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { environment } from 'src/environments/environment';
 
 @Component({

@@ -10,9 +10,11 @@ import { TextFieldModule } from "@angular/cdk/text-field";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BackendApiService } from './backend-api.service';
-import { GlobalVarsService } from './global-vars.service';
-import { IdentityService } from './identity.service';
+
+import { BackendApiService } from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { IdentityService } from 'src/lib/services/identity';
+
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 import { ManageFollowsComponent } from './manage-follows-page/manage-follows/manage-follows.component';
 import { ManageFollowsPageComponent } from './manage-follows-page/manage-follows-page.component';
@@ -20,7 +22,6 @@ import { FollowButtonComponent } from './follow-button/follow-button.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { BrowsePageComponent } from './browse-page/browse-page.component';
 import { FeedComponent } from './feed/feed.component';
-import { LeftBarComponent } from './left-bar/left-bar.component';
 import { RightBarCreatorsComponent } from './right-bar-creators/right-bar-creators.component';
 import { FeedCreatePostComponent } from './feed/feed-create-post/feed-create-post.component';
 import { FeedPostComponent } from './feed/feed-post/feed-post.component';
@@ -37,7 +38,9 @@ import { CreatorProfileHodlersComponent } from './creator-profile-page/creator-p
 import { CreatorProfilePostsComponent } from './creator-profile-page/creator-profile-posts/creator-profile-posts.component';
 import { TabSelectorComponent } from './tab-selector/tab-selector.component';
 import { CreatorProfileTopCardComponent } from './creator-profile-page/creator-profile-top-card/creator-profile-top-card.component';
-import { LeftBarButtonComponent } from './left-bar/left-bar-button/left-bar-button.component';
+import { LeftBarComponent } from './left-bar/left-bar.component';
+import { LeftBarButtonComponent } from './left-bar/button/left-bar-button.component';
+import { LeftBarMobileComponent } from './left-bar/mobile/left-bar-mobile.component';
 import { TradeCreatorPageComponent } from './trade-creator-page/trade-creator-page.component';
 import { TradeCreatorComponent } from './trade-creator-page/trade-creator/trade-creator.component';
 import { BuyDeSoComponent } from './buy-deso-page/buy-deso/buy-deso.component';
@@ -57,7 +60,6 @@ import { PostThreadComponent } from './post-thread-page/post-thread/post-thread.
 import { UpdateProfileComponent } from './update-profile-page/update-profile/update-profile.component';
 import { RightBarCreatorsLeaderboardComponent } from './right-bar-creators/right-bar-creators-leaderboard/right-bar-creators-leaderboard.component';
 import { BottomBarMobileComponent } from './bottom-bar-mobile/bottom-bar-mobile.component';
-import { LeftBarMobileComponent } from './left-bar-mobile/left-bar-mobile.component';
 import { TransferDeSoPageComponent } from './transfer-deso-page/transfer-deso-page.component';
 import { TransferDeSoComponent } from './transfer-deso/transfer-deso.component';
 import { BuyDeSoLoggedOutComponent } from './buy-deso-page/buy-deso-logged-out/buy-deso-logged-out.component';

@@ -13,13 +13,13 @@ import {
   NFTEntryResponse,
   PostEntryResponse,
   ProfileEntryResponse,
-} from '../../backend-api.service';
-import { GlobalVarsService } from '../../global-vars.service';
+} from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { IAdapter, IDatasource } from 'ngx-ui-scroll';
 import * as _ from 'lodash';
-import { InfiniteScroller } from '../../infinite-scroller';
+import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 import { of, Subscription } from 'rxjs';
 import { SwalHelper } from '../../../lib/helpers/swal-helper';
 

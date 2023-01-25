@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import {
   BackendApiService,
   ProfileEntryResponse,
-} from '../backend-api.service';
-import { GlobalVarsService } from '../global-vars.service';
+} from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';

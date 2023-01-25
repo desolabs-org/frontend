@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GlobalVarsService } from '../../global-vars.service';
-import { BackendApiService } from '../../backend-api.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { BackendApiService } from 'src/lib/services/backend-api';
 import { CreatorCoinTrade } from '../../../lib/trade-creator-page/creator-coin-trade';
 import { FollowService } from '../../../lib/services/follow/follow.service';
 import { of } from 'rxjs';

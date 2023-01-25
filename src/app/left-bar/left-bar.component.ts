@@ -5,11 +5,11 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { GlobalVarsService } from '../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { AppRoutingModule, RouteNames } from '../app-routing.module';
 import { MessagesInboxComponent } from '../messages-page/messages-inbox/messages-inbox.component';
-import { IdentityService } from '../identity.service';
-import { BackendApiService } from '../backend-api.service';
+import { IdentityService } from 'src/lib/services/identity';
+import { BackendApiService } from 'src/lib/services/backend-api';
 import { Router } from '@angular/router';
 import { SwalHelper } from '../../lib/helpers/swal-helper';
 import { environment } from 'src/environments/environment';
@@ -17,7 +17,6 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'left-bar',
   templateUrl: './left-bar.component.html',
-  styleUrls: ['./left-bar.component.sass'],
 })
 export class LeftBarComponent {
   MessagesInboxComponent = MessagesInboxComponent;

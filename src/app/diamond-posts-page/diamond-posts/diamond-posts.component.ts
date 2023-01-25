@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IAdapter, IDatasource } from 'ngx-ui-scroll';
 import {
@@ -7,9 +7,9 @@ import {
   DiamondsPost,
   PostEntryResponse,
   ProfileEntryResponse,
-} from '../../backend-api.service';
+} from 'src/lib/services/backend-api';
 import * as _ from 'lodash';
-import { InfiniteScroller } from 'src/app/infinite-scroller';
+import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 
 @Component({
   selector: 'diamond-posts',

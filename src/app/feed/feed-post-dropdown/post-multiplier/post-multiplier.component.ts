@@ -3,8 +3,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import {
   BackendApiService,
   PostEntryResponse,
-} from '../../../backend-api.service';
-import { GlobalVarsService } from '../../../global-vars.service';
+} from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 
 @Component({
   selector: 'post-multiplier',

@@ -3,15 +3,14 @@ import {
   BackendApiService,
   ProfileEntryResponse,
   BalanceEntryResponse,
-} from '../../backend-api.service';
-import { GlobalVarsService } from '../../global-vars.service';
+} from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { IDatasource, IAdapter } from 'ngx-ui-scroll';
-import { InfiniteScroller } from 'src/app/infinite-scroller';
+import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 
 @Component({
   selector: 'creator-profile-hodlers',
   templateUrl: './creator-profile-hodlers.component.html',
-  styleUrls: ['./creator-profile-hodlers.component.scss'],
 })
 export class CreatorProfileHodlersComponent {
   static PAGE_SIZE = 100;

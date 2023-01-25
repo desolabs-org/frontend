@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {
   BackendApiService,
   ProfileEntryResponse,
-} from '../backend-api.service';
-import { GlobalVarsService } from '../global-vars.service';
+} from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { sprintf } from 'sprintf-js';
 import { SwalHelper } from '../../lib/helpers/swal-helper';
 import { Title } from '@angular/platform-browser';

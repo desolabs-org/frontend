@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CreatorCoinTrade } from '../../../lib/trade-creator-page/creator-coin-trade';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 
 @Component({
   selector: 'trade-creator-logged-out',

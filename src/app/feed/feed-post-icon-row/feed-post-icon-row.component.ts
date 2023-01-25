@@ -6,11 +6,11 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { ConfettiSvg, GlobalVarsService } from '../../global-vars.service';
+import { ConfettiSvg, GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   PostEntryResponse,
-} from '../../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { SharedDialogs } from '../../../lib/shared-dialogs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlatformLocation } from '@angular/common';

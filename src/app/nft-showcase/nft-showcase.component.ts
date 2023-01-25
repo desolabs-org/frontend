@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {
   BackendApiService,
   NFTCollectionResponse,
-} from '../backend-api.service';
-import { GlobalVarsService } from '../global-vars.service';
-import { InfiniteScroller } from '../infinite-scroller';
+} from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 import { IAdapter, IDatasource } from 'ngx-ui-scroll';
 import { uniqBy } from 'lodash';
 

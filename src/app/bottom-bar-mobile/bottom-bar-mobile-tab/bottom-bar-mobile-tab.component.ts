@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NavigationService } from '../../../lib/services/navigation-service';
+import { NavigationService } from 'src/lib/services/navigation';
 
 @Component({
   selector: 'bottom-bar-mobile-tab',

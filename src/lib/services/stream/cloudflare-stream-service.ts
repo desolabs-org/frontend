@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BackendApiService } from '../../../app/backend-api.service';
+import { BackendApiService } from 'src/lib/services/backend-api';
 import { Observable, of } from 'rxjs';
-import { GlobalVarsService } from '../../../app/global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 

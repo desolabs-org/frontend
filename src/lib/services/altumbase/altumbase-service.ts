@@ -4,9 +4,9 @@ import {
   BackendApiService,
   ProfileEntryResponse,
   User,
-} from '../../../app/backend-api.service';
+} from 'src/lib/services/backend-api';
 import { Observable, of } from 'rxjs';
-import { GlobalVarsService } from '../../../app/global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { map, switchMap } from 'rxjs/operators';
 import * as _ from 'lodash';
 

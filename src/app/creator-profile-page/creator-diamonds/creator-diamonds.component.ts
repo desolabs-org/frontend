@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   ProfileEntryResponse,
-} from '../../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { Datasource, IAdapter, IDatasource } from 'ngx-ui-scroll';
 import { Subscription } from 'rxjs';
 

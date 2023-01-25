@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   BalanceEntryResponse,
   DAOCoinOperationTypeString,
-} from '../../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { toBN } from 'web3-utils';
 
 @Component({

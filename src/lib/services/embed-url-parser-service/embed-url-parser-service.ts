@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BackendApiService } from '../../../app/backend-api.service';
-import { GlobalVarsService } from '../../../app/global-vars.service';
+import { BackendApiService } from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 

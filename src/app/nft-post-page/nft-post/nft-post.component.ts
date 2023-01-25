@@ -1,13 +1,13 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   NFTBidData,
   NFTBidEntryResponse,
   NFTEntryResponse,
   PostEntryResponse,
-} from '../../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { Title } from '@angular/platform-browser';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { SwalHelper } from '../../../lib/helpers/swal-helper';

@@ -8,12 +8,12 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { GlobalVarsService } from '../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   BackendApiService,
   ProfileEntryResponse,
-} from '../backend-api.service';
+} from 'src/lib/services/backend-api';
 import * as _ from 'lodash';
 
 const DEBOUNCE_TIME_MS = 300;

@@ -1,8 +1,8 @@
-import { GlobalVarsService } from '../../app/global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   ProfileEntryResponse,
-} from '../../app/backend-api.service';
+} from 'src/lib/services/backend-api';
 import { FormControl, Validators } from '@angular/forms';
 
 export class CreatorCoinTrade {

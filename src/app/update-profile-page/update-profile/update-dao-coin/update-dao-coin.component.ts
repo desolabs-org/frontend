@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { GlobalVarsService } from 'src/app/global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import {
   BackendApiService,
@@ -7,7 +7,7 @@ import {
   DAOCoinEntryResponse,
   DAOCoinOperationTypeString,
   TransferRestrictionStatusString,
-} from 'src/app/backend-api.service';
+} from 'src/lib/services/backend-api';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, throwError, zip } from 'rxjs';

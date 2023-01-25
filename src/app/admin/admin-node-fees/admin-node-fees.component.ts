@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   ProfileEntryResponse,
   TransactionFee,
-} from '../../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { SwalHelper } from '../../../lib/helpers/swal-helper';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { AdminNodeAddFeesComponent } from './admin-node-add-fee/admin-node-add-fees.component';

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CreatorCoinTrade } from '../../../lib/trade-creator-page/creator-coin-trade';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { FollowService } from '../../../lib/services/follow/follow.service';
 
 @Component({

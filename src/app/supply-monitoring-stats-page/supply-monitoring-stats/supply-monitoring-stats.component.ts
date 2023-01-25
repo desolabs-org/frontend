@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import {
   BackendApiService,
   RichListEntryResponse,
-} from '../../backend-api.service';
-import { GlobalVarsService } from '../../global-vars.service';
+} from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { Datasource, IAdapter, IDatasource } from 'ngx-ui-scroll';
 
 @Component({

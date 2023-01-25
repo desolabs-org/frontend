@@ -11,12 +11,12 @@ import {
   BackendApiService,
   PostEntryResponse,
   ProfileEntryResponse,
-} from '../../backend-api.service';
-import { GlobalVarsService } from '../../global-vars.service';
+} from 'src/lib/services/backend-api';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { IAdapter, IDatasource } from 'ngx-ui-scroll';
-import { InfiniteScroller } from 'src/app/infinite-scroller';
+import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 import * as _ from 'lodash';
 
 @Component({

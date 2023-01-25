@@ -7,13 +7,13 @@ import {
   ChangeDetectorRef,
   AfterViewInit,
 } from '@angular/core';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   DeSoNode,
   NFTEntryResponse,
   PostEntryResponse,
-} from '../../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { AppRoutingModule } from '../../app-routing.module';
 import { Router } from '@angular/router';
 import { SwalHelper } from '../../../lib/helpers/swal-helper';

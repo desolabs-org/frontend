@@ -1,9 +1,9 @@
 import { Component, Renderer2, ElementRef, ViewChild } from '@angular/core';
-import { GlobalVarsService } from '../global-vars.service';
-import { BackendApiService } from '../backend-api.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { BackendApiService } from 'src/lib/services/backend-api';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
-import { IdentityService } from '../identity.service';
+import { IdentityService } from 'src/lib/services/identity';
 import { filter, get } from 'lodash';
 
 @Component({

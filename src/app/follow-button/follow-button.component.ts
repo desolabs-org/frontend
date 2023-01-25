@@ -6,8 +6,8 @@
 // TODO: fix this ^^
 
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { GlobalVarsService } from '../global-vars.service';
-import { BackendApiService } from '../backend-api.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { BackendApiService } from 'src/lib/services/backend-api';
 import { Input } from '@angular/core';
 import { FollowChangeObservableResult } from '../../lib/observable-results/follow-change-observable-result';
 import { Subscription } from 'rxjs';

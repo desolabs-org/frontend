@@ -6,11 +6,11 @@ import {
   NFTBidEntryResponse,
   NFTEntryResponse,
   PostEntryResponse,
-} from '../backend-api.service';
+} from 'src/lib/services/backend-api';
 import { of } from 'rxjs';
 import { concatMap, filter, last, map, take } from 'rxjs/operators';
 import { NftSoldModalComponent } from '../nft-sold-modal/nft-sold-modal.component';
-import { GlobalVarsService } from '../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 
 @Component({
   selector: 'add-unlockable-modal',

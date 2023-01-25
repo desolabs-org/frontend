@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppRoutingModule } from '../../app-routing.module';
-import { GlobalVarsService } from '../../global-vars.service';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { Router } from '@angular/router';
 
 @Component({
