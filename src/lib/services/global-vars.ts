@@ -1066,10 +1066,6 @@ export class GlobalVarsService {
         const nanosPerUnit = GlobalVarsService.NANOS_PER_UNIT;
         this.nanosPerUSDExchangeRate =
           nanosPerUnit / (this.ExchangeUSDCentsPerDeSo / 100);
-        this.desoToUSDExchangeRateToDisplay = this.nanosToUSD(
-          nanosPerUnit,
-          null
-        );
         this.desoToUSDExchangeRateToDisplay = this.nanosToUSD(nanosPerUnit, 2);
       },
       (error) => {

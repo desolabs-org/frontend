@@ -41,7 +41,7 @@ export class RightBarCreatorsComponent implements OnInit {
     },
   };
   static DIAMONDS: RightBarTabOption = {
-    name: 'Top Daily Diamonded Creators',
+    name: 'Daily Diamonded Creators',
     width: 275,
     poweredBy: {
       name: 'Altumbase',
@@ -50,7 +50,7 @@ export class RightBarCreatorsComponent implements OnInit {
   };
 
   static ALL_TIME: RightBarTabOption = {
-    name: 'Top Creators All Time',
+    name: 'Top Creator Coins',
     width: 210,
     poweredBy: null,
   };
