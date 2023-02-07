@@ -37,7 +37,7 @@ npm start -- --disable-host-check
 
 2. Get a SSL cert for `*.dev.desolabs.org`:
 ```
-genpkey -out dev-desolabs.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
+openssl genpkey -out dev-desolabs.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
 openssl req -new -key dev-desolabs.key -out dev-desolabs.csr
 openssl x509 -req -days 3650 -in dev-desolabs.csr -signkey dev-desolabs.key -out dev-desolabs.crt
 ```

@@ -942,7 +942,7 @@ export class GlobalVarsService {
     );
 
     if (!this.localNode) {
-      this.localNode = 'https://node.desolabs.org';
+      this.localNode = environment.node.url;
 
       this.backendApi.SetStorage(
         this.backendApi.LastLocalNodeKey,

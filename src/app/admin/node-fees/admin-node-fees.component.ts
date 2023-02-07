@@ -8,12 +8,11 @@ import {
 } from 'src/lib/services/backend-api';
 import { SwalHelper } from '../../../lib/helpers/swal-helper';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { AdminNodeAddFeesComponent } from './admin-node-add-fee/admin-node-add-fees.component';
+import { AdminNodeAddFeesComponent } from './add-fees/admin-node-add-fees.component';
 
 @Component({
   selector: 'admin-node-fees',
   templateUrl: './admin-node-fees.component.html',
-  styleUrls: ['./admin-node-fees.component.scss'],
 })
 export class AdminNodeFeesComponent implements OnInit {
   static FEES = 'Fees';

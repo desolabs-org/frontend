@@ -17,7 +17,7 @@ export class LandingPageComponent implements OnInit {
     {
       name: 'kanshi',
       pic:
-        'https://node.desolabs.org/api/v0/get-single-profile-picture/BC1YLhwpmWkgk2iM9yTSxzgUVhYjgessSPTiVHkkK9pMrhweqJnWrvK',
+        environment.node.url + '/api/v0/get-single-profile-picture/BC1YLhwpmWkgk2iM9yTSxzgUVhYjgessSPTiVHkkK9pMrhweqJnWrvK',
       text: 'Hello world! Wen moon?',
       when: '4h',
       comments: '25',
@@ -29,7 +29,7 @@ export class LandingPageComponent implements OnInit {
     {
       name: 'SLAVA',
       pic:
-        'https://node.desolabs.org/api/v0/get-single-profile-picture/BC1YLj766XEzYFsv3wQdh8Xi2E5tmy4gY1yVBN9g5h73cm7PMRXKbFU',
+        environment.node.url + '/api/v0/get-single-profile-picture/BC1YLj766XEzYFsv3wQdh8Xi2E5tmy4gY1yVBN9g5h73cm7PMRXKbFU',
       text: "GoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoD Beautiful Morning De$o!!!!!",
       when: '20h',
       comments: '23',
@@ -40,7 +40,7 @@ export class LandingPageComponent implements OnInit {
     {
       name: 'mashelenn',
       pic:
-        'https://node.desolabs.org/api/v0/get-single-profile-picture/BC1YLgo6QYnGzGDVEbcs8fAcuJAHxMBHRJNABMbpnhexkvANKzsMZHq',
+        environment.node.url + '/api/v0/get-single-profile-picture/BC1YLgo6QYnGzGDVEbcs8fAcuJAHxMBHRJNABMbpnhexkvANKzsMZHq',
       text: 'The result does not depend on the number of working days in the year. The result depends on the number of right decisions and actions.',
       when: '1d',
       comments: '14',
@@ -50,7 +50,7 @@ export class LandingPageComponent implements OnInit {
     {
       name: 'SeanSlater',
       pic:
-        'https://node.desolabs.org/api/v0/get-single-profile-picture/BC1YLirtb7CjNwVmWEt7t1487Qpo4LoPBDEGvfqYwXXZcj2dDLNMBVU',
+        environment.node.url + '/api/v0/get-single-profile-picture/BC1YLirtb7CjNwVmWEt7t1487Qpo4LoPBDEGvfqYwXXZcj2dDLNMBVU',
       text:
         "Seeing a flurry of commits to the DeSo code - looking forward to the next few releases, always exciting when new things are coming!",
       when: '2d',
@@ -61,7 +61,7 @@ export class LandingPageComponent implements OnInit {
     {
       name: 'znmead',
       pic:
-        'https://node.desolabs.org/api/v0/get-single-profile-picture/BC1YLhhdmDEy6TqsRAmWuQazjeQVAW2HuMDH3sNe8Cp6tVKZXvwibSg',
+        environment.node.url + '/api/v0/get-single-profile-picture/BC1YLhhdmDEy6TqsRAmWuQazjeQVAW2HuMDH3sNe8Cp6tVKZXvwibSg',
       text: 'Happy New Moon. Set your intentions, Rabbits.',
       when: '2d',
       comments: '82',

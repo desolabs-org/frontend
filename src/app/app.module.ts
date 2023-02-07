@@ -78,8 +78,6 @@ import { TopBarMobileHamburgerMenuComponent } from './top-bar-mobile/top-bar-mob
 import { TradeCreatorLoggedOutComponent } from './trade-creator-page/trade-creator-logged-out/trade-creator-logged-out.component';
 import { TosPageComponent } from './tos-page/tos-page.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AdminPageComponent } from './admin-page/admin-page.component';
-import { AdminComponent } from './admin/admin.component';
 import { NetworkInfoComponent } from './network-info/network-info.component';
 import { SanitizeAndAutoLinkPipe } from '../lib/pipes/sanitize-and-auto-link-pipe';
 import { SanitizeEmbedPipe } from '../lib/pipes/sanitize-embed-pipe';
@@ -137,8 +135,6 @@ import { OwnedNftsListComponent } from './wallet/owned-nfts-list/owned-nfts-list
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BuyDeSoEthComponent } from './buy-deso-page/buy-deso-eth/buy-deso-eth.component';
 import { SanitizeVideoUrlPipe } from '../lib/pipes/sanitize-video-url-pipe';
-import { AdminNodeFeesComponent } from './admin/admin-node-fees/admin-node-fees.component';
-import { AdminNodeAddFeesComponent } from './admin/admin-node-fees/admin-node-add-fee/admin-node-add-fees.component';
 import { SupplyMonitoringStatsPageComponent } from './supply-monitoring-stats-page/supply-monitoring-stats-page.component';
 import { SupplyMonitoringStatsComponent } from './supply-monitoring-stats-page/supply-monitoring-stats/supply-monitoring-stats.component';
 import { TransferNftModalComponent } from './transfer-nft-modal/transfer-nft-modal.component';
@@ -157,10 +153,16 @@ import { LandingTopBarComponent } from './landing/top-bar/landing-top-bar.compon
 import { LandingAwardsComponent } from './landing/awards/landing-awards.component';
 import { LandingHackathonsComponent } from './landing/hackathons/landing-hackathons.component';
 
+import { AdminPageComponent } from './admin/page/admin-page.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminNodeFeesComponent } from './admin/node-fees/admin-node-fees.component';
+import { AdminNodeAddFeesComponent } from './admin/node-fees/add-fees/admin-node-add-fees.component';
+
 // Modular Themes for DeSo by Carsen Klock @carsenk
 import { ThemeModule } from "./theme/theme.module";
 import { Theme } from "./theme/symbols";
 import {PostMultiplierComponent} from "./feed/feed-post-dropdown/post-multiplier/post-multiplier.component";
+
 const lightTheme: Theme = { key: "light", name: "Light Theme" };
 const icydarkTheme: Theme = { key: "icydark", name: "Icy Dark Theme" };
 const cakeTheme: Theme = { key: "cake", name: "Cake Theme" };
@@ -169,6 +171,18 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
 @NgModule({
   declarations: [
     AppComponent,
+
+    LandingPageComponent,
+    LandingIndexComponent,
+    LandingTopBarComponent,
+    LandingAwardsComponent,
+    LandingHackathonsComponent,
+
+    AdminPageComponent,
+    AdminComponent,
+    AdminNodeFeesComponent,
+    AdminNodeAddFeesComponent,
+
     UploadDirective,
     TermsOfServiceComponent,
     ManageFollowsComponent,
@@ -233,19 +247,12 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     TopBarMobileHamburgerMenuComponent,
     TradeCreatorLoggedOutComponent,
     TosPageComponent,
-    AdminPageComponent,
-    AdminComponent,
     NetworkInfoComponent,
     SanitizeAndAutoLinkPipe,
     SanitizeEmbedPipe,
     SettingsComponent,
     NotificationsListComponent,
     PageComponent,
-    LandingPageComponent,
-    LandingIndexComponent,
-    LandingTopBarComponent,
-    LandingAwardsComponent,
-    LandingHackathonsComponent,
     UpdateProfileGetStarterDeSoComponent,
     CommentModalComponent,
     WalletActionsDropdownComponent,
@@ -285,8 +292,6 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     BuyDeSoEthComponent,
     SanitizeVideoUrlPipe,
     PostMultiplierComponent,
-    AdminNodeFeesComponent,
-    AdminNodeAddFeesComponent,
     SupplyMonitoringStatsPageComponent,
     SupplyMonitoringStatsComponent,
     TransferNftAcceptModalComponent,

@@ -1,5 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Router, Scroll } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
+
+import { filter } from 'rxjs/operators';
+
+import { LandingPageComponent } from './landing/page/landing-page.component';
+import { LandingIndexComponent } from './landing/index/landing-index.component';
+import { LandingAwardsComponent } from './landing/awards/landing-awards.component';
+import { LandingHackathonsComponent } from './landing/hackathons/landing-hackathons.component';
+
+import { AdminPageComponent } from './admin/page/admin-page.component';
 
 import { ManageFollowsPageComponent } from './manage-follows-page/manage-follows-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
@@ -16,13 +26,6 @@ import { PostThreadPageComponent } from './post-thread-page/post-thread-page.com
 import { TransferDeSoPageComponent } from './transfer-deso-page/transfer-deso-page.component';
 import { CreatePostPageComponent } from './create-post-page/create-post-page.component';
 import { TosPageComponent } from './tos-page/tos-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
-import { ViewportScroller } from '@angular/common';
-import { filter } from 'rxjs/operators';
-import { LandingPageComponent } from './landing/page/landing-page.component';
-import { LandingIndexComponent } from './landing/index/landing-index.component';
-import { LandingAwardsComponent } from './landing/awards/landing-awards.component';
-import { LandingHackathonsComponent } from './landing/hackathons/landing-hackathons.component';
 import { PickACoinPageComponent } from './pick-a-coin-page/pick-a-coin-page.component';
 import { DiamondPostsPageComponent } from './diamond-posts-page/diamond-posts-page.component';
 import { TrendsPageComponent } from './trends-page/trends-page.component';
@@ -80,7 +83,7 @@ class RouteNames {
 const routes: Routes = [
   { path: '', component: LandingIndexComponent, pathMatch: 'full' },
   { path: RouteNames.LANDING, component: LandingPageComponent, pathMatch: 'full' },
-  { path: 'hackathon/2022', component: LandingHackathonsComponent, pathMatch: 'full' },
+  { path: 'hackathon/2022', component: LandingHackathonsComponent, pathMatch: 'full' }, // this is for compatibility of old links
   { path: RouteNames.LANDING_HACKATHONS, component: LandingHackathonsComponent, pathMatch: 'full' },
   { path: RouteNames.LANDING_AWARDS, component: LandingAwardsComponent, pathMatch: 'full' },
   {

@@ -17,7 +17,6 @@ import { FollowService } from '../../lib/services/follow/follow.service';
 @Component({
   selector: 'follow-button',
   templateUrl: './follow-button.component.html',
-  styleUrls: ['./follow-button.component.scss'],
 })
 export class FollowButtonComponent implements OnInit, OnDestroy {
   @Input() followedPubKeyBase58Check: string;
