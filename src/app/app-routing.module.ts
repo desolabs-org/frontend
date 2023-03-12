@@ -21,8 +21,8 @@ import { CreatePostPageComponent } from './post/create-post-page/create-post-pag
 
 import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
 import { MessagesPageComponent } from './messages-page/messages-page.component';
-import { CreatorProfilePageComponent } from './creator-profile-page/creator-profile-page.component';
-import { UpdateProfilePageComponent } from './creator-profile-page/update-profile-page/update-profile-page.component';
+import { ProfilePageComponent } from './profile/profile-page.component';
+import { UpdateProfilePageComponent } from './profile/update/update-profile-page.component';
 
 import { WalletPageComponent } from './wallet/wallet-page/wallet-page.component';
 
@@ -38,12 +38,14 @@ import { TradeCreatorPageComponent } from './trade-creator-page/trade-creator-pa
 import { TransferDeSoPageComponent } from './wallet/transfer-deso-page/transfer-deso-page.component';
 
 import { NftPostPageComponent } from './nft/nft-post-page/nft-post-page.component';
-import { DaoCoinsPageComponent } from './dao-coins/dao-coins-page/dao-coins-page.component';
+import { TokensPageComponent } from './tokens/page/tokens-page.component';
 
 class RouteNames {
   public static LANDING = 'landing';
   public static LANDING_HACKATHONS = 'landing/hackathons';
   public static LANDING_AWARDS = 'landing/awards';
+
+  public static NOT_FOUND = '404';
 
   // Not sure if we should have a smarter schema for this, e.g. what happens if we have
   //   1. /:username/following
@@ -67,11 +69,11 @@ class RouteNames {
   public static SELL_CREATOR = 'sell';
   public static UPDATE_PROFILE = 'update-profile';
   public static NOTIFICATIONS = 'notifications';
-  public static NOT_FOUND = '404';
   public static POSTS = 'posts';
   public static SEND_DESO = 'send-deso';
   // TODO: how do I make this /posts/new?
   public static CREATE_POST = 'posts/new';
+  
   public static TOS = 'terms-of-service';
   public static ADMIN = 'admin';
   public static NFT = 'nft';
@@ -79,7 +81,7 @@ class RouteNames {
   public static CREATE_PROFILE = 'create-profile';
   public static INVEST = 'invest';
   public static SUPPLY_STATS = 'supply-stats';
-  public static DAO = 'dao';
+  public static TOKENS = 'tokens';
 }
 
 const routes: Routes = [
@@ -91,7 +93,7 @@ const routes: Routes = [
   { path: RouteNames.FEEDS, component: FeedPageComponent, pathMatch: 'full' },
   {
     path: RouteNames.USER_PREFIX + '/:username',
-    component: CreatorProfilePageComponent,
+    component: ProfilePageComponent,
     pathMatch: 'full',
   },
   {
@@ -156,7 +158,7 @@ const routes: Routes = [
     component: TransferDeSoPageComponent,
     pathMatch: 'full',
   },
-  { path: RouteNames.DAO, component: DaoCoinsPageComponent, pathMatch: 'full' },
+  { path: RouteNames.TOKENS, component: TokensPageComponent, pathMatch: 'full' },
   { path: RouteNames.TOS, component: TosPageComponent, pathMatch: 'full' },
   { path: 'tos', component: TosPageComponent, pathMatch: 'full' },
   { path: RouteNames.ADMIN, component: AdminPageComponent, pathMatch: 'full' },

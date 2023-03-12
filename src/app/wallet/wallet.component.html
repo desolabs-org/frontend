@@ -85,7 +85,7 @@
   ></tab-selector>
 
   <owned-creator-coins-list *ngIf="activeTab == 'Coins'"></owned-creator-coins-list>
-  <owned-utility-coins-list *ngIf="activeTab == 'Tokens'"></owned-utility-coins-list>
+  <owned-tokens-list *ngIf="activeTab == 'Tokens'"></owned-tokens-list>
   <owned-nfts-list *ngIf="activeTab == 'NFTs'"></owned-nfts-list>
 </div>
 <div *ngIf="!globalVars.loggedInUser">

@@ -58,9 +58,9 @@ import { LeftBarMobileComponent } from './app-page/left-bar/mobile/left-bar-mobi
 import { RightBarCreatorsLeaderboardComponent } from './app-page/right-bar-creators/right-bar-creators-leaderboard/right-bar-creators-leaderboard.component';
 import { BottomBarMobileComponent } from './app-page/bottom-bar-mobile/bottom-bar-mobile.component';
 import { BottomBarMobileTabComponent } from './app-page/bottom-bar-mobile/bottom-bar-mobile-tab/bottom-bar-mobile-tab.component';
-import { TopBarMobileNavigationControlComponent } from './app-page/top-bar-mobile/top-bar-mobile-navigation-control/top-bar-mobile-navigation-control.component';
-import { TopBarMobileLogInOrSignUpComponent } from './app-page/top-bar-mobile/top-bar-mobile-log-in-or-sign-up/top-bar-mobile-log-in-or-sign-up.component';
-import { TopBarMobileHamburgerMenuComponent } from './app-page/top-bar-mobile/top-bar-mobile-hamburger-menu/top-bar-mobile-hamburger-menu.component';
+import { TopBarMobileNavigationControlComponent } from './app-page/top-bar-mobile/navigation-control/top-bar-mobile-navigation-control.component';
+import { TopBarMobileLogInOrSignUpComponent } from './app-page/top-bar-mobile/log-in-or-sign-up/top-bar-mobile-log-in-or-sign-up.component';
+import { TopBarMobileHamburgerMenuComponent } from './app-page/top-bar-mobile/hamburger-menu/top-bar-mobile-hamburger-menu.component';
 
 import { ManageFollowsComponent } from './manage-follows-page/manage-follows/manage-follows.component';
 import { ManageFollowsPageComponent } from './manage-follows-page/manage-follows-page.component';
@@ -87,7 +87,7 @@ import { WalletComponent } from './wallet/wallet.component';
 import { WalletActionsDropdownComponent } from './wallet/wallet-actions-dropdown/wallet-actions-dropdown.component';
 import { WalletPageComponent } from './wallet/wallet-page/wallet-page.component';
 import { OwnedCreatorCoinsListComponent } from './wallet/owned-creator-coins-list/owned-creator-coins-list.component';
-import { OwnedUtilityCoinsListComponent } from './wallet/owned-utility-coins-list/owned-utility-coins-list.component';
+import { OwnedTokensListComponent } from './wallet/owned-tokens-list/owned-tokens-list.component';
 import { OwnedNftsListComponent } from './wallet/owned-nfts-list/owned-nfts-list.component';
 import { BuyDeSoPageComponent } from './wallet/buy-deso-page/buy-deso-page.component';
 import { BuyDeSoComponent } from './wallet/buy-deso-page/buy-deso/buy-deso.component';
@@ -102,14 +102,15 @@ import { MessagesPageComponent } from './messages-page/messages-page.component';
 
 import { SettingsPageComponent } from './settings/page/settings-page.component';
 
-import { CreatorProfilePageComponent } from './creator-profile-page/creator-profile-page.component';
-import { CreatorProfileDetailsComponent } from './creator-profile-page/creator-profile-details/creator-profile-details.component';
-import { CreatorProfileHodlersComponent } from './creator-profile-page/creator-profile-hodlers/creator-profile-hodlers.component';
-import { CreatorProfilePostsComponent } from './creator-profile-page/creator-profile-posts/creator-profile-posts.component';
-import { CreatorProfileTopCardComponent } from './creator-profile-page/creator-profile-top-card/creator-profile-top-card.component';
-import { UpdateProfilePageComponent } from './creator-profile-page/update-profile-page/update-profile-page.component';
-import { UpdateProfileComponent } from './creator-profile-page/update-profile-page/update-profile/update-profile.component';
-import { UpdateDaoCoinComponent } from './creator-profile-page/update-profile-page/update-profile/update-dao-coin/update-dao-coin.component';
+import { ProfilePageComponent } from './profile/profile-page.component';
+import { ProfileHodlersComponent } from './profile/hodlers/profile-hodlers.component';
+import { ProfilePostsComponent } from './profile/posts/profile-posts.component';
+import { ProfileTopCardComponent } from './profile/top-card/profile-top-card.component';
+import { UpdateProfilePageComponent } from './profile/update/update-profile-page.component';
+import { UpdateTokenSettingsComponent } from './profile/update/token-settings/update-token-settings.component';
+import { ProfileDiamondsComponent } from './profile/diamonds/profile-diamonds.component';
+import { ProfileNftsComponent } from './profile/nfts/profile-nfts.component';
+
 
 import { TradeCreatorPageComponent } from './trade-creator-page/trade-creator-page.component';
 import { TradeCreatorComponent } from './trade-creator-page/trade-creator/trade-creator.component';
@@ -120,12 +121,10 @@ import { TradeCreatorTableComponent } from './trade-creator-page/trade-creator-t
 
 import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
 
-
 import { MessagesInboxComponent } from './messages-page/messages-inbox/messages-inbox.component';
 import { MessagesThreadComponent } from './messages-page/messages-thread/messages-thread.component';
 import { MessageComponent } from './messages-page/message/message.component';
 import { MessagesThreadViewComponent } from './messages-page/messages-thread-view/messages-thread-view.component';
-
 
 import { TradeCreatorLoggedOutComponent } from './trade-creator-page/trade-creator-logged-out/trade-creator-logged-out.component';
 import { NetworkInfoComponent } from './admin/network-info/network-info.component';
@@ -136,11 +135,8 @@ import { NotificationsListComponent } from './notifications-page/notifications-l
 
 import { AppPageComponent } from './app-page/app-page.component';
 
-import { CreatorDiamondsComponent } from './creator-profile-page/creator-diamonds/creator-diamonds.component';
 import { MessagesFilterMenuComponent } from './messages-page/messages-inbox/messages-filter-menu/messages-filter-menu.component';
 import { SanitizeQRCodePipe } from '../lib/pipes/sanitize-qrcode-pipe';
-
-import { CreatorProfileNftsComponent } from './creator-profile-page/creator-profile-nfts/creator-profile-nfts.component';
 
 import { MintNftModalComponent } from './nft/mint-nft-modal/mint-nft-modal.component';
 import { CreateNftAuctionModalComponent } from './nft/create-nft-auction-modal/create-nft-auction-modal.component';
@@ -162,10 +158,10 @@ import { NftSelectSerialNumberComponent } from './nft/nft-select-serial-number/n
 
 import { SanitizeVideoUrlPipe } from 'src/lib/pipes/sanitize-video-url-pipe';
 
-import { DaoCoinsComponent } from './dao-coins/dao-coins.component';
-import { DaoCoinsPageComponent } from './dao-coins/dao-coins-page/dao-coins-page.component';
-import { TransferDAOCoinModalComponent } from './dao-coins/transfer-dao-coin-modal/transfer-dao-coin-modal.component';
-import { BurnDaoCoinModalComponent } from './dao-coins/burn-dao-coin-modal/burn-dao-coin-modal.component';
+import { TokensComponent } from './tokens/tokens.component';
+import { TokensPageComponent } from './tokens/page/tokens-page.component';
+import { TokenTransferModalComponent } from './tokens/transfer-modal/token-transfer-modal.component';
+import { TokenBurnModalComponent } from './tokens/burn-modal/token-burn-modal.component';
 
 import { AdminPageComponent } from './admin/page/admin-page.component';
 import { AdminComponent } from './admin/admin.component';
@@ -217,12 +213,13 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     WalletComponent,
     MessagesPageComponent,
     SettingsPageComponent,
-    CreatorProfilePageComponent,
-    CreatorProfileDetailsComponent,
-    CreatorProfileHodlersComponent,
-    CreatorProfilePostsComponent,
+    ProfilePageComponent,
+    ProfileHodlersComponent,
+    ProfilePostsComponent,
     TabSelectorComponent,
-    CreatorProfileTopCardComponent,
+    ProfileTopCardComponent,
+    ProfileDiamondsComponent,
+    ProfileNftsComponent,
     LeftBarButtonComponent,
     TradeCreatorPageComponent,
     TradeCreatorComponent,
@@ -239,7 +236,6 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     TradeCreatorTableComponent,
     PostThreadPageComponent,
     PostThreadComponent,
-    UpdateProfileComponent,
     RightBarCreatorsLeaderboardComponent,
     BottomBarMobileComponent,
     LeftBarMobileComponent,
@@ -268,7 +264,6 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     AppPageComponent,
     CommentModalComponent,
     WalletActionsDropdownComponent,
-    CreatorDiamondsComponent,
     DiamondsModalComponent,
     RepostsModalComponent,
     QuoteRepostsModalComponent,
@@ -289,11 +284,10 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     NftPostPageComponent,
     NftPostComponent,
     NftDropMgrComponent,
-    CreatorProfileNftsComponent,
     NftShowcaseComponent,
     WalletPageComponent,
     OwnedCreatorCoinsListComponent,
-    OwnedUtilityCoinsListComponent,
+    OwnedTokensListComponent,
     OwnedNftsListComponent,
     BuyDeSoEthComponent,
     SanitizeVideoUrlPipe,
@@ -304,11 +298,11 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     TransferNftModalComponent,
     NftBurnModalComponent,
     NftSelectSerialNumberComponent,
-    DaoCoinsComponent,
-    UpdateDaoCoinComponent,
-    DaoCoinsPageComponent,
-    TransferDAOCoinModalComponent,
-    BurnDaoCoinModalComponent,
+    UpdateTokenSettingsComponent,
+    TokensComponent,
+    TokensPageComponent,
+    TokenTransferModalComponent,
+    TokenBurnModalComponent,
   ],
   imports: [
     BrowserModule,
