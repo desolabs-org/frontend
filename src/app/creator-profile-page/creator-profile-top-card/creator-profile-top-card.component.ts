@@ -12,14 +12,13 @@ import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { BackendApiService } from 'src/lib/services/backend-api';
 import { Subscription, zip } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FollowChangeObservableResult } from '../../../lib/observable-results/follow-change-observable-result';
-import { AppRoutingModule } from '../../app-routing.module';
-import { FollowButtonComponent } from '../../follow-button/follow-button.component';
+import { FollowChangeObservableResult } from 'src/lib/observable-results/follow-change-observable-result';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { FollowButtonComponent } from 'src/lib/controls/follow-button/follow-button.component';
 import { Router } from '@angular/router';
 @Component({
   selector: 'creator-profile-top-card',
   templateUrl: './creator-profile-top-card.component.html',
-  styleUrls: ['./creator-profile-top-card.component.scss'],
 })
 export class CreatorProfileTopCardComponent implements OnInit, OnDestroy {
   @ViewChild(FollowButtonComponent, { static: false }) childFollowComponent;

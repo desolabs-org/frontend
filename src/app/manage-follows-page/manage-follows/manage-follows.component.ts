@@ -6,7 +6,7 @@ import {
 import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { RouteNames, AppRoutingModule } from '../../app-routing.module';
+import { RouteNames, AppRoutingModule } from 'src/app/app-routing.module';
 import { CanPublicKeyFollowTargetPublicKeyHelper } from '../../../lib/helpers/follows/can_public_key_follow_target_public_key_helper';
 import { IAdapter, IDatasource } from 'ngx-ui-scroll';
 import { InfiniteScroller } from 'src/lib/services/infinite-scroller';

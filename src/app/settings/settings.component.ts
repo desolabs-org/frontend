@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { BackendApiService } from 'src/lib/services/backend-api';
 import { Title } from '@angular/platform-browser';
-import { ThemeService } from '../theme/theme.service';
+import { ThemeService } from 'src/lib/theme/theme.service';
 import { environment } from 'src/environments/environment';
-import { SwalHelper } from '../../lib/helpers/swal-helper';
+import { SwalHelper } from 'src/lib/helpers/swal-helper';
 import { Router } from '@angular/router';
 
 @Component({

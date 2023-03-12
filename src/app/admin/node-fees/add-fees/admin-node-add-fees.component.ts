@@ -6,7 +6,7 @@ import {
   ProfileEntryResponse,
   TransactionFee,
 } from 'src/lib/services/backend-api';
-import { SwalHelper } from '../../../../lib/helpers/swal-helper';
+import { SwalHelper } from 'src/lib/helpers/swal-helper';
 
 @Component({
   selector: 'admin-node-add-fees',

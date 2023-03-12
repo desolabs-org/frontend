@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { BackendApiService } from 'src/lib/services/backend-api';
-import { AppRoutingModule } from '../../app-routing.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @Component({
   selector: 'messages-thread-view',

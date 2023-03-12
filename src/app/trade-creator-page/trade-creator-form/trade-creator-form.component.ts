@@ -17,10 +17,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { dynamicMaxValidator } from '../../../lib/validators/dynamic-max-validator';
 import { CreatorCoinTrade } from '../../../lib/trade-creator-page/creator-coin-trade';
-import { AppRoutingModule } from '../../app-routing.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { dynamicMinValidator } from '../../../lib/validators/dynamic-min-validator';
 import * as _ from 'lodash';
-import { SwalHelper } from '../../../lib/helpers/swal-helper';
+import { SwalHelper } from 'src/lib/helpers/swal-helper';
 
 @Component({
   selector: 'trade-creator-form',

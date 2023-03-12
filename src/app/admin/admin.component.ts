@@ -6,7 +6,7 @@ import {
   ProfileEntryResponse,
 } from 'src/lib/services/backend-api';
 import { sprintf } from 'sprintf-js';
-import { SwalHelper } from '../../lib/helpers/swal-helper';
+import { SwalHelper } from 'src/lib/helpers/swal-helper';
 import * as _ from 'lodash';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AppRoutingModule, RouteNames } from '../../app-routing.module';
+import { AppRoutingModule, RouteNames } from 'src/app/app-routing.module';
 import { GlobalVarsService } from 'src/lib/services/global-vars';
 
 @Component({

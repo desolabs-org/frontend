@@ -14,13 +14,12 @@ import { tap, finalize, first } from 'rxjs/operators';
 import * as _ from 'lodash';
 import PullToRefresh from 'pulltorefreshjs';
 import { Title } from '@angular/platform-browser';
-import { NftPostComponent } from '../nft-post-page/nft-post/nft-post.component';
+import { NftPostComponent } from 'src/app/nft/nft-post-page/nft-post/nft-post.component';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'feed',
   templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.sass'],
 })
 export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
   static GLOBAL_TAB = 'Global';

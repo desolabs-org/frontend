@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { GlobalVarsService } from 'src/lib/services/global-vars';
-import { AppRoutingModule } from '../app-routing.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import {
   BackendApiService,
   BalanceEntryResponse,
@@ -19,7 +19,7 @@ import { catchError, map } from 'rxjs/operators';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { TransferDAOCoinModalComponent } from './transfer-dao-coin-modal/transfer-dao-coin-modal.component';
 import { BurnDaoCoinModalComponent } from './burn-dao-coin-modal/burn-dao-coin-modal.component';
-import { SwalHelper } from '../../lib/helpers/swal-helper';
+import { SwalHelper } from 'src/lib/helpers/swal-helper';
 
 @Component({
   selector: 'dao-coins',

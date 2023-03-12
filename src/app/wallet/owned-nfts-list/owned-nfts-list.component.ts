@@ -21,7 +21,7 @@ import { IAdapter, IDatasource } from 'ngx-ui-scroll';
 import * as _ from 'lodash';
 import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 import { of, Subscription } from 'rxjs';
-import { SwalHelper } from '../../../lib/helpers/swal-helper';
+import { SwalHelper } from 'src/lib/helpers/swal-helper';
 
 @Component({
   selector: 'owned-nfts-list',

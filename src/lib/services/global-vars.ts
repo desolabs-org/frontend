@@ -22,7 +22,7 @@ import {
   LeaderboardResponse,
   AltumbaseService,
 } from 'src/lib/services/altumbase/altumbase-service';
-import { RightBarCreatorsLeaderboardComponent } from 'src/app/right-bar-creators/right-bar-creators-leaderboard/right-bar-creators-leaderboard.component';
+import { RightBarCreatorsLeaderboardComponent } from 'src/app/app-page/right-bar-creators/right-bar-creators-leaderboard/right-bar-creators-leaderboard.component';
 import { HttpClient } from '@angular/common/http';
 import { FeedComponent } from 'src/app/feed/feed.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -802,7 +802,7 @@ export class GlobalVarsService {
       reverseButtons: true,
     }).then((res) => {
       if (showBuyCreatorCoin && res.isConfirmed) {
-        this.router.navigate([RouteNames.CREATORS]);
+        this.router.navigate([RouteNames.FEEDS]);
       }
     });
   }
@@ -923,7 +923,7 @@ export class GlobalVarsService {
   }
 
   flowRedirect(signedUp: boolean): void {
-    this.router.navigate(['/' + this.RouteNames.BROWSE]);
+    this.router.navigate(['/' + this.RouteNames.FEEDS]);
   }
 
   Init(loggedInUser: User, userList: User[], route: ActivatedRoute) {
@@ -1030,7 +1030,7 @@ export class GlobalVarsService {
   }
 
   static getTargetComponentSelectorFromRouter(router: Router): string {
-    if (router.url.startsWith('/' + RouteNames.BROWSE)) {
+    if (router.url.startsWith('/' + RouteNames.FEEDS)) {
       return 'browse-page';
     }
     if (router.url.startsWith('/' + RouteNames.LANDING)) {
@@ -1081,7 +1081,7 @@ export class GlobalVarsService {
     if (bsModalRef) {
       bsModalRef.hide();
     }
-    this.router.navigate(['/' + this.RouteNames.BROWSE], {
+    this.router.navigate(['/' + this.RouteNames.FEEDS], {
       queryParams: { feedTab: FeedComponent.SHOWCASE_TAB },
     });
   }

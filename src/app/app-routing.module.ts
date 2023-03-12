@@ -4,34 +4,40 @@ import { ViewportScroller } from '@angular/common';
 
 import { filter } from 'rxjs/operators';
 
-import { LandingPageComponent } from './landing/page/landing-page.component';
-import { LandingIndexComponent } from './landing/index/landing-index.component';
-import { LandingAwardsComponent } from './landing/awards/landing-awards.component';
-import { LandingHackathonsComponent } from './landing/hackathons/landing-hackathons.component';
+import { LandingPageComponent } from './static-content/landing/page/landing-page.component';
+import { LandingIndexComponent } from './static-content/landing/index/landing-index.component';
+import { LandingAwardsComponent } from './static-content/landing/awards/landing-awards.component';
+import { LandingHackathonsComponent } from './static-content/landing/hackathons/landing-hackathons.component';
 
+import { TosPageComponent } from './static-content/tos-page/tos-page.component';
+import { SupplyMonitoringStatsPageComponent } from './static-content/supply-monitoring-stats-page/supply-monitoring-stats-page.component';
+
+import { NotFoundPageComponent } from './static-content/not-found-page/not-found-page.component';
+
+
+import { FeedPageComponent } from './feed/page/feed-page.component';
+import { PostThreadPageComponent } from './post/thread-page/post-thread-page.component';
+import { CreatePostPageComponent } from './post/create-post-page/create-post-page.component';
+
+import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
+import { MessagesPageComponent } from './messages-page/messages-page.component';
+import { CreatorProfilePageComponent } from './creator-profile-page/creator-profile-page.component';
+import { UpdateProfilePageComponent } from './creator-profile-page/update-profile-page/update-profile-page.component';
+
+import { WalletPageComponent } from './wallet/wallet-page/wallet-page.component';
+
+import { SettingsPageComponent } from './settings/page/settings-page.component';
 import { AdminPageComponent } from './admin/page/admin-page.component';
 
 import { ManageFollowsPageComponent } from './manage-follows-page/manage-follows-page.component';
-import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
-import { BrowsePageComponent } from './browse-page/browse-page.component';
-import { CreatorsLeaderboardPageComponent } from './creators-leaderboard/creators-leaderboard-page/creators-leaderboard-page.component';
-import { BuyDeSoPageComponent } from './buy-deso-page/buy-deso-page.component';
-import { MessagesPageComponent } from './messages-page/messages-page.component';
-import { SettingsPageComponent } from './settings/page/settings-page.component';
-import { CreatorProfilePageComponent } from './creator-profile-page/creator-profile-page.component';
+
+
+import { BuyDeSoPageComponent } from './wallet/buy-deso-page/buy-deso-page.component';
 import { TradeCreatorPageComponent } from './trade-creator-page/trade-creator-page.component';
-import { UpdateProfilePageComponent } from './update-profile-page/update-profile-page.component';
-import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
-import { PostThreadPageComponent } from './post-thread-page/post-thread-page.component';
-import { TransferDeSoPageComponent } from './transfer-deso-page/transfer-deso-page.component';
-import { CreatePostPageComponent } from './create-post-page/create-post-page.component';
-import { TosPageComponent } from './tos-page/tos-page.component';
-import { PickACoinPageComponent } from './pick-a-coin-page/pick-a-coin-page.component';
-import { DiamondPostsPageComponent } from './diamond-posts-page/diamond-posts-page.component';
-import { TrendsPageComponent } from './trends-page/trends-page.component';
-import { NftPostPageComponent } from './nft-post-page/nft-post-page.component';
-import { WalletPageComponent } from './wallet/wallet-page/wallet-page.component';
-import { SupplyMonitoringStatsPageComponent } from './supply-monitoring-stats-page/supply-monitoring-stats-page.component';
+
+import { TransferDeSoPageComponent } from './wallet/transfer-deso-page/transfer-deso-page.component';
+
+import { NftPostPageComponent } from './nft/nft-post-page/nft-post-page.component';
 import { DaoCoinsPageComponent } from './dao-coins/dao-coins-page/dao-coins-page.component';
 
 class RouteNames {
@@ -50,15 +56,13 @@ class RouteNames {
   // /:username/followers
   public static FOLLOWERS = 'followers';
 
-  public static BROWSE = 'browse';
-  public static CREATORS = 'creators';
+  public static FEEDS = 'feeds';
   public static BUY_DESO = 'buy-deso';
   public static WALLET = 'wallet';
   public static SETTINGS = 'settings';
   public static USER_PREFIX = 'u';
   public static INBOX_PREFIX = 'inbox';
   public static TRANSFER_CREATOR = 'transfer';
-  public static PICK_A_COIN = 'select-creator-coin';
   public static BUY_CREATOR = 'buy';
   public static SELL_CREATOR = 'sell';
   public static UPDATE_PROFILE = 'update-profile';
@@ -70,8 +74,6 @@ class RouteNames {
   public static CREATE_POST = 'posts/new';
   public static TOS = 'terms-of-service';
   public static ADMIN = 'admin';
-  public static DIAMONDS = 'diamonds';
-  public static TRENDS = 'trends';
   public static NFT = 'nft';
 
   public static CREATE_PROFILE = 'create-profile';
@@ -83,19 +85,10 @@ class RouteNames {
 const routes: Routes = [
   { path: '', component: LandingIndexComponent, pathMatch: 'full' },
   { path: RouteNames.LANDING, component: LandingPageComponent, pathMatch: 'full' },
-  { path: 'hackathon/2022', component: LandingHackathonsComponent, pathMatch: 'full' }, // this is for compatibility of old links
+  
   { path: RouteNames.LANDING_HACKATHONS, component: LandingHackathonsComponent, pathMatch: 'full' },
   { path: RouteNames.LANDING_AWARDS, component: LandingAwardsComponent, pathMatch: 'full' },
-  {
-    path: RouteNames.BROWSE,
-    component: BrowsePageComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: RouteNames.CREATORS,
-    component: CreatorsLeaderboardPageComponent,
-    pathMatch: 'full',
-  },
+  { path: RouteNames.FEEDS, component: FeedPageComponent, pathMatch: 'full' },
   {
     path: RouteNames.USER_PREFIX + '/:username',
     component: CreatorProfilePageComponent,
@@ -114,11 +107,6 @@ const routes: Routes = [
   {
     path: RouteNames.BUY_DESO + '/:ticker',
     component: BuyDeSoPageComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: RouteNames.PICK_A_COIN,
-    component: PickACoinPageComponent,
     pathMatch: 'full',
   },
   {
@@ -183,19 +171,8 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path:
-      RouteNames.USER_PREFIX + '/:receiver/' + RouteNames.DIAMONDS + '/:sender',
-    component: DiamondPostsPageComponent,
-    pathMatch: 'full',
-  },
-  {
     path: RouteNames.USER_PREFIX + '/:username/:tradeType',
     component: TradeCreatorPageComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: RouteNames.TRENDS,
-    component: TrendsPageComponent,
     pathMatch: 'full',
   },
   {
@@ -203,6 +180,10 @@ const routes: Routes = [
     component: SupplyMonitoringStatsPageComponent,
     pathMatch: 'full',
   },
+  
+  { path: 'hackathon/2022', component: LandingHackathonsComponent, pathMatch: 'full' }, // this is for compatibility of old links
+  { path: 'browse', component: FeedPageComponent, pathMatch: 'full' }, // this is for backwards compatibility
+  
   // This NotFound route must be the last one as it catches all paths that were not matched above.
   { path: '**', component: NotFoundPageComponent, pathMatch: 'full' },
 ];

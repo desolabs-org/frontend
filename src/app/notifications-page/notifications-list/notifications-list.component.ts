@@ -7,13 +7,12 @@ import {
 } from 'src/lib/services/backend-api';
 import { Datasource, IAdapter, IDatasource } from 'ngx-ui-scroll';
 import * as _ from 'lodash';
-import { AppRoutingModule } from '../../app-routing.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 
 @Component({
   selector: 'app-notifications-list',
   templateUrl: './notifications-list.component.html',
-  styleUrls: ['./notifications-list.component.scss'],
 })
 export class NotificationsListComponent {
   static BUFFER_SIZE = 10;

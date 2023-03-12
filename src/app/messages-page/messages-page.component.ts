@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalVarsService } from 'src/lib/services/global-vars';
-import { AppRoutingModule } from '../app-routing.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { Datasource, IDatasource } from 'ngx-ui-scroll';
 import { BackendApiService } from 'src/lib/services/backend-api';
 import { Router } from '@angular/router';
@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-messages-page',
   templateUrl: './messages-page.component.html',
-  styleUrls: ['./messages-page.component.scss'],
 })
 export class MessagesPageComponent {
   lastContactFetched = null;

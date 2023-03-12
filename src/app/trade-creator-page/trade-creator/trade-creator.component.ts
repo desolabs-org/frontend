@@ -10,9 +10,9 @@ import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { BackendApiService } from 'src/lib/services/backend-api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreatorCoinTrade } from '../../../lib/trade-creator-page/creator-coin-trade';
-import { AppRoutingModule, RouteNames } from '../../app-routing.module';
+import { AppRoutingModule, RouteNames } from 'src/app/app-routing.module';
 import { Observable, Subscription } from 'rxjs';
-import { SwalHelper } from '../../../lib/helpers/swal-helper';
+import { SwalHelper } from 'src/lib/helpers/swal-helper';
 
 @Component({
   selector: 'trade-creator',

@@ -13,7 +13,7 @@ import {
 import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { SwalHelper } from '../../../lib/helpers/swal-helper';
+import { SwalHelper } from 'src/lib/helpers/swal-helper';
 import { CreatorProfileTopCardComponent } from '../creator-profile-top-card/creator-profile-top-card.component';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';

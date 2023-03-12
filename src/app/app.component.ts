@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IdentityService } from 'src/lib/services/identity';
 import * as _ from 'lodash';
 import { environment } from '../environments/environment';
-import { ThemeService } from './theme/theme.service';
+import { ThemeService } from 'src/lib/theme/theme.service';
 import { of, Subscription, zip } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
