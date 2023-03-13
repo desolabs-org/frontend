@@ -19,21 +19,20 @@ import { FeedPageComponent } from './feed/page/feed-page.component';
 import { PostThreadPageComponent } from './post/thread-page/post-thread-page.component';
 import { CreatePostPageComponent } from './post/create-post-page/create-post-page.component';
 
-import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
-import { MessagesPageComponent } from './messages-page/messages-page.component';
+import { NotificationsPageComponent } from './notifications/notifications-page.component';
+import { MessagesPageComponent } from './messages/page/messages-page.component';
 import { ProfilePageComponent } from './profile/profile-page.component';
 import { UpdateProfilePageComponent } from './profile/update/update-profile-page.component';
 
-import { WalletPageComponent } from './wallet/wallet-page/wallet-page.component';
+import { WalletPageComponent } from './wallet/page/wallet-page.component';
 
-import { SettingsPageComponent } from './settings/page/settings-page.component';
+import { SettingsPageComponent } from './settings/settings-page.component';
 import { AdminPageComponent } from './admin/page/admin-page.component';
 
-import { ManageFollowsPageComponent } from './manage-follows-page/manage-follows-page.component';
-
+import { CommunityPageComponent } from './community/community-page.component';
 
 import { BuyDeSoPageComponent } from './wallet/buy-deso-page/buy-deso-page.component';
-import { TradeCreatorPageComponent } from './trade-creator-page/trade-creator-page.component';
+import { CoinsPageComponent } from './coins/coins-page.component';
 
 import { TransferDeSoPageComponent } from './wallet/transfer-deso-page/transfer-deso-page.component';
 
@@ -164,17 +163,17 @@ const routes: Routes = [
   { path: RouteNames.ADMIN, component: AdminPageComponent, pathMatch: 'full' },
   {
     path: RouteNames.USER_PREFIX + '/:username/' + RouteNames.FOLLOWERS,
-    component: ManageFollowsPageComponent,
+    component: CommunityPageComponent,
     pathMatch: 'full',
   },
   {
     path: RouteNames.USER_PREFIX + '/:username/' + RouteNames.FOLLOWING,
-    component: ManageFollowsPageComponent,
+    component: CommunityPageComponent,
     pathMatch: 'full',
   },
   {
     path: RouteNames.USER_PREFIX + '/:username/:tradeType',
-    component: TradeCreatorPageComponent,
+    component: CoinsPageComponent,
     pathMatch: 'full',
   },
   {

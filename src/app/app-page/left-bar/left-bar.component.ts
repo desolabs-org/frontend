@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { AppRoutingModule, RouteNames } from 'src/app/app-routing.module';
-import { MessagesInboxComponent } from 'src/app/messages-page/messages-inbox/messages-inbox.component';
 import { IdentityService } from 'src/lib/services/identity';
 import { BackendApiService } from 'src/lib/services/backend-api';
 import { Router } from '@angular/router';
@@ -19,7 +18,6 @@ import { environment } from 'src/environments/environment';
   templateUrl: './left-bar.component.html',
 })
 export class LeftBarComponent {
-  MessagesInboxComponent = MessagesInboxComponent;
   environment = environment;
 
   @HostBinding('class') get classes() {

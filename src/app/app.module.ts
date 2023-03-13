@@ -62,12 +62,11 @@ import { TopBarMobileNavigationControlComponent } from './app-page/top-bar-mobil
 import { TopBarMobileLogInOrSignUpComponent } from './app-page/top-bar-mobile/log-in-or-sign-up/top-bar-mobile-log-in-or-sign-up.component';
 import { TopBarMobileHamburgerMenuComponent } from './app-page/top-bar-mobile/hamburger-menu/top-bar-mobile-hamburger-menu.component';
 
-import { ManageFollowsComponent } from './manage-follows-page/manage-follows/manage-follows.component';
-import { ManageFollowsPageComponent } from './manage-follows-page/manage-follows-page.component';
+import { CommunityPageComponent } from './community/community-page.component';
 
 import { FeedPageComponent } from './feed/page/feed-page.component';
 import { FeedComponent } from './feed/feed.component';
-import { FeedCreatePostComponent } from './feed/feed-create-post/feed-create-post.component';
+import { FeedCreatePostComponent } from './feed/create-post/feed-create-post.component';
 
 import { FeedPostComponent } from './post/post.component';
 import { CreatePostPageComponent } from './post/create-post-page/create-post-page.component';
@@ -84,8 +83,8 @@ import { PostThreadPageComponent } from './post/thread-page/post-thread-page.com
 import { PostThreadComponent } from './post/thread-page/post-thread/post-thread.component';
 
 import { WalletComponent } from './wallet/wallet.component';
-import { WalletActionsDropdownComponent } from './wallet/wallet-actions-dropdown/wallet-actions-dropdown.component';
-import { WalletPageComponent } from './wallet/wallet-page/wallet-page.component';
+import { WalletActionsDropdownComponent } from './wallet/actions-dropdown/wallet-actions-dropdown.component';
+import { WalletPageComponent } from './wallet/page/wallet-page.component';
 import { OwnedCreatorCoinsListComponent } from './wallet/owned-creator-coins-list/owned-creator-coins-list.component';
 import { OwnedTokensListComponent } from './wallet/owned-tokens-list/owned-tokens-list.component';
 import { OwnedNftsListComponent } from './wallet/owned-nfts-list/owned-nfts-list.component';
@@ -98,9 +97,8 @@ import { BuyDeSoEthComponent } from './wallet/buy-deso-page/buy-deso-eth/buy-des
 import { TransferDeSoPageComponent } from './wallet/transfer-deso-page/transfer-deso-page.component';
 import { TransferDeSoComponent } from './wallet/transfer-deso-page/transfer-deso/transfer-deso.component';
 
-import { MessagesPageComponent } from './messages-page/messages-page.component';
 
-import { SettingsPageComponent } from './settings/page/settings-page.component';
+import { SettingsPageComponent } from './settings/settings-page.component';
 
 import { ProfilePageComponent } from './profile/profile-page.component';
 import { ProfileHodlersComponent } from './profile/hodlers/profile-hodlers.component';
@@ -112,30 +110,27 @@ import { ProfileDiamondsComponent } from './profile/diamonds/profile-diamonds.co
 import { ProfileNftsComponent } from './profile/nfts/profile-nfts.component';
 
 
-import { TradeCreatorPageComponent } from './trade-creator-page/trade-creator-page.component';
-import { TradeCreatorComponent } from './trade-creator-page/trade-creator/trade-creator.component';
-import { TradeCreatorFormComponent } from './trade-creator-page/trade-creator-form/trade-creator-form.component';
-import { TradeCreatorPreviewComponent } from './trade-creator-page/trade-creator-preview/trade-creator-preview.component';
-import { TradeCreatorCompleteComponent } from './trade-creator-page/trade-creator-complete/trade-creator-complete.component';
-import { TradeCreatorTableComponent } from './trade-creator-page/trade-creator-table/trade-creator-table.component';
+import { CoinsPageComponent } from './coins/coins-page.component';
+import { CoinsFormComponent } from './coins/form/coins-form.component';
+import { CoinsPreviewComponent } from './coins/preview/coins-preview.component';
+import { CoinsCompleteComponent } from './coins/complete/coins-complete.component';
+import { CoinsTableComponent } from './coins/table/coins-table.component';
+import { CoinsLoggedOutComponent } from './coins/logged-out/coins-logged-out.component';
 
-import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
+import { MessageComponent } from './messages/message/message.component';
+import { MessagesPageComponent } from './messages/page/messages-page.component';
+import { MessagesInboxComponent } from './messages/inbox/messages-inbox.component';
+import { MessagesThreadComponent } from './messages/thread/messages-thread.component';
+import { MessagesThreadViewComponent } from './messages/thread-view/messages-thread-view.component';
+import { MessagesFilterMenuComponent } from './messages/inbox/filter-menu/messages-filter-menu.component';
 
-import { MessagesInboxComponent } from './messages-page/messages-inbox/messages-inbox.component';
-import { MessagesThreadComponent } from './messages-page/messages-thread/messages-thread.component';
-import { MessageComponent } from './messages-page/message/message.component';
-import { MessagesThreadViewComponent } from './messages-page/messages-thread-view/messages-thread-view.component';
-
-import { TradeCreatorLoggedOutComponent } from './trade-creator-page/trade-creator-logged-out/trade-creator-logged-out.component';
 import { NetworkInfoComponent } from './admin/network-info/network-info.component';
 import { SanitizeAndAutoLinkPipe } from '../lib/pipes/sanitize-and-auto-link-pipe';
 import { SanitizeEmbedPipe } from '../lib/pipes/sanitize-embed-pipe';
-import { SettingsComponent } from './settings/settings.component';
-import { NotificationsListComponent } from './notifications-page/notifications-list/notifications-list.component';
+import { NotificationsPageComponent } from './notifications/notifications-page.component';
 
 import { AppPageComponent } from './app-page/app-page.component';
 
-import { MessagesFilterMenuComponent } from './messages-page/messages-inbox/messages-filter-menu/messages-filter-menu.component';
 import { SanitizeQRCodePipe } from '../lib/pipes/sanitize-qrcode-pipe';
 
 import { MintNftModalComponent } from './nft/mint-nft-modal/mint-nft-modal.component';
@@ -168,9 +163,6 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminNodeFeesComponent } from './admin/node-fees/admin-node-fees.component';
 import { AdminNodeAddFeesComponent } from './admin/node-fees/add-fees/admin-node-add-fees.component';
 
-
-
-
 // Modular Themes for DeSo by Carsen Klock @carsenk
 import { ThemeModule } from "src/lib/theme/theme.module";
 import { Theme } from "src/lib/theme/symbols";
@@ -197,8 +189,7 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
 
     UploadDirective,
     TermsOfServiceComponent,
-    ManageFollowsComponent,
-    ManageFollowsPageComponent,
+    CommunityPageComponent,
     FollowButtonComponent,
     NotFoundPageComponent,
     FeedPageComponent,
@@ -221,19 +212,19 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     ProfileDiamondsComponent,
     ProfileNftsComponent,
     LeftBarButtonComponent,
-    TradeCreatorPageComponent,
-    TradeCreatorComponent,
     BuyDeSoComponent,
     BuyDeSoMegaSwapComponent,
-    TradeCreatorFormComponent,
-    TradeCreatorPreviewComponent,
-    TradeCreatorCompleteComponent,
+    CoinsPageComponent,
+    CoinsTableComponent,
+    CoinsFormComponent,
+    CoinsPreviewComponent,
+    CoinsCompleteComponent,
+    CoinsLoggedOutComponent,
     UpdateProfilePageComponent,
     NotificationsPageComponent,
     SearchBarComponent,
     SimpleCenterLoaderComponent,
     ChangeAccountSelectorComponent,
-    TradeCreatorTableComponent,
     PostThreadPageComponent,
     PostThreadComponent,
     RightBarCreatorsLeaderboardComponent,
@@ -254,13 +245,10 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     CreatePostFormComponent,
     TopBarMobileLogInOrSignUpComponent,
     TopBarMobileHamburgerMenuComponent,
-    TradeCreatorLoggedOutComponent,
     TosPageComponent,
     NetworkInfoComponent,
     SanitizeAndAutoLinkPipe,
     SanitizeEmbedPipe,
-    SettingsComponent,
-    NotificationsListComponent,
     AppPageComponent,
     CommentModalComponent,
     WalletActionsDropdownComponent,
@@ -329,8 +317,7 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     ThemeModule.forRoot({
       themes: [lightTheme, icydarkTheme, cakeTheme, coderTheme],
       active:
-        localStorage.getItem("theme") ||
-        (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "coder"),
+        localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "coder"),
     }),
   ],
   providers: [BackendApiService, GlobalVarsService, BsModalService, IdentityService],
