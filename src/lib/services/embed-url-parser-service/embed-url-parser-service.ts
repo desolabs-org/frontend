@@ -23,22 +23,6 @@ export class EmbedUrlParserService {
       : '';
   }
 
-  static mousaiParser(url): string | boolean {
-    const regExp = /^.*mousai\.stream\/((album|playlist|track)\/[0-9]+(\/[a-z0-9-_,#%]+){1,2}?)(?=(\/embed|$))/;
-    const match = url.match(regExp);
-    return match ? match[1] : false;
-  }
-
-  static constructMousaiEmbedURL(url: URL): string {
-    const mousaiPath = this.mousaiParser(url.toString());
-    return typeof mousaiPath === 'string'
-      ? `https://mousai.stream/${mousaiPath
-          .split('/')
-          .map((s) => encodeURIComponent(s))
-          .join('/')}/embed`
-      : '';
-  }
-
   // Vimeo video URLs are simple -- anything after the last "/" in the url indicates the videoID.
   static vimeoParser(url: string): string | boolean {
     const regExp = /^.*((player\.)?vimeo\.com\/)(video\/)?(\d{0,15}).*/;
@@ -213,9 +197,6 @@ export class EmbedUrlParserService {
     if (this.isYoutubeFromURL(url)) {
       return of(this.constructYoutubeEmbedURL(url));
     }
-    if (this.isMousaiFromURL(url)) {
-      return of(this.constructMousaiEmbedURL(url));
-    }
     if (this.isVimeoFromURL(url)) {
       return of(this.constructVimeoEmbedURL(url));
     }
@@ -269,20 +250,6 @@ export class EmbedUrlParserService {
   static isYoutubeFromURL(url: URL): boolean {
     const patterns = [/\byoutube\.com$/, /\byoutu\.be$/];
     return patterns.some((p) => p.test(url.hostname));
-  }
-
-  static isMousaiLink(link: string): boolean {
-    try {
-      const url = new URL(link);
-      return this.isMousaiFromURL(url);
-    } catch (e) {
-      return false;
-    }
-  }
-
-  static isMousaiFromURL(url: URL): boolean {
-    const pattern = /\bmousai\.stream$/;
-    return pattern.test(url.hostname);
   }
 
   static isTikTokLink(link: string): boolean {
@@ -365,11 +332,6 @@ export class EmbedUrlParserService {
     return !!link.match(regExp);
   }
 
-  static isValidMousaiEmbedURL(link: string): boolean {
-    const regExp = /https:\/\/mousai\.stream\/((album|playlist|track)\/[0-9]+(\/[a-z0-9-_,%]+){1,2}?)\/embed$/;
-    return !!link.match(regExp);
-  }
-
   static isValidTiktokEmbedURL(link: string): boolean {
     const regExp = /(https:\/\/www\.tiktok\.com\/embed\/v2\/(\d{0,30}))$/;
     return !!link.match(regExp);
@@ -407,7 +369,6 @@ export class EmbedUrlParserService {
       return (
         this.isValidVimeoEmbedURL(link) ||
         this.isValidYoutubeEmbedURL(link) ||
-        this.isValidMousaiEmbedURL(link) ||
         this.isValidTiktokEmbedURL(link) ||
         this.isValidGiphyEmbedURL(link) ||
         this.isValidSpotifyEmbedURL(link) ||
@@ -428,9 +389,6 @@ export class EmbedUrlParserService {
     }
     if (this.isValidSoundCloudEmbedURL(link)) {
       return link.indexOf('/sets/') > -1 ? 350 : 180;
-    }
-    if (this.isValidMousaiEmbedURL(link)) {
-      return 165;
     }
     return 315;
   }
