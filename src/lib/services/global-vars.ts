@@ -21,7 +21,7 @@ import { AmplitudeClient } from 'amplitude-js';
 import {
   LeaderboardResponse,
   AltumbaseService,
-} from 'src/lib/services/altumbase/altumbase-service';
+} from 'src/lib/services/altumbase-service';
 import { RightBarCreatorsLeaderboardComponent } from 'src/app/app-page/right-bar-creators/right-bar-creators-leaderboard/right-bar-creators-leaderboard.component';
 import { HttpClient } from '@angular/common/http';
 import { FeedComponent } from 'src/app/feed/feed.component';

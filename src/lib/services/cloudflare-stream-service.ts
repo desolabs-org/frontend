@@ -4,7 +4,7 @@ import { BackendApiService } from 'src/lib/services/backend-api';
 import { Observable, of } from 'rxjs';
 import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { catchError, map } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',

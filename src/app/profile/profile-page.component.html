@@ -1,107 +1,59 @@
-<app-page [showPostButton]="true">
+<app-page>
+  <not-found *ngIf="!profile && !loading"></not-found>
   <simple-center-loader *ngIf="loading"></simple-center-loader>
 
-<!--Profile not found-->
-<not-found *ngIf="!profile && !loading"></not-found>
+  <div *ngIf="profile && !loading" class="flex-grow-1">
+  
+    <profile-top-card 
+      [profile]="profile" (userUnblocked)="unblockUser()" (userBlocked)="blockUser()">    
+    </profile-top-card>
 
-<div *ngIf="profile && !loading" class="flex-grow-1">
-  <!-- Top Card With Creator Info -->
-  <profile-top-card
-    *ngIf="profile && !loading"
-    [profile]="profile"
-    (userUnblocked)="unblockUser()"
-    (userBlocked)="blockUser()"
-  ></profile-top-card>
+    <tab-selector [activeTab]="activeTab"
+      [tabs]="['Posts', 'Coins', 'Tokens', 'Diamonds', 'NFTs']" (tabClick)="_handleTabClick($event)">
+    </tab-selector>
 
-  <!-- Feed Selector -->
-  <tab-selector
-    [tabs]="['Posts', 'Coins', 'Tokens', 'Diamonds', 'NFTs']"
-    [activeTab]="activeTab"
-    (tabClick)="_handleTabClick($event)"
-  ></tab-selector>
-
-  <!-- Reserved -->
-  <div *ngIf="showProfileAsReserved() && activeTab === 'Posts'" class="p-15px">
-    <div class="background-color-grey p-35px br-12px d-flex flex-row align-items-center">
-      <i class="far fa-clock fs-1 fc-muted"></i>
-      <div class="ml-25px fc-default">
-        <p class="roboto-mono fs-18px mb-5px font-weight-semibold">This profile has been reserved by the DeSo.org team</p>
-        <p class="roboto-mono fs-15px">@{{ profile.Username }} has not joined DeSo yet.</p>
+    <div *ngIf="showProfileAsReserved() && !(activeTab == 'Coins')" class="p-15px">
+      <div class="background-color-grey p-25px br-4px d-flex flex-row align-items-center">
+        <i class="far fa-clock fs-1 fc-muted"></i>
+        <div class="ml-25px">
+          <p class="fs-18px mb-5px font-weight-semibold">{{ profile.Username }} has not joined DeSo yet.</p>
+          <p>
+            This profile has been reserved and can be claimed through the <a href="https://deso.com" target="_blank">deso core team</a>.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Posts -->
-  <div *ngIf="profile && activeTab == 'Posts' && !loading">
-    <profile-posts
-      [profile]="profile"
-      [showProfileAsReserved]="showProfileAsReserved()"
-      (blockUser)="userBlocked()"
-    ></profile-posts>
     <div *ngIf="globalVars.hasUserBlockedCreator(profile.PublicKeyBase58Check)" class="w-100 d-flex p-15px">
-      <span>
-        You have blocked {{ profile.Username }}.
-        <a (click)="unblock()">Unblock</a>
-        to see their posts.
-      </span>
+        You have blocked {{ profile.Username }}.&nbsp;
+        <a class="fc-blue" (click)="unblock()">Unblock</a>&nbsp;to see the content.
     </div>
-  </div>
 
-  <!-- Creator Coin Info -->
-  <div class="w-100 d-flex flex-column" *ngIf="activeTab == 'Coins' && !loading">
-    <div>
-      <div class="container fs-15px flex-grow-1">
-        <div class="row no-gutters border-bottom border-color-grey fc-muted">
-          <div class="col-6 d-flex py-15px mb-0">Holder name or public key</div>
-          <div class="col-3 py-15px mb-0">Coins Held</div>
-          <div class="col-3 py-15px mb-0">
-            Value
-            <i
-              class="fas fa-info-circle text-greyC fs-15px global__tooltip-icon"
-              matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-              [matTooltip]="'This is computed as the ÐESO amount which the owner would get if sold the coins now.'"
-              #tooltip="matTooltip"
-              (click)="tooltip.toggle()"
-            ></i>
-          </div>
-        </div>
-        <profile-hodlers [profile]="profile"></profile-hodlers>
+    <div *ngIf="!globalVars.hasUserBlockedCreator(profile.PublicKeyBase58Check)">
+      
+      <profile-hodlers *ngIf="activeTab == 'Coins'"
+        class="w-100 d-flex flex-column" [profile]="profile">    
+      </profile-hodlers>
+
+      <div *ngIf="!showProfileAsReserved()">
+        <profile-posts *ngIf="profile && activeTab == 'Posts'"
+          [profile]="profile" [showProfileAsReserved]="showProfileAsReserved()" (blockUser)="userBlocked()">    
+        </profile-posts>
+
+        <profile-hodlers *ngIf="activeTab == 'Tokens'"
+          class="w-100 d-flex flex-column" [profile]="profile" [isDAOCoin]="true">    
+        </profile-hodlers>
+
+        <profile-diamonds *ngIf="activeTab == 'Diamonds'" 
+          class="w-100 d-flex flex-column" [profile]="profile">  
+        </profile-diamonds>
+      
+        <profile-nfts *ngIf="activeTab == 'NFTs'"
+          class="w-100 d-flex flex-column" [profile]="profile" 
+          [showProfileAsReserved]="showProfileAsReserved()" (blockUser)="userBlocked()">
+        </profile-nfts>
+
       </div>
     </div>
-    <div class="w-100 p-35px"></div>
   </div>
-
-  <!-- Utility Coin Info -->
-  <div class="w-100 d-flex flex-column" *ngIf="activeTab == 'Tokens' && !loading">
-    <div>
-      <div class="container fs-15px flex-grow-1">
-        <div class="row no-gutters border-bottom border-color-grey fc-muted">
-          <div class="col-9 d-flex py-15px mb-0">Holder name or public key</div>
-          <div class="col-3 py-15px mb-0">Tokens Held</div>
-        </div>
-        <profile-hodlers [profile]="profile" [isDAOCoin]="true"></profile-hodlers>
-      </div>
-    </div>
-    <div class="w-100 p-35px"></div>
-  </div>
-
-  <!-- Diamonds -->
-  <div class="w-100 d-flex flex-column" *ngIf="activeTab == 'Diamonds' && !loading">
-    <profile-diamonds [profile]="profile"></profile-diamonds>
-    <div class="w-100 p-35px"></div>
-  </div>
-
-  <!-- NFTs -->
-  <div class="w-100 d-flex flex-column" *ngIf="activeTab == 'NFTs' && !loading">
-    <profile-nfts
-      [profile]="profile"
-      [showProfileAsReserved]="showProfileAsReserved()"
-      (blockUser)="userBlocked()"
-    ></profile-nfts>
-    <div class="w-100 p-35px"></div>
-  </div>
-</div>
-<!-- SPACER FOR BOTTOM BAR ON MOBILE -->
-<div class="global__bottom-bar-mobile-height"></div>
-
 </app-page>

@@ -9,7 +9,6 @@ import { filter, get } from 'lodash';
 @Component({
   selector: 'change-account-selector',
   templateUrl: './change-account-selector.component.html',
-  styleUrls: ['./change-account-selector.component.scss'],
 })
 export class ChangeAccountSelectorComponent {
   @ViewChild('changeAccountSelectorRoot', { static: true })

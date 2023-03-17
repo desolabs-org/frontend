@@ -101,10 +101,8 @@ export class CreatorCoinTrade {
       //
       // We don't have an exchange rate because the price depends on the amount of
       // creator coin you specify
-      map[CreatorCoinTrade.DESO_CURRENCY_STRING] =
-        CreatorCoinTrade.DESO_CURRENCY_STRING;
-      map[CreatorCoinTrade.USD_CURRENCY_STRING] =
-        CreatorCoinTrade.USD_CURRENCY_STRING;
+      map[CreatorCoinTrade.DESO_CURRENCY_STRING] = CreatorCoinTrade.DESO_CURRENCY_STRING;
+      map[CreatorCoinTrade.USD_CURRENCY_STRING] = CreatorCoinTrade.USD_CURRENCY_STRING;
     } else {
       // If selling creator coins, you can only specify an amount in creator coin, because
       // we don't have a DeSo <=> creator coin exchange rate

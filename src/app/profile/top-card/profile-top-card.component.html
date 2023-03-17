@@ -20,76 +20,7 @@
   <div
     class="d-flex align-items-center justify-content-end pt-15px mr-15px js-creator-profile-top-card-container"
   >
-    <div
-      *ngIf="globalVars.loggedInUser"
-      class="fs-15px pr-15px"
-      dropdown
-      container="body"
-    >
-      <a
-        class="link--unstyled text-grey9 link--unstyled text-grey9"
-        dropdownToggle
-      >
-        <i class="fas fa-ellipsis-h"></i>
-      </a>
-      <div
-        class="dropdown-menu dropdown-menu-right p-0 border background-color-light-grey fs-15px"
-        *dropdownMenu
-      >
-        <a
-          class="dropdown-menu-item d-block link--unstyled p-10px feed-post__dropdown-menu-item"
-          (click)="messageUser()"
-          *ngIf="!profileBelongsToLoggedInUser()"
-        >
-          <i class="fas fa-envelope"></i>
-          Message User
-        </a>
-        
-        <a *ngIf="profileBelongsToLoggedInUser()"
-          [routerLink]="'/' + this.globalVars.RouteNames.UPDATE_PROFILE"
-          [queryParams]="{ stepNum: null }"
-          queryParamsHandling="merge"
-          class="dropdown-menu-item d-block link--unstyled p-10px feed-post__dropdown-menu-item"
-        >
-          Update profile
-        </a>
-
-        <a
-          class="dropdown-menu-item d-block link--unstyled p-10px feed-post__dropdown-menu-item"
-          (click)="_copyPublicKey()"
-          *ngIf="!profileBelongsToLoggedInUser()"
-        >
-          <i class="fas fa-key"></i>
-          Copy Key
-        </a>
-
-        <a
-          class="dropdown-menu-item d-block link--unstyled p-10px feed-post__dropdown-menu-item"
-          (click)="
-            globalVars.hasUserBlockedCreator(profile.PublicKeyBase58Check)
-              ? unblock()
-              : block()
-          "
-          *ngIf="!profileBelongsToLoggedInUser()"
-        >
-          <i class="fas fa-ban"></i>
-          {{
-            globalVars.hasUserBlockedCreator(profile.PublicKeyBase58Check)
-              ? 'Unblock'
-              : 'Block'
-          }}
-          User
-        </a>
-        <a
-          class="dropdown-menu-item d-block link--unstyled p-10px feed-post__dropdown-menu-item"
-          (click)="reportUser()"
-          *ngIf="!profileBelongsToLoggedInUser()"
-        >
-          <i class="fas fa-flag"></i>
-          Report User
-        </a>
-      </div>
-    </div>
+    <profile-options-button [profile]="profile"></profile-options-button>
 
     <div *ngIf="globalVars.loggedInUser && !profileBelongsToLoggedInUser()" class="d-inline-block fs-15px">
       <follow-button
@@ -121,7 +52,7 @@
   <div class="d-flex flex-column pl-15px pr-15px">
     <div class="fs-24px font-weight-bold d-flex align-items-center">
 
-      @{{ profile.Username }}
+      {{ profile.Username }}
 
       <div
         *ngIf="profile.IsReserved && !profile.IsVerified"

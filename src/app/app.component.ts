@@ -25,8 +25,8 @@ export class AppComponent implements OnInit {
     private themeService: ThemeService,
     private backendApi: BackendApiService,
     public globalVars: GlobalVarsService,
-    private route: ActivatedRoute,
     public identityService: IdentityService,
+    private route: ActivatedRoute,
     private router: Router
   ) {
     this.globalVars.Init(

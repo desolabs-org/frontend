@@ -108,7 +108,7 @@ import { UpdateProfilePageComponent } from './profile/update/update-profile-page
 import { UpdateTokenSettingsComponent } from './profile/update/token-settings/update-token-settings.component';
 import { ProfileDiamondsComponent } from './profile/diamonds/profile-diamonds.component';
 import { ProfileNftsComponent } from './profile/nfts/profile-nfts.component';
-
+import { ProfileOptionsButtonComponent } from './profile/options-button/profile-options-button.component';
 
 import { CoinsPageComponent } from './coins/coins-page.component';
 import { CoinsFormComponent } from './coins/form/coins-form.component';
@@ -211,6 +211,7 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     ProfileTopCardComponent,
     ProfileDiamondsComponent,
     ProfileNftsComponent,
+    ProfileOptionsButtonComponent,
     LeftBarButtonComponent,
     BuyDeSoComponent,
     BuyDeSoMegaSwapComponent,

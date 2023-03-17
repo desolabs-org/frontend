@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BackendApiService } from 'src/lib/services/backend-api';
-import { FollowChangeObservableResult } from '../../observable-results/follow-change-observable-result';
+import { FollowChangeObservableResult } from '../observable-results/follow-change-observable-result';
 import { GlobalVarsService } from 'src/lib/services/global-vars';
 
 @Injectable({

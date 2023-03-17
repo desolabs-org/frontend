@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CreatorCoinTrade } from 'src/lib/helpers/creator-coin-trade';
 import { GlobalVarsService } from 'src/lib/services/global-vars';
-import { FollowService } from 'src/lib/services/follow/follow.service';
+import { FollowService } from 'src/lib/services/follow.service';
 
 @Component({
   selector: 'coins-table',

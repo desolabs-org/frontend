@@ -20,7 +20,7 @@ import { EmbedUrlParserService } from 'src/lib/services/embed-url-parser-service
 import { environment } from 'src/environments/environment';
 import * as tus from 'tus-js-client';
 import Timer = NodeJS.Timer;
-import { CloudflareStreamService } from 'src/lib/services/stream/cloudflare-stream-service';
+import { CloudflareStreamService } from 'src/lib/services/cloudflare-stream-service';
 
 @Component({
   selector: 'feed-create-post',

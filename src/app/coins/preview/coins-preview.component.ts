@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { BackendApiService } from 'src/lib/services/backend-api';
 import { CreatorCoinTrade } from 'src/lib/helpers/creator-coin-trade';
-import { FollowService } from 'src/lib/services/follow/follow.service';
+import { FollowService } from 'src/lib/services/follow.service';
 import { of } from 'rxjs';
 
 @Component({
