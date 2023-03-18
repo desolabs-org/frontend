@@ -5,7 +5,7 @@
   <div *ngIf="profile && !loading" class="flex-grow-1">
   
     <profile-top-card 
-      [profile]="profile" (userUnblocked)="unblockUser()" (userBlocked)="blockUser()">    
+      [profile]="profile" (userUnblocked)="unblock()" (userBlocked)="block()">    
     </profile-top-card>
 
     <tab-selector [activeTab]="activeTab"
@@ -24,7 +24,7 @@
       </profile-hodlers>
 
       <profile-posts *ngIf="profile && activeTab == 'Posts'"
-        [profile]="profile" (blockUser)="userBlocked()">    
+        [profile]="profile">    
       </profile-posts>
 
       <profile-hodlers *ngIf="activeTab == 'Tokens'"
@@ -36,8 +36,9 @@
       </profile-diamonds>
     
       <profile-nfts *ngIf="activeTab == 'NFTs'"
-        class="w-100 d-flex flex-column" [profile]="profile" (blockUser)="userBlocked()">
+        class="w-100 d-flex flex-column" [profile]="profile">
       </profile-nfts>
+
     </div>
   </div>
 </app-page>

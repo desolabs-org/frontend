@@ -76,14 +76,6 @@ export class ProfilePageComponent implements OnInit {
     this.titleService.setTitle(this.userName + ` on ${environment.node.name}`);
   }
 
-  userBlocked() {
-    this.childTopCardComponent._unfollowIfBlocked();
-  }
-
-  unblockUser() {
-    this.unblock();
-  }
-
   unblock() {
     SwalHelper.fire({
       target: this.globalVars.getTargetComponentSelector(),
@@ -135,7 +127,7 @@ export class ProfilePageComponent implements OnInit {
     );
   }
 
-  blockUser() {
+  block() {
     SwalHelper.fire({
       target: this.globalVars.getTargetComponentSelector(),
       title: 'Block user?',

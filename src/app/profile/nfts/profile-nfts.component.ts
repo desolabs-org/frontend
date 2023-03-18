@@ -75,8 +75,6 @@ export class ProfileNftsComponent implements OnInit {
 
   ProfileNftsComponent = ProfileNftsComponent;
 
-  @Output() blockUser = new EventEmitter();
-
   constructor(
     private globalVars: GlobalVarsService,
     private backendApi: BackendApiService,
@@ -248,11 +246,7 @@ export class ProfileNftsComponent implements OnInit {
       },
     });
   }
-
-  userBlocked() {
-    this.blockUser.emit();
-  }
-
+  
   profileBelongsToLoggedInUser(): boolean {
     return (
       this.globalVars.loggedInUser?.ProfileEntryResponse &&

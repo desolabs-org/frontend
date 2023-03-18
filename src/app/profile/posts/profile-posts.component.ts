@@ -42,8 +42,6 @@ export class ProfilePostsComponent {
     0: '',
   };
 
-  @Output() blockUser = new EventEmitter();
-
   constructor(
     private _globalVars: GlobalVarsService,
     private backendApi: BackendApiService,
@@ -116,10 +114,6 @@ export class ProfilePostsComponent {
         return true;
       },
     });
-  }
-
-  userBlocked() {
-    this.blockUser.emit();
   }
 
   profileBelongsToLoggedInUser(): boolean {
