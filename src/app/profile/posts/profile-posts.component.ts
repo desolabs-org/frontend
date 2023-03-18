@@ -31,7 +31,8 @@ export class ProfilePostsComponent {
 
   @Input() profile: ProfileEntryResponse;
   @Input() afterCommentCreatedCallback: any = null;
-  @Input() showProfileAsReserved: boolean;
+
+  globalVars: GlobalVarsService;
 
   lastPage = null;
   loadingFirstPage = true;
@@ -44,13 +45,15 @@ export class ProfilePostsComponent {
   @Output() blockUser = new EventEmitter();
 
   constructor(
-    private globalVars: GlobalVarsService,
+    private _globalVars: GlobalVarsService,
     private backendApi: BackendApiService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private router: Router,
     private location: Location
-  ) {}
+  ) {
+    this.globalVars = _globalVars;
+  }
 
   getPage(page: number) {
     if (this.lastPage != null && page > this.lastPage) {

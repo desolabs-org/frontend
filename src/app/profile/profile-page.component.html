@@ -12,18 +12,6 @@
       [tabs]="['Posts', 'Coins', 'Tokens', 'Diamonds', 'NFTs']" (tabClick)="_handleTabClick($event)">
     </tab-selector>
 
-    <div *ngIf="showProfileAsReserved() && !(activeTab == 'Coins')" class="p-15px">
-      <div class="background-color-grey p-25px br-4px d-flex flex-row align-items-center">
-        <i class="far fa-clock fs-1 fc-muted"></i>
-        <div class="ml-25px">
-          <p class="fs-18px mb-5px font-weight-semibold">{{ profile.Username }} has not joined DeSo yet.</p>
-          <p>
-            This profile has been reserved and can be claimed through the <a href="https://deso.com" target="_blank">deso core team</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-
     <div *ngIf="globalVars.hasUserBlockedCreator(profile.PublicKeyBase58Check)" class="w-100 d-flex p-15px">
         You have blocked {{ profile.Username }}.&nbsp;
         <a class="fc-blue" (click)="unblock()">Unblock</a>&nbsp;to see the content.
@@ -35,25 +23,21 @@
         class="w-100 d-flex flex-column" [profile]="profile">    
       </profile-hodlers>
 
-      <div *ngIf="!showProfileAsReserved()">
-        <profile-posts *ngIf="profile && activeTab == 'Posts'"
-          [profile]="profile" [showProfileAsReserved]="showProfileAsReserved()" (blockUser)="userBlocked()">    
-        </profile-posts>
+      <profile-posts *ngIf="profile && activeTab == 'Posts'"
+        [profile]="profile" (blockUser)="userBlocked()">    
+      </profile-posts>
 
-        <profile-hodlers *ngIf="activeTab == 'Tokens'"
-          class="w-100 d-flex flex-column" [profile]="profile" [isDAOCoin]="true">    
-        </profile-hodlers>
+      <profile-hodlers *ngIf="activeTab == 'Tokens'"
+        class="w-100 d-flex flex-column" [profile]="profile" [isDAOCoin]="true">    
+      </profile-hodlers>
 
-        <profile-diamonds *ngIf="activeTab == 'Diamonds'" 
-          class="w-100 d-flex flex-column" [profile]="profile">  
-        </profile-diamonds>
-      
-        <profile-nfts *ngIf="activeTab == 'NFTs'"
-          class="w-100 d-flex flex-column" [profile]="profile" 
-          [showProfileAsReserved]="showProfileAsReserved()" (blockUser)="userBlocked()">
-        </profile-nfts>
-
-      </div>
+      <profile-diamonds *ngIf="activeTab == 'Diamonds'" 
+        class="w-100 d-flex flex-column" [profile]="profile">  
+      </profile-diamonds>
+    
+      <profile-nfts *ngIf="activeTab == 'NFTs'"
+        class="w-100 d-flex flex-column" [profile]="profile" (blockUser)="userBlocked()">
+      </profile-nfts>
     </div>
   </div>
 </app-page>
