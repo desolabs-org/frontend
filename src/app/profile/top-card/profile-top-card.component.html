@@ -28,11 +28,11 @@
     {{ profile.Username }}
 
     <div
-      *ngIf="profile.IsReserved && !profile.IsVerified"
+      *ngIf="profile.IsReserved"
       (click)="tooltip.toggle()"
       class="ml-10px cursor-pointer fs-18px lh-12px fc-muted"
       matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-      [matTooltip]="'This profile is reserved'"
+      [matTooltip]="'This profile was parked by the deso core team'"
       #tooltip="matTooltip"
     >
       <i class="far fa-clock fa-md align-middle"></i>
