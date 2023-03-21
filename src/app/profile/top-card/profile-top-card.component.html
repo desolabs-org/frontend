@@ -1,10 +1,11 @@
 <top-bar-mobile-navigation-control [isLightColor]="true" class="d-lg-none position-absolute" style="right: 15px; top: 15px;">
 </top-bar-mobile-navigation-control>
 
-<div *ngIf="profile.ExtraData && profile.ExtraData.FeaturedImageURL"
-  class="creator-profile__top-bar" 
-  style="background-image: url('{{ profile.ExtraData.FeaturedImageURL }}'); 
-         background-size: cover; background-position: top;"></div>
+<div class="creator-profile__top-bar" >
+  <div *ngIf="profile.ExtraData && profile.ExtraData.FeaturedImageURL"
+    style="background-image: url('{{ profile.ExtraData.FeaturedImageURL }}'); 
+           background-size: cover; background-position: top;"></div>
+</div>
 
 <div class="creator-profile__avatar" [avatar]="profile.PublicKeyBase58Check"></div>
 
