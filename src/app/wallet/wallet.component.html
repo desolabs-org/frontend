@@ -6,7 +6,8 @@
   </top-bar-mobile-navigation-control>
   
   <div class="d-flex w-100 align-items-center justify-content-between">
-    <span class="font-primary">Wallet</span>
+
+    Wallet
     <small>
       <a
         *ngIf="globalVars.loggedInUser"
@@ -40,13 +41,13 @@
   <div class="fs-16px p-15px border-bottom border-color-grey" style="max-width: inherit">
     <div class="d-flex justify-content-between py-20px">
       <div>
-        <span class="font-weight-bold pr-10px">Available ÐESO</span>
+        <span class="font-weight-bold pr-20px">Available ÐESO</span>
         
         <a class="fc-blue"
           [routerLink]="'/' + globalVars.RouteNames.SEND_DESO"
           queryParamsHandling="merge">Send</a>
 
-        <span class="">|</span>
+        <span class="px-5px">|</span>
         
         <a class="fc-blue"
           [routerLink]="'/' + globalVars.RouteNames.BUY_DESO"

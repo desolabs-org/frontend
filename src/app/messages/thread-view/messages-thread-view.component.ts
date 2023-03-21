@@ -6,7 +6,6 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 @Component({
   selector: 'messages-thread-view',
   templateUrl: './messages-thread-view.component.html',
-  styleUrls: ['./messages-thread-view.component.scss'],
 })
 export class MessagesThreadViewComponent {
   @Input() messageThread: any;

@@ -2,13 +2,14 @@
   <!-- Top Bar -->
   <div
     *ngIf="!isMobile"
-    class="global__top-bar d-flex align-items-center px-15px fs-18px font-weight-bold fc-default justify-content-between border-bottom border-color-grey"
+    class="global__top-bar d-flex align-items-center px-15px fs-18px font-weight-bold justify-content-between border-bottom border-color-grey"
   >
     <div class="d-flex align-items-center">
       <top-bar-mobile-navigation-control
         class="mr-15px d-lg-none d-inline-block"
       ></top-bar-mobile-navigation-control>
-      <span class="font-primary fs-20px">Feeds</span>
+      <i class="fa fa-rss cursor-auto fs-20px pt-2px mr-10px"></i>
+      Feeds
     </div>
   </div>
 

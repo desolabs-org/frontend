@@ -4,7 +4,6 @@ import { GlobalVarsService } from 'src/lib/services/global-vars';
 @Component({
   selector: 'messages-thread',
   templateUrl: './messages-thread.component.html',
-  styleUrls: ['./messages-thread.component.scss'],
 })
 export class MessagesThreadComponent {
   @Input() thread: any;

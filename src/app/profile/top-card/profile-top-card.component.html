@@ -4,7 +4,7 @@
 <div class="creator-profile__top-bar" >
   <div *ngIf="profile.ExtraData && profile.ExtraData.FeaturedImageURL"
     style="background-image: url('{{ profile.ExtraData.FeaturedImageURL }}'); 
-           background-size: cover; background-position: top;"></div>
+           background-size: cover; background-position: top; min-height: 100%;"></div>
 </div>
 
 <div class="creator-profile__avatar" [avatar]="profile.PublicKeyBase58Check"></div>
