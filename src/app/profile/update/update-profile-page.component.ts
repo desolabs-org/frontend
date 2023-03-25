@@ -52,7 +52,9 @@ export class UpdateProfilePageComponent implements OnInit, OnChanges {
     private backendApi: BackendApiService,
     private router: Router,
     private titleService: Title
-  ) {}
+  ) {
+    this.loggedInUser = globalVars.loggedInUser;
+  }
 
   ngOnInit() {
     this._updateFormBasedOnLoggedInUser();
