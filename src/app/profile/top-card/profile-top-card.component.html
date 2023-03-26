@@ -14,7 +14,7 @@
     (userUnblocked)="unblock()" (userBlocked)="block()"></profile-options-button>
 
   <follow-button 
-    *ngIf="globalVars.loggedInUser && !profileBelongsToLoggedInUser()">
+    *ngIf="globalVars.loggedInUser && !profileBelongsToLoggedInUser()"
     [displayAsLink]="true" [followedPubKeyBase58Check]="profile.PublicKeyBase58Check">
   </follow-button>
 
