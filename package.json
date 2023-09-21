@@ -1,6 +1,6 @@
 {
-  "name": "deso-frontend",
-  "version": "0.0.0",
+  "name": "desolabs-frontend",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -55,7 +55,6 @@
     "https-browserify": "^1.0.0",
     "is-buffer": "^2.0.4",
     "lodash": "^4.17.15",
-    "ng2-animate-on-scroll": "^2.2.1",
     "ngx-bootstrap": "^6.2.0",
     "ngx-toastr": "^13.2.0",
     "ngx-ui-scroll": "^2.0.0-rc.8",
@@ -77,8 +76,6 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1102.11",
-    "@angular-devkit/build-ng-packagr": "~0.1002.1",
     "@angular-eslint/builder": "4.2.0",
     "@angular-eslint/eslint-plugin": "4.2.0",
     "@angular-eslint/eslint-plugin-template": "4.2.0",
