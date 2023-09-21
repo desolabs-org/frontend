@@ -40,8 +40,6 @@ export class SwalHelper {
   ): Promise<sweetalert2.SweetAlertResult<Awaited<T>>> {
     // Feel free to add more classes here as needed
     let escapedCustomClass = {
-      confirmButton: _.escape(options?.customClass?.confirmButton),
-      cancelButton: _.escape(options?.customClass?.cancelButton),
     };
 
     let escapedIcon = _.escape(

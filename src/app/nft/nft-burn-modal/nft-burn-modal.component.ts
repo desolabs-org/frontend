@@ -7,7 +7,6 @@ import {
 } from 'src/lib/services/backend-api';
 import { Router } from '@angular/router';
 import { isNumber } from 'lodash';
-import { ToastrService } from 'ngx-toastr';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Location } from '@angular/common';
 import { SwalHelper } from 'src/lib/helpers/swal-helper';
@@ -50,9 +49,6 @@ export class NftBurnModalComponent implements OnInit {
     public globalVars: GlobalVarsService,
     private backendApi: BackendApiService,
     private modalService: BsModalService,
-    private router: Router,
-    private toastr: ToastrService,
-    private location: Location,
     public bsModalRef: BsModalRef
   ) {}
 
@@ -104,10 +100,6 @@ export class NftBurnModalComponent implements OnInit {
             (res) => {
               this.modalService.setDismissReason('nft burned');
               this.bsModalRef.hide();
-              this.toastr.show('Your nft was burned', null, {
-                toastClass: 'info-toast',
-                positionClass: 'toast-bottom-center',
-              });
             },
             (err) => {
               console.error(err);

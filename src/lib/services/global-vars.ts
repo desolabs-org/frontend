@@ -11,7 +11,6 @@ import {
 import { IdentityService } from './identity';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouteNames } from 'src/app/app-routing.module';
-import ConfettiGenerator from 'confetti-js';
 import { Observable, Observer } from 'rxjs';
 import { LoggedInUserObservableResult } from 'src/lib/observable-results/logged-in-user-observable-result';
 import { FollowChangeObservableResult } from 'src/lib/observable-results/follow-change-observable-result';
@@ -28,24 +27,9 @@ import { FeedComponent } from 'src/app/feed/feed.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2';
 import Timer = NodeJS.Timer;
-import { fromWei, Hex, toBN, toHex, toWei } from 'web3-utils';
-import { BN } from 'ethereumjs-util';
+import { fromWei, toBigInt, toHex, toWei } from 'web3-utils';
 
-export enum ConfettiSvg {
-  DIAMOND = 'diamond',
-  BOMB = 'bomb',
-  ROCKET = 'rocket',
-  COMET = 'comet',
-  LAMBO = 'lambo',
-}
-
-const svgToProps = {
-  [ConfettiSvg.DIAMOND]: { size: 10, weight: 1 },
-  [ConfettiSvg.ROCKET]: { size: 18, weight: 1 },
-  [ConfettiSvg.BOMB]: { size: 18, weight: 1 },
-  [ConfettiSvg.COMET]: { size: 18, weight: 1 },
-  [ConfettiSvg.LAMBO]: { size: 18, weight: 1 },
-};
+export type Hex = `0x${string}`;
 
 @Injectable({
   providedIn: 'root',
@@ -538,17 +522,18 @@ export class GlobalVarsService {
 
   // Used to convert uint256 Hex balances for DAO coins to standard units.
   hexNanosToUnitString(hexNanos: Hex, decimal: number = 4): string {
-    const result = fromWei(toBN(hexNanos), 'ether').toString();
+    const result = fromWei(toBigInt(hexNanos), 'ether').toString();
     return this.abbreviateNumber(parseFloat(result), decimal, false);
   }
 
   // Converts a quantity of DAO coins to a Hex representing the number of nanos
   toHexNanos(units: number): Hex {
-    return toHex(toWei(units.toString(), 'ether'));
+    const hexValue = toHex(toWei(units.toString(), 'ether'));
+    return hexValue as Hex;
   }
 
-  unitToBNNanos(units: number): BN {
-    return toBN(this.toHexNanos(units));
+  unitToBNNanos(units: number): bigint {
+    return toBigInt(this.toHexNanos(units));
   }
 
   isMobile(): boolean {
@@ -807,35 +792,8 @@ export class GlobalVarsService {
     });
   }
 
-  celebrate(svgList: ConfettiSvg[] = []) {
-    const canvasID = 'my-canvas-' + this.canvasCount;
-    this.canvasCount++;
-    this.canvasCount = this.canvasCount % 5;
-    const confettiSettings = {
-      target: canvasID,
-      max: 500,
-      respawn: false,
-      size: 2,
-      start_from_edge: true,
-      rotate: true,
-      clock: 100,
-    };
-    if (svgList.length > 0) {
-      confettiSettings['props'] = svgList.map((svg) => {
-        return {
-          ...{ type: 'svg', src: `/assets/img/${svg}.svg` },
-          ...svgToProps[svg],
-        };
-      });
-      if (svgList.indexOf(ConfettiSvg.DIAMOND) >= 0) {
-        confettiSettings.clock = 150;
-      } else {
-        confettiSettings.clock = 75;
-      }
-      confettiSettings.max = 200;
-    }
-    this.confetti = new ConfettiGenerator(confettiSettings);
-    this.confetti.render();
+  celebrate() {
+    console.log('Woop woop!')
   }
 
   _setUpLoggedInUserObservable() {

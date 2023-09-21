@@ -7,10 +7,6 @@ $feed-border-radius: 12px;
 
 @import 'variables.scss';
 @import 'lib/theme/themes/index';
-@import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
-
-// regular style toast
-@import '~ngx-toastr/toastr';
 
 // New themeing class
 .main {

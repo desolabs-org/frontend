@@ -4,9 +4,6 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import {
   BackendApiService,
   BalanceEntryResponse,
-  DAOCoinEntryResponse,
-  DAOCoinOperationTypeString,
-  TransferRestrictionStatusString,
 } from 'src/lib/services/backend-api';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,12 +11,10 @@ import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 import { IAdapter, IDatasource } from 'ngx-ui-scroll';
 import { Observable, Subscription, throwError, zip } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { toBN } from 'web3-utils';
 import { catchError, map } from 'rxjs/operators';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { TokenTransferModalComponent } from 'src/app/tokens/transfer-modal/token-transfer-modal.component';
 import { TokenBurnModalComponent } from 'src/app/tokens/burn-modal/token-burn-modal.component';
-import { SwalHelper } from 'src/lib/helpers/swal-helper';
 
 @Component({
   selector: 'owned-tokens-list',
@@ -210,7 +205,7 @@ export class OwnedTokensListComponent implements OnInit, OnDestroy {
       initialState: { balanceEntryResponse: creator },
     });
     const onHideEvent = modalDetails.onHide;
-    onHideEvent.subscribe((response) => {
+    onHideEvent.subscribe((response: String) => {
       if (response.startsWith('dao coins burned')) {
         this.loadingMyDAOCoinHoldings = true;
         zip(this.loadMyDAOCoinHoldings()).subscribe(

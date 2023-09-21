@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { GlobalVarsService, Hex } from 'src/lib/services/global-vars';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import {
   BackendApiService,
@@ -14,7 +14,7 @@ import { InfiniteScroller } from 'src/lib/services/infinite-scroller';
 import { IAdapter, IDatasource } from 'ngx-ui-scroll';
 import { Observable, Subscription, throwError, zip } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { toBN } from 'web3-utils';
+import { toBigInt, toHex } from 'web3-utils';
 import { catchError, map } from 'rxjs/operators';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { TokenTransferModalComponent } from './transfer-modal/token-transfer-modal.component';
@@ -248,11 +248,10 @@ export class TokensComponent implements OnInit, OnDestroy {
         )
           .subscribe(
             (res) => {
-              this.myDAOCoin.CoinsInCirculationNanos = toBN(
+              this.myDAOCoin.CoinsInCirculationNanos = toHex(toBigInt(
                 this.myDAOCoin.CoinsInCirculationNanos
-              )
-                .add(this.globalVars.unitToBNNanos(this.coinsToMint))
-                .toString('hex');
+              ) + this.globalVars.unitToBNNanos(this.coinsToMint)) as Hex;
+
               zip(
                 this.loadMyDAOCapTable(),
                 this.loadMyDAOCoinHoldings()
@@ -383,11 +382,9 @@ export class TokensComponent implements OnInit, OnDestroy {
                 profilePublicKeyBase58Check ===
                 this.globalVars.loggedInUser?.PublicKeyBase58Check
               ) {
-                this.myDAOCoin.CoinsInCirculationNanos = toBN(
+                this.myDAOCoin.CoinsInCirculationNanos = toHex(toBigInt(
                   this.myDAOCoin.CoinsInCirculationNanos
-                )
-                  .add(this.globalVars.unitToBNNanos(this.coinsToBurn))
-                  .toString('hex');
+                ) + this.globalVars.unitToBNNanos(this.coinsToBurn)) as Hex;
               }
               this.coinsToBurn = 0;
             },
@@ -564,7 +561,7 @@ export class TokensComponent implements OnInit, OnDestroy {
       initialState: { balanceEntryResponse: creator },
     });
     const onHideEvent = modalDetails.onHide;
-    onHideEvent.subscribe((response) => {
+    onHideEvent.subscribe((response: String) => {
       if (response.startsWith('dao coins burned')) {
         this.loadingNewSelection = true;
         zip(this.loadMyDAOCoinHoldings(), this.loadMyDAOCapTable()).subscribe(
@@ -577,11 +574,9 @@ export class TokensComponent implements OnInit, OnDestroy {
               const splitResponse = response.split('|');
               if (splitResponse.length === 2) {
                 const burnAmountHex = splitResponse[1];
-                this.myDAOCoin.CoinsInCirculationNanos = toBN(
+                this.myDAOCoin.CoinsInCirculationNanos = toHex(toBigInt(
                   this.myDAOCoin.CoinsInCirculationNanos
-                )
-                  .sub(toBN(burnAmountHex))
-                  .toString('hex');
+                ) - toBigInt(burnAmountHex)) as Hex;
               }
             }
             this.loadingNewSelection = false;

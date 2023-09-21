@@ -1,9 +1,8 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { GlobalVarsService } from 'src/lib/services/global-vars';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { GlobalVarsService, Hex } from 'src/lib/services/global-vars';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import {
   BackendApiService,
-  BalanceEntryResponse,
   DAOCoinEntryResponse,
   DAOCoinOperationTypeString,
   TransferRestrictionStatusString,
@@ -11,12 +10,8 @@ import {
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, throwError, zip } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { toBN } from 'web3-utils';
-import { catchError, map } from 'rxjs/operators';
+import { toBigInt, toHex } from 'web3-utils';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { TokenTransferModalComponent } from 'src/app/tokens/transfer-modal/token-transfer-modal.component';
-import { TokenBurnModalComponent } from 'src/app/tokens/burn-modal/token-burn-modal.component';
 import { SwalHelper } from 'src/lib/helpers/swal-helper';
 
 @Component({
@@ -102,11 +97,10 @@ export class UpdateTokenSettingsComponent implements OnInit, OnDestroy {
         )
           .subscribe(
             (res) => {
-              this.myDAOCoin.CoinsInCirculationNanos = toBN(
+              this.myDAOCoin.CoinsInCirculationNanos = toHex(toBigInt(
                 this.myDAOCoin.CoinsInCirculationNanos
               )
-                .add(this.globalVars.unitToBNNanos(this.coinsToMint))
-                .toString('hex');
+                + this.globalVars.unitToBNNanos(this.coinsToMint)) as Hex;
 
               this.coinsToMint = 0;
             },
@@ -229,11 +223,9 @@ export class UpdateTokenSettingsComponent implements OnInit, OnDestroy {
                 profilePublicKeyBase58Check ===
                 this.globalVars.loggedInUser?.PublicKeyBase58Check
               ) {
-                this.myDAOCoin.CoinsInCirculationNanos = toBN(
+                this.myDAOCoin.CoinsInCirculationNanos = toHex(toBigInt(
                   this.myDAOCoin.CoinsInCirculationNanos
-                )
-                  .add(this.globalVars.unitToBNNanos(this.coinsToBurn))
-                  .toString('hex');
+                ) + this.globalVars.unitToBNNanos(this.coinsToBurn)) as Hex;
               }
               this.coinsToBurn = 0;
             },

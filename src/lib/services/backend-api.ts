@@ -17,8 +17,8 @@ import {
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IdentityMessagingResponse, IdentityService } from './identity';
 import { environment } from 'src/environments/environment';
-import { Hex } from 'web3-utils/types';
 import { SwalHelper } from 'src/lib/helpers/swal-helper';
+import { Hex } from './global-vars';
 
 export class BackendRoutes {
   static ExchangeRateRoute = '/api/v0/get-exchange-rate';

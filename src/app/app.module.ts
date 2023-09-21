@@ -1,16 +1,9 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatSelectModule } from "@angular/material/select";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { TextFieldModule } from "@angular/cdk/text-field";
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { UiScrollModule } from 'ngx-ui-scroll';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { PopoverModule } from 'ngx-bootstrap/popover';
@@ -18,8 +11,6 @@ import { RatingModule } from 'ngx-bootstrap/rating';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
-import { Toast, ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -88,12 +79,6 @@ import { WalletPageComponent } from './wallet/page/wallet-page.component';
 import { OwnedCreatorCoinsListComponent } from './wallet/owned-creator-coins-list/owned-creator-coins-list.component';
 import { OwnedTokensListComponent } from './wallet/owned-tokens-list/owned-tokens-list.component';
 import { OwnedNftsListComponent } from './wallet/owned-nfts-list/owned-nfts-list.component';
-import { BuyDeSoPageComponent } from './wallet/buy-deso-page/buy-deso-page.component';
-import { BuyDeSoComponent } from './wallet/buy-deso-page/buy-deso/buy-deso.component';
-import { BuyDeSoHeroSwapComponent } from './wallet/buy-deso-page/buy-deso-heroswap/buy-deso-heroswap.component';
-import { BuyDeSoLoggedOutComponent } from './wallet/buy-deso-page/buy-deso-logged-out/buy-deso-logged-out.component';
-import { BuyDeSoCompleteComponent } from './wallet/buy-deso-page/buy-deso-complete/buy-deso-complete.component';
-import { BuyDeSoEthComponent } from './wallet/buy-deso-page/buy-deso-eth/buy-deso-eth.component';
 import { TransferDeSoPageComponent } from './wallet/transfer-deso-page/transfer-deso-page.component';
 import { TransferDeSoComponent } from './wallet/transfer-deso-page/transfer-deso/transfer-deso.component';
 
@@ -166,6 +151,7 @@ import { AdminNodeAddFeesComponent } from './admin/node-fees/add-fees/admin-node
 // Modular Themes for DeSo by Carsen Klock @carsenk
 import { ThemeModule } from "src/lib/theme/theme.module";
 import { Theme } from "src/lib/theme/symbols";
+import { TextFieldModule } from "@angular/cdk/text-field";
 
 const lightTheme: Theme = { key: "light", name: "Light Theme" };
 const icydarkTheme: Theme = { key: "icydark", name: "Icy Dark Theme" };
@@ -200,7 +186,6 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     FeedPostComponent,
     FeedPostDropdownComponent,
     FeedPostIconRowComponent,
-    BuyDeSoPageComponent,
     WalletComponent,
     MessagesPageComponent,
     SettingsPageComponent,
@@ -213,14 +198,12 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     ProfileNftsComponent,
     ProfileOptionsButtonComponent,
     LeftBarButtonComponent,
-    BuyDeSoComponent,
     CoinsPageComponent,
     CoinsTableComponent,
     CoinsFormComponent,
     CoinsPreviewComponent,
     CoinsCompleteComponent,
     CoinsLoggedOutComponent,
-    BuyDeSoHeroSwapComponent,
     UpdateProfilePageComponent,
     NotificationsPageComponent,
     SearchBarComponent,
@@ -233,8 +216,6 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     LeftBarMobileComponent,
     TransferDeSoPageComponent,
     TransferDeSoComponent,
-    BuyDeSoLoggedOutComponent,
-    BuyDeSoCompleteComponent,
     MessagesInboxComponent,
     MessagesThreadComponent,
     MessageComponent,
@@ -278,7 +259,6 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     OwnedCreatorCoinsListComponent,
     OwnedTokensListComponent,
     OwnedNftsListComponent,
-    BuyDeSoEthComponent,
     SanitizeVideoUrlPipe,
     PostMultiplierComponent,
     SupplyMonitoringStatsPageComponent,
@@ -295,20 +275,12 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
   ],
   imports: [
     BrowserModule,
-    DragDropModule,
     AppRoutingModule,
     FormsModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatProgressBarModule,
+    TextFieldModule,
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatTooltipModule,
-    TextFieldModule,
-    UiScrollModule,
-    AnimateOnScrollModule.forRoot(),
-    ToastrModule.forRoot(),
     BsDropdownModule.forRoot(),
     PopoverModule.forRoot(),
     RatingModule.forRoot(),
