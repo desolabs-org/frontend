@@ -31,6 +31,7 @@ To commit / submit a pull request from gitpod, you will need to give gitpod addi
 ```
 git clone git@github.com:desolabs-org/frontend.git
 cd frontend
+npm install -g @angular/cli
 npm install
 npm start -- --disable-host-check
 ```
