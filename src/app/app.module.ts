@@ -90,7 +90,7 @@ import { OwnedTokensListComponent } from './wallet/owned-tokens-list/owned-token
 import { OwnedNftsListComponent } from './wallet/owned-nfts-list/owned-nfts-list.component';
 import { BuyDeSoPageComponent } from './wallet/buy-deso-page/buy-deso-page.component';
 import { BuyDeSoComponent } from './wallet/buy-deso-page/buy-deso/buy-deso.component';
-import { BuyDeSoMegaSwapComponent } from './wallet/buy-deso-page/buy-deso-megaswap/buy-deso-megaswap.component';
+import { BuyDeSoHeroSwapComponent } from './wallet/buy-deso-page/buy-deso-heroswap/buy-deso-heroswap.component';
 import { BuyDeSoLoggedOutComponent } from './wallet/buy-deso-page/buy-deso-logged-out/buy-deso-logged-out.component';
 import { BuyDeSoCompleteComponent } from './wallet/buy-deso-page/buy-deso-complete/buy-deso-complete.component';
 import { BuyDeSoEthComponent } from './wallet/buy-deso-page/buy-deso-eth/buy-deso-eth.component';
@@ -214,13 +214,13 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     ProfileOptionsButtonComponent,
     LeftBarButtonComponent,
     BuyDeSoComponent,
-    BuyDeSoMegaSwapComponent,
     CoinsPageComponent,
     CoinsTableComponent,
     CoinsFormComponent,
     CoinsPreviewComponent,
     CoinsCompleteComponent,
     CoinsLoggedOutComponent,
+    BuyDeSoHeroSwapComponent,
     UpdateProfilePageComponent,
     NotificationsPageComponent,
     SearchBarComponent,
@@ -324,4 +324,5 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
   providers: [BackendApiService, GlobalVarsService, BsModalService, IdentityService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}

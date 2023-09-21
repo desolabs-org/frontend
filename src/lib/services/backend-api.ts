@@ -126,6 +126,8 @@ export class BackendRoutes {
   static RoutePathSwapIdentity = '/api/v0/admin/swap-identity';
   static RoutePathAdminUpdateUserGlobalMetadata =
     '/api/v0/admin/update-user-global-metadata';
+  static RoutePathAdminUpdateUsernameBlacklist =
+    '/api/v0/admin/update-username-blacklist';
   static RoutePathAdminResetPhoneNumber = '/api/v0/admin/reset-phone-number';
   static RoutePathAdminGetAllUserGlobalMetadata =
     '/api/v0/admin/get-all-user-global-metadata';
@@ -150,6 +152,8 @@ export class BackendRoutes {
     '/api/v0/admin/get-usd-cents-to-deso-reserve-exchange-rate';
   static RoutePathSetBuyDeSoFeeBasisPoints =
     '/api/v0/admin/set-buy-deso-fee-basis-points';
+  static RoutePathAdminSetCaptchaRewardNanos =
+    '/api/v0/admin/set-captcha-reward-nanos';
   static RoutePathGetBuyDeSoFeeBasisPoints =
     '/api/v0/admin/get-buy-deso-fee-basis-points';
   static RoutePathAdminGetGlobalParams = '/api/v0/admin/get-global-params';
@@ -1187,6 +1191,36 @@ export class BackendApiService {
         return this.post(
           endpoint,
           BackendRoutes.RoutePathUploadImage,
+          formData
+        );
+      })
+    );
+  }
+
+  UploadVideo(
+    endpoint: string,
+    file: File,
+    publicKeyBase58Check: string
+  ): Observable<{
+    tusEndpoint: string;
+    asset: {
+      id: string;
+      playbackId: string;
+    };
+  }> {
+    const request = this.identityService.jwt({
+      ...this.identityService.identityServiceParamsForKey(publicKeyBase58Check),
+    });
+    return request.pipe(
+      switchMap((signed) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('UserPublicKeyBase58Check', publicKeyBase58Check);
+        formData.append('JWT', signed.jwt);
+
+        return this.post(
+          endpoint,
+          BackendRoutes.RoutePathUploadVideo,
           formData
         );
       })
@@ -2740,6 +2774,27 @@ export class BackendApiService {
     );
   }
 
+  AdminUpdateUsernameBlacklist(
+    endpoint: string,
+    AdminPublicKey: string,
+
+    Username: string,
+    IsBlacklistUpdate: boolean,
+    AddUserToList: boolean,
+  ): Observable<any> {
+    return this.jwtPost(
+      endpoint,
+      BackendRoutes.RoutePathAdminUpdateUsernameBlacklist,
+      AdminPublicKey,
+      {
+        Username,
+        IsBlacklistUpdate,
+        AddUserToList,
+        AdminPublicKey,
+      }
+    );
+  }
+
   AdminResetPhoneNumber(
     endpoint: string,
     AdminPublicKey: string,
@@ -3031,6 +3086,22 @@ export class BackendApiService {
 
   GetBuyDeSoFeeBasisPoints(endpoint: string): Observable<any> {
     return this.get(endpoint, BackendRoutes.RoutePathGetBuyDeSoFeeBasisPoints);
+  }
+
+  UpdateCaptchaRewardNanos(
+    endpoint: string,
+    AdminPublicKey: string,
+    RewardNanos: number
+  ): Observable<any> {
+    return this.jwtPost(
+      endpoint,
+      BackendRoutes.RoutePathAdminSetCaptchaRewardNanos,
+      AdminPublicKey,
+      {
+        AdminPublicKey,
+        RewardNanos,
+      }
+    );
   }
 
   UpdateGlobalParams(

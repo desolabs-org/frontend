@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'buy-deso-page',
   templateUrl: './buy-deso-page.component.html',
-  styleUrls: ['./buy-deso-page.component.scss'],
 })
 export class BuyDeSoPageComponent implements OnInit {
   isLeftBarMobileOpen: boolean = false;
