@@ -8,6 +8,8 @@ $feed-border-radius: 12px;
 @import 'variables.scss';
 @import 'lib/theme/themes/index';
 
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 // New themeing class
 .main {
   background: var(
