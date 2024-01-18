@@ -7,10 +7,6 @@ import {
 } from '@angular/core';
 import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { AppRoutingModule, RouteNames } from 'src/app/app-routing.module';
-import { IdentityService } from 'src/lib/services/identity';
-import { BackendApiService } from 'src/lib/services/backend-api';
-import { Router } from '@angular/router';
-import { SwalHelper } from 'src/lib/helpers/swal-helper';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -31,25 +27,6 @@ export class LeftBarComponent {
   AppRoutingModule = AppRoutingModule;
 
   constructor(
-    public globalVars: GlobalVarsService,
-    private identityService: IdentityService,
-    private backendApi: BackendApiService,
-    private router: Router
+    public globalVars: GlobalVarsService
   ) {}
-
-  getHelpMailToAttr(): string {
-    const loggedInUser = this.globalVars.loggedInUser;
-    const pubKey = loggedInUser?.PublicKeyBase58Check;
-    const btcAddress = this.identityService.identityServiceUsers[pubKey]
-      ?.btcDepositAddress;
-    const bodyContent = encodeURIComponent(
-      `The below information helps support address your case.\nMy public key: ${pubKey} \nMy BTC Address: ${btcAddress}`
-    );
-    const body = loggedInUser ? `?body=${bodyContent}` : '';
-    return `mailto:${environment.supportEmail}${body}`;
-  }
-
-  logHelp(): void {
-    this.globalVars.logEvent('help : click');
-  }
 }

@@ -152,6 +152,7 @@ import { AdminNodeAddFeesComponent } from './admin/node-fees/add-fees/admin-node
 import { ThemeModule } from "src/lib/theme/theme.module";
 import { Theme } from "src/lib/theme/symbols";
 import { TextFieldModule } from "@angular/cdk/text-field";
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const lightTheme: Theme = { key: "light", name: "Light Theme" };
 const icydarkTheme: Theme = { key: "icydark", name: "Icy Dark Theme" };
@@ -277,10 +278,12 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     TextFieldModule,
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    DragDropModule,
     BsDropdownModule.forRoot(),
     PopoverModule.forRoot(),
     RatingModule.forRoot(),

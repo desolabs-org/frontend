@@ -21,59 +21,22 @@
     </div>
   </div>
 
-
-
-  <div class="row d-flex justify-content-center invisible" animateOnScroll animationName="slide-up">
+  <div class="row d-flex justify-content-center">
     <div class="col-lg-8 col-md-9 col-sm-12 text-center landing__prop">
-      <h3 class="landing__prop-header">About</h3>
       <p class="landing__prop-desc">
-        <b>DeSo</b> is an open-source L1 blockchain.
+        <b>DeSoLabs</b> is a community of builders.
         <br class="d-none d-md-block" />
-        You can access the social network's data from any node.
-        <br />
-        <br />
-        <a href="https://docs.deso.org/#the-ultimate-vision" target="_blank">Read more about DeSo's vision</a>
-      </p>
-      <p class="landing__prop-desc">
-        <b>DeSo Labs</b> is a community of builders.
-        <br class="d-none d-md-block" />
-        You can join, support or simply use the tools we create.
-        <br />
+        You can join, support or simply use the tools being made.
         <br />
         <a href="/assets/litepaper.html" target="_blank">Read more about DeSo Labs</a>
       </p>
-      <div class="row d-flex justify-content-center">
-        <div class="col-sm-10 col-xs-12 mb-0 landing__example">
-          <div *ngFor="let post of featuredPosts">
-            <div class="d-flex border-bottom pb-3 pt-3">
-              <div class="feed-post__avatar br-12px" style="background-image: url('{{ post.pic }}');background-position: center;background-size: cover;min-width:50px;"></div>
-              <div class="d-flex flex-column justify-content-start text-left ml-3">
-                <div>
-                  <span class="font-weight-bold">{{ post.name }}</span>
-                  <span class="text-greyA fs-12px ml-2">{{ post.when }}</span>
-                </div>
-                <div class="roboto-regular mt-1 fs-14px">
-                  {{ post.text }}
-                </div>
-                <div class="d-flex mt-2">
-                  <div class="mr-5 d-flex align-items-center text-grey6">
-                    <i class="icon-reply mr-1 fs-20px"></i>
-                    <span class="fs-12px">{{ post.comments }}</span>
-                  </div>
-                  <div class="mr-5 d-flex align-items-center text-grey6">
-                    <i [ngClass]="post.reposted ? 'fc-green' : ''" class="icon-repost mr-2 fs-20px"></i>
-                    <span class="fs-12px">{{ post.reposts }}</span>
-                  </div>
-                  <div class="mr-5 d-flex align-items-center text-grey6">
-                    <i [ngClass]="post.liked ? 'icon-heart-fill fc-red' : 'icon-heart'" class="mr-1 fs-20px"></i>
-                    <span class="fs-12px">{{ post.likes }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p class="landing__prop-desc">
+        <b>Deso</b> is an open-source L1 blockchain.
+        <br class="d-none d-md-block" />
+        You can access the social network's data from any node.
+        <br />
+        <a href="https://docs.deso.org/#the-ultimate-vision" target="_blank">Read more about DeSo's vision</a>
+      </p>
     </div>
   </div>
 

@@ -66,10 +66,10 @@ p {
 a {
   cursor: pointer; // for anchors without hrefs
   color: var(--link);
+  text-decoration: none;
   &:hover,
   &:active,
   &:focus {
-    text-decoration: inherit; // I prefer no underline when you hover over links
     color: var(--hover);
   }
 }
@@ -2122,31 +2122,6 @@ input.bs-timepicker-field {
   margin-bottom: 30px;
   padding: 0 20px;
   font-family: Roboto;
-}
-
-.landing__example {
-  padding: 30px 50px;
-  padding-bottom: 0px;
-  background-color: var(--background);
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-}
-
-// fade to white
-.landing__example:after {
-  content: '';
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  pointer-events: none;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0),
-    var(--secondary) 90%
-  );
-  width: 100%;
-  height: 4em;
 }
 
 .landing__btn-cta {
