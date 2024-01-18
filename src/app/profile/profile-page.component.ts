@@ -214,12 +214,6 @@ export class ProfilePageComponent implements OnInit {
     this.location.go(urlTree.toString());
   }
 
-  tweetToClaimLink() {
-    return `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-      `Just setting up my ${environment.node.name} 💎🙌\n\n${environment.node.url}/u/${this.userName}?public_key=${this.globalVars.loggedInUser.PublicKeyBase58Check}`
-    )}`;
-  }
-
   showProfileAsReserved() {
     return this.profile.IsReserved && !this.profile.IsVerified;
   }

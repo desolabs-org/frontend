@@ -11,7 +11,6 @@ import { GlobalVarsService } from 'src/lib/services/global-vars';
 import { BackendApiService } from 'src/lib/services/backend-api';
 import { FeedComponent } from 'src/app/feed/feed.component';
 import { Datasource, IDatasource, IAdapter } from 'ngx-ui-scroll';
-import { ToastrService } from 'ngx-toastr';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
@@ -37,8 +36,6 @@ export class PostThreadComponent {
     private router: Router,
     public globalVars: GlobalVarsService,
     private backendApi: BackendApiService,
-    private changeRef: ChangeDetectorRef,
-    private toastr: ToastrService,
     private titleService: Title
   ) {
     // This line forces the component to reload when only a url param changes.  Without this, the UiScroll component
@@ -252,12 +249,6 @@ export class PostThreadComponent {
 
   updateCommentCountAndShowToast(parentPost, postEntryResponse) {
     parentPost.CommentCount += 1;
-
-    // Show toast when adding comment to parent post
-    this.toastr.info('Your post was sent!', null, {
-      positionClass: 'toast-top-center',
-      timeOut: 3000,
-    });
   }
 
   prependToCommentList(parentPost, postEntryResponse) {

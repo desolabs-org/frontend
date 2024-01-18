@@ -6,7 +6,7 @@ import {
   BalanceEntryResponse,
   DAOCoinOperationTypeString,
 } from 'src/lib/services/backend-api';
-import { toBN } from 'web3-utils';
+import { toBigInt } from 'web3-utils';
 
 @Component({
   selector: 'token-burn-modal',
@@ -62,8 +62,7 @@ export class TokenBurnModalComponent {
     }
     if (
       this.globalVars
-        .unitToBNNanos(this.amountToBurn || 0)
-        .gt(toBN(this.balanceEntryResponse.BalanceNanosUint256))
+        .unitToBNNanos(this.amountToBurn || 0) > toBigInt(this.balanceEntryResponse.BalanceNanosUint256)
     ) {
       err.push('Amount to burn exceeds balance\n');
     }

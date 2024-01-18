@@ -30,9 +30,10 @@ To commit / submit a pull request from gitpod, you will need to give gitpod addi
 1. Clone the repo, install dependencies and run at localhost:
 ```
 git clone git@github.com:desolabs-org/frontend.git
+npm install -g @angular/cli
 cd frontend
 npm install
-npm start -- --disable-host-check
+ng serve --disable-host-check
 ```
 
 2. Get a SSL cert for `*.dev.desolabs.org`:
@@ -46,7 +47,7 @@ openssl x509 -req -days 3650 -in dev-desolabs.csr -signkey dev-desolabs.key -out
 * Nginx configuration example
 ```
 upstream desolabs_frontend {
-    server localhost:4200;
+        server localhost:4200;
 }
 
 server {
@@ -62,11 +63,11 @@ server {
 
     location / {
         proxy_pass http://desolabs_frontend;
-    }
-
-    location /api/ { 
-        proxy_pass https://node.desolabs.org/;
-        proxy_redirect off;
+		
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+		proxy_set_header Host $host;
     }
 }
 ```

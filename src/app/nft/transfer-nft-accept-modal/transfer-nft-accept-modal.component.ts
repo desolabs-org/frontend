@@ -7,7 +7,6 @@ import {
 } from 'src/lib/services/backend-api';
 import { Router } from '@angular/router';
 import { isNumber } from 'lodash';
-import { ToastrService } from 'ngx-toastr';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Location } from '@angular/common';
 
@@ -46,9 +45,6 @@ export class TransferNftAcceptModalComponent {
     public globalVars: GlobalVarsService,
     private backendApi: BackendApiService,
     private modalService: BsModalService,
-    private router: Router,
-    private toastr: ToastrService,
-    private location: Location,
     public bsModalRef: BsModalRef
   ) {}
 
@@ -67,10 +63,6 @@ export class TransferNftAcceptModalComponent {
         (res) => {
           this.modalService.setDismissReason('transfer accepted');
           this.bsModalRef.hide();
-          this.toastr.show('Your transfer was completed', null, {
-            toastClass: 'info-toast',
-            positionClass: 'toast-bottom-center',
-          });
         },
         (err) => {
           console.error(err);

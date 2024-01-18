@@ -6,7 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { ConfettiSvg, GlobalVarsService } from 'src/lib/services/global-vars';
+import { GlobalVarsService } from 'src/lib/services/global-vars';
 import {
   BackendApiService,
   PostEntryResponse,
@@ -474,10 +474,6 @@ export class FeedPostIconRowComponent {
           this.postContent.DiamondCount +=
             diamonds - this.getCurrentDiamondLevel();
           this.postContent.PostEntryReaderState.DiamondLevelBestowed = diamonds;
-          if (!skipCelebration) {
-            // Celebrate when the SendDiamonds call completes
-            this.globalVars.celebrate([ConfettiSvg.DIAMOND]);
-          }
           this.globalVars.updateEverything(
             res.TxnHashHex,
             this.sendDiamondsSuccess,

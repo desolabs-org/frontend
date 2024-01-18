@@ -8,7 +8,6 @@ import {
 } from 'src/lib/services/backend-api';
 import { orderBy } from 'lodash';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Location } from '@angular/common';
 import { SwalHelper } from 'src/lib/helpers/swal-helper';
@@ -46,9 +45,6 @@ export class TransferNftModalComponent implements OnInit {
     public globalVars: GlobalVarsService,
     private backendApi: BackendApiService,
     private modalService: BsModalService,
-    private router: Router,
-    private toastr: ToastrService,
-    private location: Location,
     public bsModalRef: BsModalRef
   ) {}
 
@@ -110,7 +106,6 @@ export class TransferNftModalComponent implements OnInit {
             (res) => {
               this.modalService.setDismissReason('nft transferred');
               this.bsModalRef.hide();
-              this.showToast();
             },
             (err) => {
               console.error(err);
@@ -128,19 +123,6 @@ export class TransferNftModalComponent implements OnInit {
         this.saveSelectionDisabled = false;
       }
     });
-  }
-
-  showToast(): void {
-    const link = `/${this.globalVars.RouteNames.NFT}/${this.post.PostHashHex}`;
-    this.toastr.show(
-      `NFT Transferred<a href="${link}" class="toast-link cursor-pointer">View</a>`,
-      null,
-      {
-        toastClass: 'info-toast',
-        enableHtml: true,
-        positionClass: 'toast-bottom-center',
-      }
-    );
   }
 
   saveSelection(): void {

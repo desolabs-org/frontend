@@ -13,7 +13,7 @@ import {
   BackendApiService,
   ProfileEntryResponse,
 } from 'src/lib/services/backend-api';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { dynamicMaxValidator } from 'src/lib/validators/dynamic-max-validator';
 import { CreatorCoinTrade } from 'src/lib/helpers/creator-coin-trade';
@@ -358,7 +358,7 @@ export class CoinsFormComponent implements OnInit, OnDestroy {
   }
 
   _setUpAmountField() {
-    this.creatorCoinTrade.amount = new FormControl(null, [
+    this.creatorCoinTrade.amount = new UntypedFormControl(null, [
       Validators.required,
       Validators.pattern(this.NUMBERS_ONLY_REGEX),
       dynamicMinValidator(() => {

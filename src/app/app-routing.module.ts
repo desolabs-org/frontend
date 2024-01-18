@@ -31,7 +31,6 @@ import { AdminPageComponent } from './admin/page/admin-page.component';
 
 import { CommunityPageComponent } from './community/community-page.component';
 
-import { BuyDeSoPageComponent } from './wallet/buy-deso-page/buy-deso-page.component';
 import { CoinsPageComponent } from './coins/coins-page.component';
 
 import { TransferDeSoPageComponent } from './wallet/transfer-deso-page/transfer-deso-page.component';
@@ -98,16 +97,6 @@ const routes: Routes = [
   {
     path: RouteNames.SETTINGS,
     component: SettingsPageComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: RouteNames.BUY_DESO,
-    component: BuyDeSoPageComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: RouteNames.BUY_DESO + '/:ticker',
-    component: BuyDeSoPageComponent,
     pathMatch: 'full',
   },
   {

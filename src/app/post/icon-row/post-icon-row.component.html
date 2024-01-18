@@ -250,12 +250,7 @@
     ></i>
     <span
       class="d-inline-block ml-1 cursor-pointer lh-12px fc-muted align-middle"
-      matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
       mat-raised-button
-      #tooltip="matTooltip"
-      [matTooltip]="
-        globalVars.convertTstampToDateTime(postContent.TimestampNanos)
-      "
       (auxclick)="onTimestampClickHandler($event)"
     >
       {{ globalVars.convertTstampToDaysOrHours(postContent.TimestampNanos) }}
