@@ -1,6 +1,6 @@
 {
   "name": "desolabs-frontend",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -48,7 +48,7 @@
     "hash-base": "^3.0.4",
     "https-browserify": "^1.0.0",
     "is-buffer": "^2.0.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "ngx-bootstrap": "^11.0.2",
     "ngx-ui-scroll": "^3.1.0",
     "os-browserify": "^0.3.0",
