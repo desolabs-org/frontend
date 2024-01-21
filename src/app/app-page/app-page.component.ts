@@ -6,7 +6,7 @@ import { GlobalVarsService } from 'src/lib/services/global-vars';
   templateUrl: './app-page.component.html',
 })
 export class AppPageComponent implements OnInit {
-  @Input() hideSidebar: string;
+  @Input() hideSidebar = false;
   @Input() showPostButton = false;
   mobile = false;
 

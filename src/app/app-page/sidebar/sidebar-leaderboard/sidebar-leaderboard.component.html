@@ -1,0 +1,45 @@
+<a
+  *ngFor="
+    let entry of 
+      activeTab === SidebarComponent.GAINERS.name ? globalVars.topGainerLeaderboard
+        : activeTab === SidebarComponent.DIAMONDS.name ? globalVars.topDiamondedLeaderboard
+        : activeTab === SidebarComponent.ALL_TIME.name ? globalVars.topCreatorsAllTimeLeaderboard
+        : []
+  "
+  [routerLink]="[ '/' + globalVars.RouteNames.USER_PREFIX, entry.Profile.Username ]"
+  class="link--unstyled d-flex align-items-center text-grey5 fs-15px pb-10px"
+>
+  <div
+    class="right-bar-creators-leaderboard__creator-avatar"
+    [avatar]="entry.Profile.PublicKeyBase58Check"
+  ></div>
+
+  <div style="flex-grow: 1">
+    <span>{{ entry.Profile.Username }}</span>
+    <span
+      *ngIf="entry.Profile.IsReserved && !entry.Profile.IsVerified"
+      class="d-inline-block ml-5px fc-muted"
+    >
+      <i class="far fa-clock fa-md"></i>
+    </span>
+    <span
+      *ngIf="entry.Profile.IsVerified"
+      class="d-inline-block ml-5px text-primary"
+    >
+      <i class="fas fa-check-circle fa-md"></i>
+    </span>
+  </div>
+
+  <div class="d-flex flex-column" style="align-items: flex-end">
+    <div class="fc-green" *ngIf="activeTab === SidebarComponent.GAINERS.name">
+      {{ globalVars.nanosToDeSo(entry.DeSoLockedGained, 4) }}
+    </div>
+    <div class="fc-blue" *ngIf="activeTab === SidebarComponent.DIAMONDS.name">
+      {{ globalVars.abbreviateNumber(entry.DiamondsReceived, 0) }}
+      <i class="icon-diamond" style="margin-left: -10px"></i>
+    </div>
+    <div *ngIf="activeTab === SidebarComponent.ALL_TIME.name">
+      Ð {{ globalVars.nanosToDeSo(entry.Profile.CoinPriceDeSoNanos, 2) }}
+    </div>
+  </div>
+</a>

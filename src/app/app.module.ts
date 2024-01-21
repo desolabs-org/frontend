@@ -42,11 +42,11 @@ import { LandingTopBarComponent } from './static-content/landing/top-bar/landing
 import { LandingAwardsComponent } from './static-content/landing/awards/landing-awards.component';
 import { LandingHackathonsComponent } from './static-content/landing/hackathons/landing-hackathons.component';
 
-import { RightBarCreatorsComponent } from './app-page/right-bar-creators/right-bar-creators.component';
+import { SidebarComponent } from './app-page/sidebar/sidebar.component';
 import { LeftBarComponent } from './app-page/left-bar/left-bar.component';
 import { LeftBarButtonComponent } from './app-page/left-bar/button/left-bar-button.component';
 import { LeftBarMobileComponent } from './app-page/left-bar/mobile/left-bar-mobile.component';
-import { RightBarCreatorsLeaderboardComponent } from './app-page/right-bar-creators/right-bar-creators-leaderboard/right-bar-creators-leaderboard.component';
+import { SidebarLeaderboardComponent } from './app-page/sidebar/sidebar-leaderboard/sidebar-leaderboard.component';
 import { BottomBarMobileComponent } from './app-page/bottom-bar-mobile/bottom-bar-mobile.component';
 import { BottomBarMobileTabComponent } from './app-page/bottom-bar-mobile/bottom-bar-mobile-tab/bottom-bar-mobile-tab.component';
 import { TopBarMobileNavigationControlComponent } from './app-page/top-bar-mobile/navigation-control/top-bar-mobile-navigation-control.component';
@@ -182,7 +182,8 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     FeedPageComponent,
     FeedComponent,
     LeftBarComponent,
-    RightBarCreatorsComponent,
+    SidebarComponent,
+    SidebarLeaderboardComponent,
     FeedCreatePostComponent,
     FeedPostComponent,
     FeedPostDropdownComponent,
@@ -212,7 +213,6 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     ChangeAccountSelectorComponent,
     PostThreadPageComponent,
     PostThreadComponent,
-    RightBarCreatorsLeaderboardComponent,
     BottomBarMobileComponent,
     LeftBarMobileComponent,
     TransferDeSoPageComponent,

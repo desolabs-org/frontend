@@ -16,7 +16,7 @@ import { environment } from 'src/environments/environment';
   selector: 'notifications-page',
   templateUrl: './notifications-page.component.html',
 })
-export class NotificationsPageComponent {
+export class NotificationsPageComponent implements OnInit {
   static BUFFER_SIZE = 10;
   static PAGE_SIZE = 50;
   static WINDOW_VIEWPORT = true;

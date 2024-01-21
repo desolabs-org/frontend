@@ -19,10 +19,8 @@ export class SettingsPageComponent implements OnInit {
 
   constructor(
     public globalVars: GlobalVarsService,
-    private backendApi: BackendApiService,
     private titleService: Title,
     public themeService: ThemeService,
-    private router: Router
   ) {}
 
   selectChangeHandler(event: any) {

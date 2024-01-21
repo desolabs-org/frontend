@@ -21,7 +21,6 @@ import {
   LeaderboardResponse,
   AltumbaseService,
 } from 'src/lib/services/altumbase-service';
-import { RightBarCreatorsLeaderboardComponent } from 'src/app/app-page/right-bar-creators/right-bar-creators-leaderboard/right-bar-creators-leaderboard.component';
 import { HttpClient } from '@angular/common/http';
 import { FeedComponent } from 'src/app/feed/feed.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -964,18 +963,10 @@ export class GlobalVarsService {
         )
         .subscribe(
           (response) => {
-            this.topCreatorsAllTimeLeaderboard = response.ProfilesFound.slice(
-              0,
-              RightBarCreatorsLeaderboardComponent.MAX_PROFILE_ENTRIES
-            ).map((profile) => {
-              return {
-                Profile: profile,
-              };
-            });
+            this.topCreatorsAllTimeLeaderboard = response.ProfilesFound
+              .slice(0, 10).map((profile) => { return { Profile: profile }; });
           },
-          (err) => {
-            console.error(err);
-          }
+          (err) => console.error(err)
         );
     }
   }

@@ -1705,6 +1705,11 @@ input.bs-timepicker-field {
   color: var(--text);
 }
 
+
+input::placeholder {
+  color: var(--grey);
+}
+
 .creator-leaderboard__load-more:hover {
   background-color: var(--secondary);
 }

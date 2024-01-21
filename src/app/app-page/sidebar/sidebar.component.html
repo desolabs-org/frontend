@@ -1,0 +1,52 @@
+<div class="global__sidebar__inner">
+  <search-bar class="pb-10px"></search-bar>
+  
+  <div class="right-bar-creators__balance-box br-12px p-15px mb-30px fs-13px text-grey5 font-weight-bold">
+    <div *ngIf="globalVars.loggedInUser" class="d-flex justify-content-between">
+      <span>Available ÐESO</span>
+      <span>
+        Ð&nbsp;{{ globalVars.nanosToDeSo(globalVars.loggedInUser.BalanceNanos, 4) }}
+      </span>
+    </div>
+
+    <div class="d-flex justify-content-between pt-10px grey">
+      <span>ÐESO Price</span>
+      <span>{{ globalVars.desoToUSDExchangeRateToDisplay }}</span>
+    </div>
+  </div>
+
+  <!-- Title -->
+  <div
+    class="fs-15px text-grey5 font-weight-bold mb-10px d-flex flex-column"
+    [ngClass]="{ 'pb-10px': !activeTabOption.poweredBy }"
+  >
+    <div>
+      <select
+        class="right-bar-select-box fs-15px text-grey5 font-weight-bold cursor-pointer"
+        [ngStyle]="{ width: selectedOptionWidth }"
+        (change)="selectTab()"
+        [(ngModel)]="activeTab"
+      >
+        <option
+          *ngFor="let option of SidebarComponent.chartMap | keyvalue"
+          [value]="option.key"
+          class="fs-15px text-grey5 font-weight-bold"
+        >
+          {{ option.key }}
+        </option>
+      </select>
+    </div>
+    <div class="pt-5px" *ngIf="activeTabOption.poweredBy">
+      <a
+        class="link--unstyled fs-12px text-grey7"
+        [href]="activeTabOption.poweredBy.link"
+        target="_blank"
+      >
+        <i class="fas fa-external-link-alt pr-5px"></i>
+        Powered by {{ activeTabOption.poweredBy.name }}
+      </a>
+    </div>
+  </div>
+
+  <sidebar-leaderboard [activeTab]="activeTab"></sidebar-leaderboard>
+</div>

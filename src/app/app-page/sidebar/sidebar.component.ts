@@ -4,7 +4,7 @@ import { BackendApiService } from 'src/lib/services/backend-api';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
-export class RightBarTabOption {
+export class SidebarTabOption {
   name: string;
   width: number;
   poweredBy: {
@@ -14,10 +14,10 @@ export class RightBarTabOption {
 }
 
 @Component({
-  selector: 'right-bar-creators',
-  templateUrl: './right-bar-creators.component.html',
+  selector: 'sidebar',
+  templateUrl: './sidebar.component.html',
 })
-export class RightBarCreatorsComponent implements OnInit {
+export class SidebarComponent implements OnInit {
 
   constructor(
     public globalVars: GlobalVarsService,
@@ -27,12 +27,12 @@ export class RightBarCreatorsComponent implements OnInit {
 
   activeTab: string;
   selectedOptionWidth: string;
-  activeRightTabOption: RightBarTabOption;
+  activeTabOption: SidebarTabOption;
 
-  RightBarCreatorsComponent = RightBarCreatorsComponent;
-  static RightBarTabKey = 'RightBarTab';
+  SidebarComponent = SidebarComponent;
+  static SidebarTabKey = 'SidebarTab';
 
-  static GAINERS: RightBarTabOption = {
+  static GAINERS: SidebarTabOption = {
     name: 'Top Daily Gainers',
     width: 175,
     poweredBy: {
@@ -40,7 +40,7 @@ export class RightBarCreatorsComponent implements OnInit {
       link: `https://altumbase.com/tools?${environment.node.name}`,
     },
   };
-  static DIAMONDS: RightBarTabOption = {
+  static DIAMONDS: SidebarTabOption = {
     name: 'Daily Diamonded Creators',
     width: 275,
     poweredBy: {
@@ -49,38 +49,39 @@ export class RightBarCreatorsComponent implements OnInit {
     },
   };
 
-  static ALL_TIME: RightBarTabOption = {
+  static ALL_TIME: SidebarTabOption = {
     name: 'Top Creator Coins',
     width: 210,
-    poweredBy: null,
+    poweredBy: {
+      name: 'Deso',
+      link: `https://deso.com`,
+    },
   };
 
   static chartMap = {
-    [RightBarCreatorsComponent.GAINERS.name]: RightBarCreatorsComponent.GAINERS,
-    [RightBarCreatorsComponent.DIAMONDS.name]:
-      RightBarCreatorsComponent.DIAMONDS,
-    [RightBarCreatorsComponent.ALL_TIME.name]:
-      RightBarCreatorsComponent.ALL_TIME,
+    [SidebarComponent.GAINERS.name]: SidebarComponent.GAINERS,
+    [SidebarComponent.DIAMONDS.name]: SidebarComponent.DIAMONDS,
+    [SidebarComponent.ALL_TIME.name]: SidebarComponent.ALL_TIME,
   };
 
   ngOnInit() {
     const defaultTab = this.backendApi.GetStorage(
-      RightBarCreatorsComponent.RightBarTabKey
+      SidebarComponent.SidebarTabKey
     );
     this.activeTab =
-      defaultTab in RightBarCreatorsComponent.chartMap
+      defaultTab in SidebarComponent.chartMap
         ? defaultTab
-        : RightBarCreatorsComponent.ALL_TIME.name;
+        : SidebarComponent.GAINERS.name;
     this.selectTab(true);
   }
 
   selectTab(skipStorage: boolean = false) {
-    const rightTabOption = RightBarCreatorsComponent.chartMap[this.activeTab];
-    this.activeRightTabOption = rightTabOption;
-    this.selectedOptionWidth = rightTabOption.width + 'px';
+    const tabOption = SidebarComponent.chartMap[this.activeTab];
+    this.activeTabOption = tabOption;
+    this.selectedOptionWidth = tabOption.width + 'px';
     if (!skipStorage) {
       this.backendApi.SetStorage(
-        RightBarCreatorsComponent.RightBarTabKey,
+        SidebarComponent.SidebarTabKey,
         this.activeTab
       );
     }
