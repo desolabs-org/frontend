@@ -22,12 +22,12 @@ import { environment } from 'src/environments/environment';
   templateUrl: './feed.component.html',
 })
 export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
-  static GLOBAL_TAB = 'Deso';
+  static DESO_TAB = 'Deso';
   static FOLLOWING_TAB = 'Following';
   static NEW_TAB = 'New';
   static TABS = [
     FeedComponent.FOLLOWING_TAB,
-    FeedComponent.GLOBAL_TAB,
+    FeedComponent.DESO_TAB,
     FeedComponent.NEW_TAB
   ];
   static NUM_TO_FETCH = 50;
@@ -116,7 +116,7 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
           const newPostsPromise = this._loadFollowFeedPosts(true);
           if (this.activeTab === FeedComponent.FOLLOWING_TAB) {
             return followPostsPromise;
-          } else if (this.activeTab === FeedComponent.GLOBAL_TAB) {
+          } else if (this.activeTab === FeedComponent.DESO_TAB) {
             return globalPostsPromise;
           } else {
             return newPostsPromise;
@@ -223,7 +223,7 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
     if (this.activeTab === FeedComponent.FOLLOWING_TAB) {
       // No need to delay on the Following tab. It handles the "slow switching" issue itself.
       return this.globalVars.followFeedPosts;
-    } else if (this.activeTab === FeedComponent.GLOBAL_TAB) {
+    } else if (this.activeTab === FeedComponent.DESO_TAB) {
       return this.globalVars.postsToShow;
     } else {
       return this.globalVars.newFeedPosts;
@@ -254,7 +254,7 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
   loadingFirstBatchOfActiveTabPosts() {
     if (this.activeTab === FeedComponent.FOLLOWING_TAB) {
       return this.loadingFirstBatchOfFollowFeedPosts;
-    } else if (this.activeTab === FeedComponent.GLOBAL_TAB) {
+    } else if (this.activeTab === FeedComponent.DESO_TAB) {
       return this.loadingFirstBatchOfGlobalFeedPosts;
     } else {
       return this.loadingFirstBatchOfNewFeedPosts;
@@ -264,7 +264,7 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
   showGlobalOrFollowingPosts() {
     return (
       this.postsToShow().length > 0 &&
-      (this.activeTab === FeedComponent.GLOBAL_TAB ||
+      (this.activeTab === FeedComponent.DESO_TAB ||
         this.activeTab === FeedComponent.FOLLOWING_TAB ||
         this.activeTab === FeedComponent.NEW_TAB)
     );
@@ -274,7 +274,7 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
     // activeTab == FeedComponent.GLOBAL_TAB && globalVars.postsToShow.length == 0 && !loadingPosts
     return (
       this.postsToShow().length === 0 &&
-      (this.activeTab === FeedComponent.GLOBAL_TAB ||
+      (this.activeTab === FeedComponent.DESO_TAB ||
         this.activeTab === FeedComponent.FOLLOWING_TAB ||
         this.activeTab === FeedComponent.NEW_TAB) &&
       !this.loadingFirstBatchOfActiveTabPosts()
@@ -284,7 +284,7 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
   loadMorePosts() {
     if (this.activeTab === FeedComponent.FOLLOWING_TAB) {
       this._loadFollowFeedPosts();
-    } else if (this.activeTab === FeedComponent.GLOBAL_TAB) {
+    } else if (this.activeTab === FeedComponent.DESO_TAB) {
       this._loadPosts();
     } else {
       this._loadNewFeedPosts();
@@ -298,7 +298,7 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     if (this.activeTab === FeedComponent.FOLLOWING_TAB) {
       return this.serverHasMoreFollowFeedPosts;
-    } else if (this.activeTab === FeedComponent.GLOBAL_TAB) {
+    } else if (this.activeTab === FeedComponent.DESO_TAB) {
       return this.serverHasMoreGlobalFeedPosts;
     } else {
       return this.serverHasMoreNewFeedPosts;
@@ -537,11 +537,11 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
     ) {
       defaultActiveTab = FeedComponent.FOLLOWING_TAB;
     } else {
-      defaultActiveTab = FeedComponent.GLOBAL_TAB;
+      defaultActiveTab = FeedComponent.DESO_TAB;
     }
 
     this.feedTabs = [
-      FeedComponent.GLOBAL_TAB,
+      FeedComponent.DESO_TAB,
       FeedComponent.FOLLOWING_TAB,
       FeedComponent.NEW_TAB
     ];

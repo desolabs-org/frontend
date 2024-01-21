@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class FeedPageComponent implements OnInit {
   FeedComponent = FeedComponent;
 
-  activeTab: string = FeedComponent.GLOBAL_TAB;
+  activeTab: string = FeedComponent.DESO_TAB;
   isLeftBarMobileOpen = false;
   mobile = false;
 
