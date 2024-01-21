@@ -239,10 +239,7 @@
                     class="text-grey9"
                     target="_blank"
                     href="{{ getNode().URL }}"
-                    matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
                     mat-raised-button
-                    #tooltip="matTooltip"
-                    [matTooltip]="'Posted on ' + getNode().Name"
                   >
                     <i class="fas fa-external-link-square-alt"></i>
                   </a>
@@ -587,10 +584,6 @@
         <span
           *ngIf="!showAvailableSerialNumbers"
           class="cursor-pointer"
-          (click)="NFTMOfNTooltip.toggle(); toggleShowMOfNNFTTooltip()"
-          matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-          [matTooltip]="mOfNNFTTooltip"
-          #NFTMOfNTooltip="matTooltip"
         >
           <b
             >{{ postContent.NumNFTCopiesForSale }} of
@@ -604,9 +597,6 @@
           *ngIf="postContent.HasUnlockable"
           class="cursor-pointer d-lg-inline-block d-block mt-5px"
           (click)="tooltip.toggle(); toggleShowUnlockableContent()"
-          matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-          [matTooltip]="unlockableTooltip"
-          #tooltip="matTooltip"
         >
           <i
             class="fas"

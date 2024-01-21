@@ -71,13 +71,6 @@
     (tabClick)="_handleTabClick($event)"
   ></tab-selector>
 
-  <countdown-timer
-    *ngIf="nextNFTShowcaseTime"
-    [timerText]="'The next NFT showcase drops in...'"
-    [fontWeight]="500"
-    [timerEnd]="nextNFTShowcaseTime"
-  ></countdown-timer>
-
   <div [id]="getPullToRefreshMarkerId()"></div>
 
   <!-- Posts -->
@@ -120,10 +113,6 @@
       <div *ngIf="!activeTabReadyForDisplay()" class="fs-15px">Load More</div>
       <div *ngIf="activeTabReadyForDisplay()" class="fs-15px">Loading...</div>
     </div>
-  </div>
-
-  <div *ngIf="activeTab === FeedComponent.SHOWCASE_TAB">
-    <nft-showcase></nft-showcase>
   </div>
 
   <div

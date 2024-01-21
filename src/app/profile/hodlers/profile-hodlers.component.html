@@ -6,16 +6,10 @@
     <div *ngIf="!isDAOCoin" class="col-3 py-15px mb-0">Coins Held</div>
     <div *ngIf="!isDAOCoin" class="col-3 py-15px mb-0">
       Value
-      <i
-        class="fas fa-info-circle text-greyC fs-15px global__tooltip-icon"
-        matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-        [matTooltip]="'This is computed as the ÐESO amount which the owner would get if sold the coins now.'"
-        #tooltip="matTooltip"
-        (click)="tooltip.toggle()"
-      ></i>
     </div>
 
   </div>
+  
   <div
     *ngIf="!datasource.adapter.isLoading && datasource.adapter.itemsCount === 0"
     class="row no-gutters pt-10px"
@@ -35,9 +29,11 @@
       </a>
     </div>
   </div>
+
   <simple-center-loader
     *ngIf="datasource.adapter.isLoading && loadingFirstPage"
   ></simple-center-loader>
+
   <div #uiScroll *uiScroll="let row of datasource">
     <div class="row no-gutters p-10px border-bottom mb-0" *ngIf="!row.totalRow">
       <div 
@@ -58,9 +54,6 @@
               style="font-size: 10px"
               (click)="stopEvent($event); tooltip.toggle()"
               class="ml-1 mb-1 cursor-pointer fs-20px text-primary"
-              matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-              [matTooltip]="getTooltipForRow(row)"
-              #tooltip="matTooltip"
               *ngIf="!isDAOCoin"
             >
               <div
@@ -119,10 +112,6 @@
                   !row.ProfileEntryResponse.IsVerified
                 "
                 class="d-inline-block ml-1 cursor-pointer lh-12px fc-muted align-middle"
-                matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-                [matTooltip]="
-                  'This profile is reserved. Click to learn how to claim it.'
-                "
               >
                 <i class="far fa-clock fa-md"></i>
               </span>
@@ -130,9 +119,6 @@
                 *ngIf="row.ProfileEntryResponse.IsVerified"
                 (click)="tooltip.toggle()"
                 class="ml-1 cursor-pointer text-primary align-middle"
-                matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-                [matTooltip]="'This account is verified'"
-                #tooltip="matTooltip"
               >
                 <i class="fas fa-check-circle fa-md"></i>
               </span>
@@ -142,9 +128,6 @@
               style="font-size: 10px"
               (click)="stopEvent($event); tooltip.toggle()"
               class="ml-1 mb-1 cursor-pointer fs-20px text-primary"
-              matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-              [matTooltip]="getTooltipForRow(row)"
-              #tooltip="matTooltip"
               *ngIf="!isDAOCoin"
             >
               <div

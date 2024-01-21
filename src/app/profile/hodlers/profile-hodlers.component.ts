@@ -34,6 +34,7 @@ export class ProfileHodlersComponent {
   };
 
   getPage(page: number) {
+    console.log("Getting page" + page.toString())
     if (this.lastPage != null && page > this.lastPage) {
       return [];
     }

@@ -18,14 +18,14 @@
     </div>
 
     <div *ngIf="!globalVars.hasUserBlockedCreator(profile.PublicKeyBase58Check)">
-      
-      <profile-hodlers *ngIf="activeTab == 'Coins'"
-        class="w-100 d-flex flex-column" [profile]="profile">    
-      </profile-hodlers>
 
       <profile-posts *ngIf="profile && activeTab == 'Posts'"
         [profile]="profile">    
       </profile-posts>
+
+      <profile-hodlers *ngIf="activeTab == 'Coins'"
+        class="w-100 d-flex flex-column" [profile]="profile">    
+      </profile-hodlers>
 
       <profile-hodlers *ngIf="activeTab == 'Tokens'"
         class="w-100 d-flex flex-column" [profile]="profile" [isDAOCoin]="true">    

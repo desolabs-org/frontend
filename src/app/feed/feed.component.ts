@@ -22,15 +22,13 @@ import { environment } from 'src/environments/environment';
   templateUrl: './feed.component.html',
 })
 export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
-  static GLOBAL_TAB = 'Global';
+  static GLOBAL_TAB = 'Deso';
   static FOLLOWING_TAB = 'Following';
   static NEW_TAB = 'New';
-  static SHOWCASE_TAB = '⚡ NFT Showcase ⚡';
   static TABS = [
-    FeedComponent.GLOBAL_TAB,
     FeedComponent.FOLLOWING_TAB,
-    FeedComponent.NEW_TAB,
-    FeedComponent.SHOWCASE_TAB,
+    FeedComponent.GLOBAL_TAB,
+    FeedComponent.NEW_TAB
   ];
   static NUM_TO_FETCH = 50;
   static MIN_FOLLOWING_TO_SHOW_FOLLOW_FEED_BY_DEFAULT = 10;
@@ -44,21 +42,11 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
   FeedComponent = FeedComponent;
   switchingTabs = false;
 
-  nextNFTShowcaseTime;
-
   followedPublicKeyToProfileEntry = {};
 
-  // We load the first batch of follow feed posts on page load and whenever the user follows someone
   loadingFirstBatchOfFollowFeedPosts = false;
-
-  // We load the first batch of follow feed posts on page load
   loadingFirstBatchOfNewFeedPosts = false;
-
-  // We load the first batch of global feed posts on page load
   loadingFirstBatchOfGlobalFeedPosts = false;
-
-  // We load the user's following on page load. This boolean tracks whether we're currently loading
-  // or whether we've finished.
   isLoadingFollowingOnPageLoad;
 
   globalVars: GlobalVarsService;
@@ -71,12 +59,6 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   pullToRefreshHandler;
 
-  // This is [Following, Global, Market] if the user is following anybody. Otherwise,
-  // it's [Global, Following, Market].
-  //
-  // TODO: if you switch between accounts while viewing the feed, we don't recompute this.
-  // So if user1 is following folks, and we switch to user2 who isn't following anyone,
-  // the empty follow feed will be the first tab (which is incorrect) and
   feedTabs = [];
 
   constructor(
@@ -89,19 +71,9 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
   ) {
     this.globalVars = appData;
 
-    this.route.queryParams.subscribe((queryParams) => {
-      if (queryParams.feedTab) {
-        if (queryParams.feedTab === 'Showcase') {
-          this.activeTab = FeedComponent.SHOWCASE_TAB;
-        } else {
-          this.activeTab = queryParams.feedTab;
-        }
-      } else {
-        // A default activeTab will be set after we load the follow feed (based on whether
-        // the user is following anybody)
-        this.activeTab = null;
-      }
-    });
+    // A default activeTab will be set after we load the follow feed (based on whether
+    // the user is following anybody)
+    this.activeTab = null;
 
     // Reload the follow feed any time the user follows / unfollows somebody
     this.followChangeSubscription = this.appData.followChangeObservable.subscribe(
@@ -120,18 +92,6 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
         }
       }
     );
-
-    // Go see if there is an upcoming NFT showcase that should be advertised.
-    this.backendApi
-      .GetNextNFTShowcase(
-        this.globalVars.localNode,
-        this.globalVars.loggedInUser?.PublicKeyBase58Check
-      )
-      .subscribe((res: any) => {
-        if (res.NextNFTShowcaseTstamp) {
-          this.nextNFTShowcaseTime = new Date(res.NextNFTShowcaseTstamp / 1e6);
-        }
-      });
   }
 
   ngOnInit() {
@@ -286,8 +246,7 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   showLoadingSpinner() {
     return (
-      this.activeTab !== FeedComponent.SHOWCASE_TAB &&
-      (this.loadingFirstBatchOfActiveTabPosts() || this.switchingTabs)
+      this.loadingFirstBatchOfActiveTabPosts() || this.switchingTabs
     );
   }
 
@@ -584,8 +543,7 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.feedTabs = [
       FeedComponent.GLOBAL_TAB,
       FeedComponent.FOLLOWING_TAB,
-      FeedComponent.NEW_TAB,
-      FeedComponent.SHOWCASE_TAB,
+      FeedComponent.NEW_TAB
     ];
 
     if (!this.activeTab) {

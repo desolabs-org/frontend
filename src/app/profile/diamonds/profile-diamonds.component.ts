@@ -17,7 +17,6 @@ export class ProfileDiamondsComponent implements OnInit {
 
   @Input() profile: ProfileEntryResponse;
   isLoading: boolean = false;
-  globalVars: GlobalVarsService;
   diamondSummaryList = [];
   totalDiamonds = 0;
   showDiamondsGiven = false;
@@ -30,11 +29,9 @@ export class ProfileDiamondsComponent implements OnInit {
   highestAnonDiamondLevel = 0;
 
   constructor(
-    private _globalVars: GlobalVarsService,
+    private globalVars: GlobalVarsService,
     private backendApi: BackendApiService
-  ) {
-    this.globalVars = _globalVars;
-  }
+  ) {}
 
   ngOnInit(): void {
     this.fetchDiamonds();

@@ -1020,16 +1020,4 @@ export class GlobalVarsService {
       }
     );
   }
-
-  exploreShowcase(bsModalRef: BsModalRef, modalService: BsModalService): void {
-    if (modalService) {
-      modalService.setDismissReason('explore');
-    }
-    if (bsModalRef) {
-      bsModalRef.hide();
-    }
-    this.router.navigate(['/' + this.RouteNames.FEEDS], {
-      queryParams: { feedTab: FeedComponent.SHOWCASE_TAB },
-    });
-  }
 }

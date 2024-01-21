@@ -240,9 +240,6 @@
                     *ngIf="bidEntry.ProfileEntryResponse?.IsVerified"
                     (click)="tooltip.toggle()"
                     class="ml-1 mb-1 cursor-pointer text-primary"
-                    matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-                    [matTooltip]="'This account is verified'"
-                    #tooltip="matTooltip"
                   >
                     <i class="fas fa-check-circle fa-md align-middle"></i>
                   </span>
@@ -396,9 +393,6 @@
                     *ngIf="owner.ProfileEntryResponse?.IsVerified"
                     (click)="tooltip.toggle()"
                     class="ml-1 mb-1 cursor-pointer text-primary"
-                    matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-                    [matTooltip]="'This account is verified'"
-                    #tooltip="matTooltip"
                   >
                     <i class="fas fa-check-circle fa-md align-middle"></i>
                   </span>

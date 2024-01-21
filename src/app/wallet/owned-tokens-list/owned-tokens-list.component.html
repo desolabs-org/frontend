@@ -85,10 +85,6 @@
               !creator.ProfileEntryResponse?.IsVerified
             "
             class="d-inline-block ml-1 cursor-pointer lh-12px fc-muted"
-            matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-            [matTooltip]="
-              'This profile is reserved. The owner has not yet claimed it.'
-            "
           >
             <i class="far fa-clock fa-md align-middle"></i>
           </span>
@@ -96,9 +92,6 @@
             *ngIf="creator.ProfileEntryResponse?.IsVerified"
             (click)="tooltip.toggle()"
             class="ml-1 cursor-pointer text-primary"
-            matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-            [matTooltip]="'This account is verified'"
-            #tooltip="matTooltip"
           >
             <i class="fas fa-check-circle fa-md align-middle"></i>
           </span>
@@ -129,10 +122,6 @@
                 globalVars.showProcessingSpinners
               "
               class="fa fa-spinner fc-muted"
-              matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-              [matTooltip]="unminedCreatorCoinToolTip(creator)"
-              #tooltip="matTooltip"
-              (click)="tooltip.toggle()"
             ></i> 
             {{ globalVars.hexNanosToUnitString(creator.BalanceNanosUint256, 18) }}
           </div>

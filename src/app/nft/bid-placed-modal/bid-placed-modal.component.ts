@@ -13,7 +13,4 @@ export class BidPlacedModalComponent {
     public globalVars: GlobalVarsService
   ) {}
 
-  onExploreClicked() {
-    this.globalVars.exploreShowcase(this.bsModalRef, this.modalService);
-  }
 }

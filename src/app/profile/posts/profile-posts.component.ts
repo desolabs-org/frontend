@@ -131,6 +131,7 @@ export class ProfilePostsComponent {
     ProfilePostsComponent.BUFFER_SIZE,
     ProfilePostsComponent.PADDING
   );
+  
   datasource: IDatasource<
     IAdapter<any>
   > = this.infiniteScroller.getDatasource();

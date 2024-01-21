@@ -26,29 +26,12 @@ export class ProfilePageComponent implements OnInit {
   @ViewChild(ProfileTopCardComponent, { static: false })
   childTopCardComponent;
 
-  static TABS = {
-    posts: 'Posts',
-    // Leaving this one in so old links will direct to the Coin Purchasers tab.
-    'creator-coin': 'Creator Coin',
-    'coin-purchasers': 'Creator Coin',
-    dao: 'Utility Coin',
-    diamonds: 'Diamonds',
-    nfts: 'NFTs',
-  };
-  static TABS_LOOKUP = {
-    Posts: 'posts',
-    'Creator Coin': 'creator-coin',
-    Diamonds: 'diamonds',
-    NFTs: 'nfts',
-    'Utility Coin': 'dao',
-  };
   appData: GlobalVarsService;
   userName: string;
   profile: ProfileEntryResponse;
   activeTab: string;
   loading: boolean;
 
-  // emits the UserUnblocked event
   @Output() userUnblocked = new EventEmitter();
 
   constructor(
@@ -60,20 +43,15 @@ export class ProfilePageComponent implements OnInit {
     private location: Location,
     private titleService: Title
   ) {
+    this.activeTab = 'Posts';
     this.route.params.subscribe((params) => {
       this.userName = params.username;
-      this._refreshContent();
-    });
-    this.route.queryParams.subscribe((params) => {
-      this.activeTab =
-        params.tab && params.tab in ProfilePageComponent.TABS
-          ? ProfilePageComponent.TABS[params.tab]
-          : 'Posts';
     });
   }
 
   ngOnInit() {
     this.titleService.setTitle(this.userName + ` on ${environment.node.name}`);
+    this._refreshContent();
   }
 
   unblock() {
@@ -203,15 +181,6 @@ export class ProfilePageComponent implements OnInit {
 
   _handleTabClick(tabName: string) {
     this.activeTab = tabName;
-    // Update query params to reflect current tab
-    const urlTree = this.router.createUrlTree([], {
-      queryParams: {
-        tab: ProfilePageComponent.TABS_LOOKUP[tabName] || 'posts',
-      },
-      queryParamsHandling: 'merge',
-      preserveFragment: true,
-    });
-    this.location.go(urlTree.toString());
   }
 
   showProfileAsReserved() {

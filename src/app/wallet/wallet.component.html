@@ -57,10 +57,7 @@
       <div class="font-weight-bold">
         Ð&nbsp;{{ globalVars.nanosToDeSo(globalVars.loggedInUser.BalanceNanos, 9) }}
         <i class="fa fa-spinner fc-muted"
-          *ngIf="globalVars.loggedInUser.UnminedBalanceNanos != 0 && globalVars.showProcessingSpinners"
-          matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-          [matTooltip]="unminedDeSoToolTip()" #tooltip="matTooltip"
-          (click)="tooltip.toggle()"></i>
+          *ngIf="globalVars.loggedInUser.UnminedBalanceNanos != 0 && globalVars.showProcessingSpinners"></i>
       </div>
 
     </div>

@@ -82,7 +82,7 @@ import { OwnedNftsListComponent } from './wallet/owned-nfts-list/owned-nfts-list
 import { TransferDeSoPageComponent } from './wallet/transfer-deso-page/transfer-deso-page.component';
 import { TransferDeSoComponent } from './wallet/transfer-deso-page/transfer-deso/transfer-deso.component';
 
-
+import { UiScrollModule } from 'ngx-ui-scroll';
 import { SettingsPageComponent } from './settings/settings-page.component';
 
 import { ProfilePageComponent } from './profile/profile-page.component';
@@ -284,6 +284,7 @@ const coderTheme: Theme = { key: "coder", name: "Coder Theme" };
     ReactiveFormsModule,
     BrowserAnimationsModule,
     DragDropModule,
+    UiScrollModule,
     BsDropdownModule.forRoot(),
     PopoverModule.forRoot(),
     RatingModule.forRoot(),

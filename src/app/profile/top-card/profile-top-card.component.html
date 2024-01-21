@@ -32,9 +32,6 @@
       *ngIf="profile.IsReserved"
       (click)="tooltip.toggle()"
       class="ml-10px cursor-pointer fs-18px lh-12px fc-muted"
-      matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-      [matTooltip]="'This profile was parked by the deso core team'"
-      #tooltip="matTooltip"
     >
       <i class="far fa-clock fa-md align-middle"></i>
     </div>
@@ -43,9 +40,6 @@
       *ngIf="profile.IsVerified"
       (click)="tooltip.toggle()"
       class="ml-1 mb-1 cursor-pointer fs-20px text-primary"
-      matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
-      [matTooltip]="'This account is verified'"
-      #tooltip="matTooltip"
     >
       <i class="fas fa-check-circle fa-md align-middle"></i>
     </div>
